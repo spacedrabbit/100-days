@@ -11,6 +11,7 @@
 		140057BB1C7A922C00E8C850 /* One00DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140057BA1C7A922C00E8C850 /* One00DaysViewController.swift */; };
 		140057C01C7A922C00E8C850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140057BF1C7A922C00E8C850 /* Assets.xcassets */; };
 		140057C31C7A922C00E8C850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140057C11C7A922C00E8C850 /* LaunchScreen.storyboard */; };
+		1472377A1C7C1158000A2458 /* Day2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147237791C7C1158000A2458 /* Day2ViewController.swift */; };
 		7B3E8D1D22499A9797A3D883 /* Pods_One00Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804278F7B6F9725A5925319 /* Pods_One00Days.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		140057BF1C7A922C00E8C850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		140057C21C7A922C00E8C850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		140057C41C7A922C00E8C850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		147237791C7C1158000A2458 /* Day2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day2ViewController.swift; sourceTree = "<group>"; };
 		8804278F7B6F9725A5925319 /* Pods_One00Days.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_One00Days.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF81FFC6BEE8E10D7005B44 /* Pods-One00Days.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.release.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.release.xcconfig"; sourceTree = "<group>"; };
 		DF560FD2FB7C544CE95A1BBE /* Pods-One00Days.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.debug.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.debug.xcconfig"; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
-				140057BA1C7A922C00E8C850 /* One00DaysViewController.swift */,
+				147237781C7C10F7000A2458 /* Week 1 VCs */,
 				140057CA1C7A924500E8C850 /* Supporting Files */,
 			);
 			path = One00Days;
@@ -82,6 +84,15 @@
 			children = (
 			);
 			name = "Pulled From Other Projects";
+			sourceTree = "<group>";
+		};
+		147237781C7C10F7000A2458 /* Week 1 VCs */ = {
+			isa = PBXGroup;
+			children = (
+				140057BA1C7A922C00E8C850 /* One00DaysViewController.swift */,
+				147237791C7C1158000A2458 /* Day2ViewController.swift */,
+			);
+			name = "Week 1 VCs";
 			sourceTree = "<group>";
 		};
 		360F196AAA5B16431AE11BEB /* Frameworks */ = {
@@ -222,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1472377A1C7C1158000A2458 /* Day2ViewController.swift in Sources */,
 				140057BB1C7A922C00E8C850 /* One00DaysViewController.swift in Sources */,
 				140057B91C7A922C00E8C850 /* AppDelegate.swift in Sources */,
 			);
