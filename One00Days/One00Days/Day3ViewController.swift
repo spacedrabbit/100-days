@@ -23,6 +23,10 @@ class Day3ViewController: UIViewController {
     self.configureConstraints()
     
     self.drawCircleIn(self.centeredView)
+    self.spinTheShitOuttaThatSquare()
+//    let timer: NSTimer = NSTimer(fireDate: NSDate.init(timeIntervalSinceNow: 10.0), interval: 10.0, target: self, selector: "drawCircle", userInfo: nil, repeats: false)
+//    NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
+//    timer.fire()
   }
   
   internal func configureConstraints() {
@@ -39,6 +43,10 @@ class Day3ViewController: UIViewController {
     self.view.addSubview(self.centeredView)
   }
   
+  internal func drawCircle() {
+    self.drawCircleIn(self.centeredView)
+  }
+  
   internal func drawCircleIn(view: UIView) {
     let shapeLayer: CAShapeLayer = CAShapeLayer()
     let circlePath: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(0.0, 0.0, 100.0, 100.0))
@@ -46,6 +54,8 @@ class Day3ViewController: UIViewController {
     shapeLayer.fillColor = UIColor.blueColor().CGColor
     view.layer.addSublayer(shapeLayer)
     
+    
+    // not actually animated right now
     let circleAnimation: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
     circleAnimation.duration = 2.0
     circleAnimation.repeatCount = 1
@@ -54,6 +64,18 @@ class Day3ViewController: UIViewController {
     
     shapeLayer.addAnimation(circleAnimation, forKey: "drawCircleAnimation")
   }
+  
+  internal func spinTheShitOuttaThatSquare() {
+    
+    UIView.animateWithDuration(2.0, animations: { () -> Void in
+      self.centeredView.transform = CGAffineTransformMakeRotation(CGFloat(180.0 * M_PI) / 180.0)
+      }) { (completion: Bool) -> Void in
+        self.spinTheShitOuttaThatSquare()
+    }
+    
+    
+  }
+  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

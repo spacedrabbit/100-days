@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 //    let rootVC: One00DaysViewController = One00DaysViewController()
-    let rootVC: Day2ViewController = Day2ViewController()
+//    let rootVC: Day2ViewController = Day2ViewController()
+    let rootVC: Day3ViewController = Day3ViewController()
     self.window?.rootViewController = rootVC
     self.window?.makeKeyAndVisible()
     
