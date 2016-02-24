@@ -66,7 +66,7 @@ class Day3ViewController: UIViewController {
   }
   
   internal func spinTheShitOuttaThatSquare() {
-    
+    self.centeredView.transform = CGAffineTransformIdentity
     UIView.animateWithDuration(2.0, animations: { () -> Void in
       self.centeredView.transform = CGAffineTransformMakeRotation(CGFloat(180.0 * M_PI) / 180.0)
       }) { (completion: Bool) -> Void in
