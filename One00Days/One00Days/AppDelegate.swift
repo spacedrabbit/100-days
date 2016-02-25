@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 //    let rootVC: One00DaysViewController = One00DaysViewController()
 //    let rootVC: Day2ViewController = Day2ViewController()
-    let rootVC: Day3ViewController = Day3ViewController()
+//    let rootVC: Day3ViewController = Day3ViewController()
+    let rootVC: Day4ViewController = Day4ViewController()
     self.window?.rootViewController = rootVC
     self.window?.makeKeyAndVisible()
     

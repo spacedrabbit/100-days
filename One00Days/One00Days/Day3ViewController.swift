@@ -53,8 +53,7 @@ class Day3ViewController: UIViewController {
     shapeLayer.path = circlePath.CGPath
     shapeLayer.fillColor = UIColor.blueColor().CGColor
     view.layer.addSublayer(shapeLayer)
-    
-    
+
     // not actually animated right now
     let circleAnimation: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
     circleAnimation.duration = 2.0
@@ -67,7 +66,7 @@ class Day3ViewController: UIViewController {
   
   internal func spinTheShitOuttaThatSquare() {
     self.centeredView.transform = CGAffineTransformIdentity
-    UIView.animateWithDuration(2.0, animations: { () -> Void in
+    UIView.animateWithDuration(1.0, animations: { () -> Void in
       self.centeredView.transform = CGAffineTransformMakeRotation(CGFloat(180.0 * M_PI) / 180.0)
       }) { (completion: Bool) -> Void in
         self.spinTheShitOuttaThatSquare()
