@@ -12,6 +12,8 @@ class TappableCircleButton: UIControl {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.backgroundColor = UIColor.clearColor()
+    self.userInteractionEnabled = true
+    self.addTarget(self, action: "buttonTouched:", forControlEvents: .TouchUpInside)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -55,6 +57,36 @@ class TappableCircleButton: UIControl {
     horizontalLinePath.stroke()
     verticalLinePath.stroke()
   }
+  
+  internal func buttonTouched(sender: AnyObject?) {
+    print("TOUCHED")
+  }
+  
+  override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+    print("begin tracking?")
+    return true
+  }
+  
+  override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+    print("continued tracking")
+    return true
+  }
+  
+  override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
+    print("end tracking")
+  }
+  
+//  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+////    print("touches began")
+//  }
+//  
+//  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+////    print("touches moved")
+//  }
+//  
+//  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+////    print("touches ended")
+//  }
 }
 
 class Day4ViewController: UIViewController {
