@@ -133,7 +133,7 @@ class TappableCircleButton: UIControl {
       })
       
       }) { (complete: Bool) -> Void in
-        
+        self.layer.removeAnimationForKey(kReleasedKey)
     }
   }
   
