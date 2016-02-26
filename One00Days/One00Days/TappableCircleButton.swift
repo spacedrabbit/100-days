@@ -12,6 +12,7 @@ import SnapKit
 
 let kTransformScaleKey: String = "transform.scale"
 let kPressedDownKey: String = "pressedDown"
+let kReleasedKey: String = "released"
 
 class TappableCircleButton: UIControl {
   override init(frame: CGRect) {
@@ -80,6 +81,19 @@ class TappableCircleButton: UIControl {
   
   override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
     print("end tracking")
+    if let buttonTouch: UITouch = touch {
+      if let touchedView: UIView = buttonTouch.view {
+        if touchedView == self {
+          self.animateForReleaseState()
+          
+//          UIView.animateWithDuration(0.40, animations: { () -> Void in
+//            self.layer.transform = CATransform3DIdentity
+//            self.layer.removeAnimationForKey(kPressedDownKey)
+//            }, completion: nil)
+          
+        }
+      }
+    }
   }
   
   internal func animateForHightlightedState() {
@@ -87,13 +101,40 @@ class TappableCircleButton: UIControl {
     pressedAnimation.keyTimes = [0.0, 1.0]
     pressedAnimation.values = [1.0, 0.85]
     pressedAnimation.timingFunctions = [CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)]
-    pressedAnimation.
+    pressedAnimation.removedOnCompletion = false
     
-    UIView .animateWithDuration(0.30, animations: { () -> Void in
+    UIView.animateWithDuration(0.30, animations: { () -> Void in
       self.layer.addAnimation(pressedAnimation, forKey: kPressedDownKey)
-      }) { (complete: Bool?) -> Void in
-
+      }) { (complete: Bool) -> Void in
+        self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(0.85, 0.85))
     }
-    
   }
+  
+  internal func animateForReleaseState() {
+    let releasedAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: kTransformScaleKey)
+    releasedAnimation.keyTimes = [0.0, 0.15, 0.4, 0.6, 0.8, 1.0]
+    releasedAnimation.values = [1.0, 1.5, 1.07, 1.02, 1.04, 1.0]
+    releasedAnimation.timingFunctions = [
+      CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear),
+      CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut),
+      CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut),
+      CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut),
+      CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear),
+    ]
+    
+    UIView.animateKeyframesWithDuration(1.0, delay: 0.0, options: UIViewKeyframeAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+      
+      UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.25, animations: { () -> Void in
+        self.layer.transform = CATransform3DIdentity
+      })
+      
+      UIView.addKeyframeWithRelativeStartTime(0.25, relativeDuration: 0.75, animations: { () -> Void in
+        self.layer.addAnimation(releasedAnimation, forKey: kReleasedKey)
+      })
+      
+      }) { (complete: Bool) -> Void in
+        
+    }
+  }
+  
 }
