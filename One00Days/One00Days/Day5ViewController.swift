@@ -1,18 +1,20 @@
 //
-//  Day4ViewController.swift
+//  Day5ViewController.swift
 //  One00Days
 //
-//  Created by Louis Tur on 2/24/16.
+//  Created by Louis Tur on 2/25/16.
 //  Copyright © 2016 SRLabs. All rights reserved.
 //
+// Today was actually only 50 min max
 
+import Foundation
 import UIKit
 
-class Day4ViewController: UIViewController {
+internal class Day5ViewController: UIViewController {
   
   lazy var contentView: UIView = {
     var view: UIView = UIView()
-    view.backgroundColor = UIColor.purpleColor()
+    view.backgroundColor = UIColor.lightGrayColor()
     return view
   }()
   
@@ -23,29 +25,28 @@ class Day4ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     self.setupViewHierarchy()
-    self.configureConstraints()
-    self.configureButton()
+    self.configureConstraints() 
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+    
   }
   
   internal func configureConstraints() {
     self.contentView.snp_makeConstraints { (make) -> Void in
-      make.height.equalTo(100.0)
-      make.leading.equalTo(self.view.snp_leading)
-      make.trailing.equalTo(self.view.snp_trailing)
-      make.centerY.equalTo(self.view.snp_centerY)
+      make.leading.equalTo(self.view.snp_leading).offset(50.0)
+      make.trailing.equalTo(self.view.snp_trailing).inset(50.0)
+      make.top.equalTo(self.view.snp_top).offset(50.0)
+      make.bottom.equalTo(self.view.snp_bottom).inset(50.0)
     }
     
     self.plusButton.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(50.0, 50.0))
-      make.leading.equalTo(self.contentView.snp_leading).offset(15.0)
-      make.top.equalTo(self.contentView.snp_top).offset(15.0)
+      make.center.equalTo(self.contentView.snp_center)
+      make.height.equalTo(50.0)
+      make.width.equalTo(self.plusButton.snp_height)
     }
   }
   
@@ -54,8 +55,5 @@ class Day4ViewController: UIViewController {
     self.contentView.addSubview(self.plusButton)
   }
   
-  internal func configureButton() {
-    
-  }
   
 }
