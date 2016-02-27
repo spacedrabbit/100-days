@@ -10,6 +10,8 @@ import UIKit
 
 class Day6ViewController: UIViewController {
   
+  var isOpen: Bool = false
+  
   lazy var doorView: UIView = {
     var view:UIView = UIView()
     view.backgroundColor = UIColor.darkGrayColor()
@@ -44,6 +46,30 @@ class Day6ViewController: UIViewController {
     var view: UIView = UIView()
     view.backgroundColor = UIColor.redColor()
     return view
+  }()
+  
+  lazy var rodrigoLabel: UILabel = {
+    let label: UILabel = UILabel()
+    label.text = "RODRIGO"
+    label.adjustsFontSizeToFitWidth = true
+    label.textColor = UIColor.whiteColor()
+    return label
+  }()
+  
+  lazy var shiftLabel: UILabel = {
+    let label: UILabel = UILabel()
+    label.text = "SHIFT"
+    label.adjustsFontSizeToFitWidth = true
+    label.textColor = UIColor.whiteColor()
+    return label
+  }()
+  
+  lazy var posseLabel: UILabel = {
+    let label: UILabel = UILabel()
+    label.text = "POSSE"
+    label.adjustsFontSizeToFitWidth = true
+    label.textColor = UIColor.whiteColor()
+    return label
   }()
   
   override func viewDidLoad() {
@@ -94,6 +120,18 @@ class Day6ViewController: UIViewController {
       make.top.equalTo(self.shiftSignView.snp_bottom).offset(8.0)
     }
 
+    self.rodrigoLabel.snp_makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.rodrigoSignView.snp_edges)
+    }
+    
+    self.shiftLabel.snp_makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.shiftSignView.snp_edges)
+    }
+    
+    self.posseLabel.snp_makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.posseSignView.snp_edges)
+    }
+    
   }
   
   internal func setupViewHierarchy() {
@@ -104,28 +142,48 @@ class Day6ViewController: UIViewController {
     self.doorView.addSubview(self.rodrigoSignView)
     self.doorView.addSubview(self.shiftSignView)
     self.doorView.addSubview(self.posseSignView)
+    
+    self.rodrigoSignView.addSubview(self.rodrigoLabel)
+    self.shiftSignView.addSubview(self.shiftLabel)
+    self.posseSignView.addSubview(self.posseLabel)
   }
   
   internal func setupDoorAsButton() {
-    let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "openDoor")
+    let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleDoor")
     self.doorView.addGestureRecognizer(tapGesture)
   }
   
   internal func degreeToRad(x: Double) -> Double {
-    return (x * (180.0 / M_PI))
+    return (x * (M_PI / 180.0))
   }
   
-  internal func openDoor() {
-    
-    let angleAsRads: Double = self.degreeToRad(40.0)
+  internal func toggleDoor() {
+    let angleAsRads: Double = self.degreeToRad(75.0)
     self.doorView.layer.anchorPoint = CGPointMake(1.0, 0.5)
     self.doorView.layer.position = CGPointMake(CGRectGetMaxX(self.doorView.layer.bounds) + 4.0, CGRectGetMidY(self.doorView.layer.bounds) + 4.0)
-    let doorOpenTransform: CATransform3D = CATransform3DMakeRotation( CGFloat(angleAsRads), 0.0, 1.0, 0.0)
     
-    UIView.animateWithDuration(2.0) { () -> Void in
-      self.doorView.layer.transform = doorOpenTransform
+    if !self.isOpen {
+      let doorOpenTransform: CATransform3D = CATransform3DMakeRotation( CGFloat(angleAsRads), 0.0, 1.0, 0.0)
+      
+      UIView.animateWithDuration(1.75, animations: { () -> Void in
+        self.doorView.layer.transform = doorOpenTransform
+        }) { (complete: Bool) -> Void in
+          if complete {
+            self.isOpen = true
+          }
+      }
+    } else {
+      UIView.animateWithDuration(1.75, animations: { () -> Void in
+        self.doorView.layer.transform = CATransform3DIdentity
+        }) { (complete: Bool) -> Void in
+          if complete {
+            self.isOpen = false
+          }
+      }
+
     }
-    
+
   }
   
+
 }
