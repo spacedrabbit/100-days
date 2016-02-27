@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let rootVC: One00DaysViewController = One00DaysViewController()
 //    let rootVC: Day2ViewController = Day2ViewController()
 //    let rootVC: Day3ViewController = Day3ViewController()
-    let rootVC: Day4ViewController = Day4ViewController()
+//    let rootVC: Day4ViewController = Day4ViewController()
+    let rootVC: Day6ViewController = Day6ViewController()
     self.window?.rootViewController = rootVC
     self.window?.makeKeyAndVisible()
     
