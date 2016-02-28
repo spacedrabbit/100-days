@@ -11,6 +11,8 @@
 		140057BB1C7A922C00E8C850 /* One00DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140057BA1C7A922C00E8C850 /* One00DaysViewController.swift */; };
 		140057C01C7A922C00E8C850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140057BF1C7A922C00E8C850 /* Assets.xcassets */; };
 		140057C31C7A922C00E8C850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140057C11C7A922C00E8C850 /* LaunchScreen.storyboard */; };
+		1437843C1C829FA4004F3B05 /* DoorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437843B1C829FA4004F3B05 /* DoorView.swift */; };
+		1437843E1C82A132004F3B05 /* Day7ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437843D1C82A132004F3B05 /* Day7ViewController.swift */; };
 		1472377A1C7C1158000A2458 /* Day2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147237791C7C1158000A2458 /* Day2ViewController.swift */; };
 		1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472377B1C7D6452000A2458 /* Day3ViewController.swift */; };
 		148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A964D1C8153EB00988EB8 /* Day6ViewController.swift */; };
@@ -27,6 +29,8 @@
 		140057BF1C7A922C00E8C850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		140057C21C7A922C00E8C850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		140057C41C7A922C00E8C850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1437843B1C829FA4004F3B05 /* DoorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorView.swift; sourceTree = "<group>"; };
+		1437843D1C82A132004F3B05 /* Day7ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day7ViewController.swift; sourceTree = "<group>"; };
 		147237791C7C1158000A2458 /* Day2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day2ViewController.swift; sourceTree = "<group>"; };
 		1472377B1C7D6452000A2458 /* Day3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day3ViewController.swift; sourceTree = "<group>"; };
 		148A964D1C8153EB00988EB8 /* Day6ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day6ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */,
 				14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */,
 				148A964D1C8153EB00988EB8 /* Day6ViewController.swift */,
+				1437843D1C82A132004F3B05 /* Day7ViewController.swift */,
 			);
 			name = "Week 1 VCs";
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */,
+				1437843B1C829FA4004F3B05 /* DoorView.swift */,
 			);
 			name = "Week 1 Other";
 			sourceTree = "<group>";
@@ -262,6 +268,8 @@
 				140057B91C7A922C00E8C850 /* AppDelegate.swift in Sources */,
 				14EB517B1C80071C00D31EF0 /* Day5ViewController.swift in Sources */,
 				14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */,
+				1437843C1C829FA4004F3B05 /* DoorView.swift in Sources */,
+				1437843E1C82A132004F3B05 /* Day7ViewController.swift in Sources */,
 				148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */,
 				1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */,
 			);
