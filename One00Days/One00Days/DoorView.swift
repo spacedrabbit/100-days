@@ -178,6 +178,7 @@ class DoorView: UIView {
       windowMaskPath.appendPath(anotherMaskPath)
       windowRectPath.appendPath(windowMaskPath)
       windowMaskPath.usesEvenOddFillRule = true
+      windowRectPath.usesEvenOddFillRule = false
       
       let windowShapeLayer: CAShapeLayer = CAShapeLayer()
       windowShapeLayer.path = windowRectPath.CGPath
