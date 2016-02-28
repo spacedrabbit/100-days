@@ -72,6 +72,11 @@ class DoorView: UIView {
     return label
   }()
   
+  lazy var windowView: UIView = {
+    let view: UIView = UIView()
+//    view.backgroundColor = UIColor.yellowColor()
+    return view
+  }()
   
   // MARK: Init
   override init(frame: CGRect) {
@@ -79,6 +84,7 @@ class DoorView: UIView {
     self.setupViewHierarchy()
     self.configureConstraints()
     self.setupDoorAsButton()
+    self.drawWindowInDoor()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -134,6 +140,13 @@ class DoorView: UIView {
       make.edges.equalTo(self.posseSignView.snp_edges)
     }
     
+    self.windowView.snp_makeConstraints { (make) -> Void in
+      make.top.equalTo(self.rodrigoSignView.snp_top)
+      make.bottom.equalTo(self.posseSignView.snp_bottom)
+      make.leading.equalTo(15.0)
+      make.width.equalTo(self.rodrigoSignView.snp_width)
+    }
+    
   }
   
   internal func setupViewHierarchy() {
@@ -145,6 +158,8 @@ class DoorView: UIView {
     self.doorView.addSubview(self.shiftSignView)
     self.doorView.addSubview(self.posseSignView)
     
+    self.doorView.addSubview(self.windowView)
+    
     self.rodrigoSignView.addSubview(self.rodrigoLabel)
     self.shiftSignView.addSubview(self.shiftLabel)
     self.posseSignView.addSubview(self.posseLabel)
@@ -155,6 +170,29 @@ class DoorView: UIView {
     self.doorView.addGestureRecognizer(tapGesture)
   }
   
+  private func drawWindowInDoor() {
+    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      let windowRectPath: UIBezierPath = UIBezierPath(rect: self.windowView.bounds)
+      let windowMaskPath: UIBezierPath = UIBezierPath(rect: CGRectInset(self.windowView.bounds, 10.0, 5.0))
+      let anotherMaskPath: UIBezierPath = UIBezierPath(rect: CGRectInset(self.windowView.bounds, 5.0, 1.0))
+      windowMaskPath.appendPath(anotherMaskPath)
+      windowRectPath.appendPath(windowMaskPath)
+      windowMaskPath.usesEvenOddFillRule = true
+      
+      let windowShapeLayer: CAShapeLayer = CAShapeLayer()
+      windowShapeLayer.path = windowRectPath.CGPath
+      windowShapeLayer.frame = self.windowView.frame
+      windowShapeLayer.fillRule = kCAFillRuleEvenOdd
+      
+      self.doorView.layer.addSublayer(windowShapeLayer)
+      windowRectPath.fill()
+      windowRectPath.stroke()
+    }
+  }
+  
+  override func layoutSubviews() {
+//    self.drawWindowInDoor()
+  }
   
   // MARK: - Helpers
   private func degreeToRad(x: Double) -> Double {
