@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Dat8ViewController: UIViewController {
+class Day8ViewController: UIViewController {
   
   let frontCardView: UIView = {
     let view: UIView = UIView()
@@ -27,6 +27,7 @@ class Dat8ViewController: UIViewController {
     label.text = "Hello world, how are you"
     label.font = UIFont(name: "Menlo", size: 40.0)
     label.numberOfLines = 3
+    label.adjustsFontSizeToFitWidth = true
     return label
   }()
   
@@ -34,6 +35,7 @@ class Dat8ViewController: UIViewController {
     let label: UILabel = UILabel()
     label.text = "World keeps turning and I've been better"
     label.font = UIFont(name: "Menlo", size: 40.0)
+    label.adjustsFontSizeToFitWidth = true
     label.numberOfLines = 3
     return label
   }()
@@ -44,14 +46,16 @@ class Dat8ViewController: UIViewController {
     
     self.setupViewHierarchy()
     self.configureConstraints()
+    
+    self.applyTransform()
   }
   
   override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
   
   internal func configureConstraints() {
     self.frontCardView.snp_makeConstraints { (make) -> Void in
-      make.width.equalTo(100.0)
-      make.height.equalTo(100.0)
+      make.width.equalTo(200.0)
+      make.height.equalTo(170.0)
       make.center.equalTo(self.view.snp_center)
     }
     
@@ -69,13 +73,25 @@ class Dat8ViewController: UIViewController {
   }
   
   internal func setupViewHierarchy() {
+    self.view.addSubview(self.backCardView)
     self.view.addSubview(self.frontCardView)
     
-    self.frontCardView.addSubview(self.backCardView)
     self.frontCardView.addSubview(self.frontCardText)
-    self.frontCardView.sendSubviewToBack(self.backCardView)
     
     self.backCardView.addSubview(self.insideCardText)
+  }
+  
+  internal func applyTransform() {
+    
+    let frontCardAngle: CGFloat = degreesToRadians(35.0)
+    let sideTwist: CGFloat = degreesToRadians(20.0)
+    self.frontCardView.layer.anchorPoint = CGPointMake(0.0, 0.0)
+//    self.frontCardView.layer.position = CGPointMake( CGRectGetMidX(self.frontCardView.frame), CGRectGetMaxY(self.frontCardView.frame))
+    let rotateForwardOnX = CATransform3DMakeRotation(frontCardAngle, 1.0, 0.0, 0.0)
+    let rotateLeftOnY = CATransform3DMakeRotation(sideTwist, 0.0, -1.0, 0.0)
+    
+    self.frontCardView.layer.transform = CATransform3DConcat(rotateForwardOnX, rotateLeftOnY)
+    
   }
   
   
