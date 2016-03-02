@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import Foundation
 
 class CubeGenerator {
   
   let standardSize: CGRect = CGRectMake(0.0, 0.0, 100.0, 100.0)
   
-  internal class func createCubeWithColor(color: UIColor) {
-    
-    
-    
+  internal class func createCubeWithColor(color: UIColor) -> UIView {
+    let view: UIView = UIView(frame: CubeGenerator().standardSize)
+    view.layer.addSublayer(CubeGenerator().drawCube(color))
+    return view
   }
   
   internal func drawCube(color: UIColor) -> CALayer{
@@ -34,13 +35,41 @@ class CubeGenerator {
   }
 }
 
+class Animator {
+  internal class func animateWithUpwardsSpring(cube: UIView) {
+    let currentFrame: CGRect = cube.frame
+    let minimumDistanceToCover: CGFloat = 700.0
+    
+    let xCoordRandomize: CGFloat = CGFloat(NSNumber(unsignedInt: arc4random_uniform(99) + 1).doubleValue / 100.0)
+    let yCoordRandomize: CGFloat = CGFloat(NSNumber(unsignedInt: arc4random_uniform(99) + 1).doubleValue) + minimumDistanceToCover
+    
+    print("\(xCoordRandomize), \(yCoordRandomize)")
+    UIView .animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .BeginFromCurrentState, animations: { () -> Void in
+      
+      let shiftedX: CGFloat = xCoordRandomize * currentFrame.origin.x
+      let shiftedY: CGFloat = yCoordRandomize
+      let newFrame: CGRect = CGRectMake(shiftedX, shiftedY, currentFrame.size.width, currentFrame.size.height)
+      
+      cube.frame = newFrame
+      
+      }) { (complete: Bool) -> Void in
+        
+    }
+  }
+}
+
 
 class Day10ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.whiteColor()
+      
+      let cube: UIView = CubeGenerator.createCubeWithColor(UIColor.redColor())
+      self.view.addSubview(cube)
+      cube.frame = CGRectMake(cube.frame.origin.x, CGRectGetMaxY(self.view.frame), 100.0, 100.0)
+      Animator.animateWithUpwardsSpring(cube)
     }
 
     override func didReceiveMemoryWarning() {
