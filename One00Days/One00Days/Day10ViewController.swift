@@ -75,7 +75,7 @@ class Day10ViewController: UIViewController {
     self.button.setTitle("PRESS", forState: .Normal)
     self.button.addTarget(self, action: "fireCube", forControlEvents: UIControlEvents.TouchUpInside)
     
-    let timer: NSTimer = NSTimer(timeInterval: 0.25, target: self, selector: "fireCube", userInfo: nil, repeats: true)
+    let timer: NSTimer = NSTimer(timeInterval: 1.35, target: self, selector: "fireCube", userInfo: nil, repeats: true)
     NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
   }
   
@@ -86,18 +86,18 @@ class Day10ViewController: UIViewController {
   
   
   internal func fireCube() {
-    let cube: UIView = CubeGenerator.createCubeWithColor(UIColor.redColor())
+    let cube: UIView = CubeGenerator.createCubeWithColor(self.randomColor())
     self.view.addSubview(cube)
     cube.frame = CGRectMake(CGRectGetMidX(cube.frame), CGRectGetMaxY(self.view.frame) + 100.0, 100.0, 100.0)
     Animator.animateWithUpwardsSpring(cube)
   }
   
-  internal func configureConstraints() {
+  internal func randomColor() -> UIColor {
+    let r: CGFloat = CGFloat(arc4random_uniform(99) + 1)/100.0
+    let g: CGFloat = CGFloat(arc4random_uniform(99) + 1)/100.0
+    let b: CGFloat = CGFloat(arc4random_uniform(99) + 1)/100.0
     
-  }
-  
-  internal func setupViewHierarchy() {
-    
+    return UIColor(red: r, green: g, blue: b, alpha: 1.0)
   }
   
 }
