@@ -11,6 +11,25 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
+  var lastRotation = CGFloat(0.0)
+  @IBAction func rotationGesture(sender: UIRotationGestureRecognizer) {
+    if(sender.state == UIGestureRecognizerState.Ended) {
+      lastRotation = 0.0;
+      return
+    }
+    
+    let rotation = 0.0 - (sender.rotation - lastRotation)
+    let trans = CGAffineTransformMakeRotation(rotation)
+    
+    let skView = self.view as! SKView
+    if let skScene = skView.scene {
+      let newGravity = CGPointApplyAffineTransform(CGPointMake(skScene.physicsWorld.gravity.dx, skScene.physicsWorld.gravity.dy), trans)
+      skScene.physicsWorld.gravity = CGVectorMake(newGravity.x, newGravity.y)
+    }
+    
+    lastRotation = sender.rotation
+    
+  }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,11 +54,9 @@ class GameViewController: UIViewController {
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
-        }
+//        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            return .Portrait
+//        }
     }
 
     override func didReceiveMemoryWarning() {

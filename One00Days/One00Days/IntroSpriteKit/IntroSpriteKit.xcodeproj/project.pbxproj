@@ -14,6 +14,7 @@
 		1472FD741C87E8C0000DE5A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1472FD721C87E8C0000DE5A1 /* Main.storyboard */; };
 		1472FD761C87E8C0000DE5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1472FD751C87E8C0000DE5A1 /* Assets.xcassets */; };
 		1472FD791C87E8C0000DE5A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1472FD771C87E8C0000DE5A1 /* LaunchScreen.storyboard */; };
+		1472FD871C87EBE3000DE5A1 /* StarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472FD861C87EBE3000DE5A1 /* StarNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1472FD751C87E8C0000DE5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1472FD781C87E8C0000DE5A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1472FD7A1C87E8C0000DE5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1472FD861C87EBE3000DE5A1 /* StarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				1472FD701C87E8C0000DE5A1 /* GameViewController.swift */,
 				1472FD721C87E8C0000DE5A1 /* Main.storyboard */,
 				1472FD751C87E8C0000DE5A1 /* Assets.xcassets */,
+				1472FD861C87EBE3000DE5A1 /* StarNode.swift */,
 				1472FD771C87E8C0000DE5A1 /* LaunchScreen.storyboard */,
 				1472FD7A1C87E8C0000DE5A1 /* Info.plist */,
 			);
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1472FD6F1C87E8C0000DE5A1 /* GameScene.swift in Sources */,
+				1472FD871C87EBE3000DE5A1 /* StarNode.swift in Sources */,
 				1472FD711C87E8C0000DE5A1 /* GameViewController.swift in Sources */,
 				1472FD6B1C87E8C0000DE5A1 /* AppDelegate.swift in Sources */,
 			);
