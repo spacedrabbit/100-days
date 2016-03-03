@@ -26,6 +26,16 @@
 		7B3E8D1D22499A9797A3D883 /* Pods_One00Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804278F7B6F9725A5925319 /* Pods_One00Days.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1472FD841C87E8C1000DE5A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1472FD801C87E8C0000DE5A1 /* IntroSpriteKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1472FD671C87E8C0000DE5A1;
+			remoteInfo = IntroSpriteKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		140057B51C7A922C00E8C850 /* One00Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = One00Days.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		140057B81C7A922C00E8C850 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +49,7 @@
 		143EFA8B1C869DD500B5BBEC /* Day10ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day10ViewController.swift; sourceTree = "<group>"; };
 		147237791C7C1158000A2458 /* Day2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day2ViewController.swift; sourceTree = "<group>"; };
 		1472377B1C7D6452000A2458 /* Day3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day3ViewController.swift; sourceTree = "<group>"; };
+		1472FD801C87E8C0000DE5A1 /* IntroSpriteKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IntroSpriteKit.xcodeproj; path = IntroSpriteKit/IntroSpriteKit.xcodeproj; sourceTree = "<group>"; };
 		147472261C82B6FF002C5A02 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		148A964D1C8153EB00988EB8 /* Day6ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day6ViewController.swift; sourceTree = "<group>"; };
 		148D45341C854D3D00B32D68 /* Day9ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day9ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +135,14 @@
 			name = "Week 1 VCs";
 			sourceTree = "<group>";
 		};
+		1472FD811C87E8C0000DE5A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1472FD851C87E8C1000DE5A1 /* IntroSpriteKit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		148A964C1C8153BB00988EB8 /* Week 1 Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +156,7 @@
 		148D45331C854D0F00B32D68 /* Week 2 VCs */ = {
 			isa = PBXGroup;
 			children = (
+				1472FD801C87E8C0000DE5A1 /* IntroSpriteKit.xcodeproj */,
 				148D45341C854D3D00B32D68 /* Day9ViewController.swift */,
 				143ABFCB1C83E668003B9EBF /* Day8ViewController.swift */,
 				143EFA8B1C869DD500B5BBEC /* Day10ViewController.swift */,
@@ -210,12 +230,28 @@
 			mainGroup = 140057AC1C7A922C00E8C850;
 			productRefGroup = 140057B61C7A922C00E8C850 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1472FD811C87E8C0000DE5A1 /* Products */;
+					ProjectRef = 1472FD801C87E8C0000DE5A1 /* IntroSpriteKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				140057B41C7A922C00E8C850 /* One00Days */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1472FD851C87E8C1000DE5A1 /* IntroSpriteKit.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = IntroSpriteKit.app;
+			remoteRef = 1472FD841C87E8C1000DE5A1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		140057B31C7A922C00E8C850 /* Resources */ = {
