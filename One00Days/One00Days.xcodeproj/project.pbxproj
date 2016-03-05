@@ -20,6 +20,7 @@
 		147472271C82B700002C5A02 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147472261C82B6FF002C5A02 /* ClockView.swift */; };
 		148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A964D1C8153EB00988EB8 /* Day6ViewController.swift */; };
 		148D45351C854D3D00B32D68 /* Day9ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D45341C854D3D00B32D68 /* Day9ViewController.swift */; };
+		14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */; };
 		14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */; };
 		14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EADFF61C894A6F00965C7F /* Day12ViewController.swift */; };
 		14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */; };
@@ -54,6 +55,7 @@
 		147472261C82B6FF002C5A02 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		148A964D1C8153EB00988EB8 /* Day6ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day6ViewController.swift; sourceTree = "<group>"; };
 		148D45341C854D3D00B32D68 /* Day9ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day9ViewController.swift; sourceTree = "<group>"; };
+		14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day13ViewController.swift; sourceTree = "<group>"; };
 		14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day4ViewController.swift; sourceTree = "<group>"; };
 		14EADFF61C894A6F00965C7F /* Day12ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day12ViewController.swift; sourceTree = "<group>"; };
 		14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableCircleButton.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				143ABFCB1C83E668003B9EBF /* Day8ViewController.swift */,
 				143EFA8B1C869DD500B5BBEC /* Day10ViewController.swift */,
 				14EADFF61C894A6F00965C7F /* Day12ViewController.swift */,
+				14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */,
 			);
 			name = "Week 2 VCs";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				143EFA8C1C869DD500B5BBEC /* Day10ViewController.swift in Sources */,
 				14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */,
 				148D45351C854D3D00B32D68 /* Day9ViewController.swift in Sources */,
+				14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */,
 				14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */,
 				143ABFCC1C83E668003B9EBF /* Day8ViewController.swift in Sources */,
 				147472271C82B700002C5A02 /* ClockView.swift in Sources */,
