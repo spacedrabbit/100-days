@@ -8,6 +8,39 @@
 
 import UIKit
 
+struct ColorSwatch {
+  static let sr_coolWhite: UIColor = UIColor(red: (252/255.0), green: 1.0, blue: (245.0/255.0), alpha: 1.0)
+  static let sr_darkChalkGreen: UIColor = UIColor(red: (145.0/255.0), green: (170.0/255.0), blue: (157.0/255.0), alpha: 1.0)
+  static let sr_mintGreen: UIColor = UIColor(red: (209/255.0), green: (219.0/255/0), blue: (189.0/255.0), alpha: 1.0)
+}
+
+typealias HexPoints = [CGPoint]
+class HexCube {
+  static let numberOfVertices: Int = 6
+  let vertexPoints: HexPoints = []
+  
+  internal func vertexPointsForHexCube(withOrigin origin: CGPoint, radius: CGFloat) -> HexPoints{
+    var points: HexPoints = []
+    let center: CGPoint = origin
+    let radius: CGFloat = radius
+    let angleSize: CGFloat = deg2Rad((360.0 / CGFloat(HexCube.numberOfVertices)))
+    let rotationAdjustment: CGFloat = deg2Rad(90.0) // rotates hex a bit for stylistic purpose
+    
+    for vertex in 1...HexCube.numberOfVertices {
+      let dx: CGFloat = center.x - radius * cos(CGFloat(vertex) * angleSize + rotationAdjustment)
+      let dy: CGFloat = center.y - radius * sin(CGFloat(vertex) * angleSize + rotationAdjustment)
+      
+      points.append(CGPointMake(dx, dy))
+    }
+    
+    return points
+  }
+  
+  private func deg2Rad(degrees: CGFloat) -> CGFloat {
+    return CGFloat(M_PI) * degrees/180.0
+  }
+}
+
 class Day14ViewController: Day13ViewController {
   
   lazy var cubeView: UIView = {
@@ -32,9 +65,9 @@ class Day14ViewController: Day13ViewController {
     let leftSideHexPoints: [CGPoint] = [hexPoints[2], hexPoints[3], hexPoints[4]]
     let topSideHexPoints: [CGPoint] = [hexPoints[4], hexPoints[5], hexPoints[0]]
     
-    drawRightSideOfCube(withPoints: rightSideHexPoints, view: cubeView, color:UIColor(red: (252/255.0), green: 1.0, blue: (245.0/255.0), alpha: 1.0))
-    drawLeftSideOfCube(withPoints: leftSideHexPoints, view: cubeView, color: UIColor(red: (145.0/255.0), green: (170.0/255.0), blue: (157.0/255.0), alpha: 1.0))
-    drawTopSideOfCube(withPoints: topSideHexPoints, view: cubeView, color:UIColor(red: (209/255.0), green: (219.0/255/0), blue: (189.0/255.0), alpha: 1.0))
+    drawRightSideOfCube(withPoints: rightSideHexPoints, view: cubeView, color: ColorSwatch.sr_coolWhite)
+    drawLeftSideOfCube(withPoints: leftSideHexPoints, view: cubeView, color: ColorSwatch.sr_darkChalkGreen)
+    drawTopSideOfCube(withPoints: topSideHexPoints, view: cubeView, color:ColorSwatch.sr_mintGreen)
   }
   
   override func didReceiveMemoryWarning() {
