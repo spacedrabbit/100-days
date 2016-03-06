@@ -122,9 +122,10 @@ class Day13ViewController: UIViewController {
     */
     var vertexPoints: [CGPoint] = []
     for point in 1...numberOfPoints {
-      let dx: CGFloat = viewRadius - viewRadius * cos(CGFloat(point) * angleSize )
-      let dy: CGFloat = viewRadius - viewRadius * sin(CGFloat(point) * angleSize )
-      
+//      let dx: CGFloat = viewRadius - viewRadius * cos(CGFloat(point) * angleSize )
+//      let dy: CGFloat = viewRadius - viewRadius * sin(CGFloat(point) * angleSize )
+      let dx: CGFloat = viewRadius - viewRadius * cos(CGFloat(point) * angleSize + degrees2Rad(90.0) )
+      let dy: CGFloat = viewRadius - viewRadius * sin(CGFloat(point) * angleSize + degrees2Rad(90.0) )
       /*
       This loop will create a hexagon with it's first vertex point resting on the x-axis. if you wanted to rotate it so that this first point begins elsewhere,
       it is possible to just add an additional amount of radians to do so. 
