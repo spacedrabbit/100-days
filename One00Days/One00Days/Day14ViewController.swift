@@ -13,6 +13,7 @@ class Day14ViewController: Day13ViewController {
   lazy var cubeView: UIView = {
     let view: UIView = UIView()
     view.frame = CGRectMake(0,0,200,200)
+    view.backgroundColor = UIColor.yellowColor()
     return view
   }()
   
@@ -31,14 +32,43 @@ class Day14ViewController: Day13ViewController {
     let leftSideHexPoints: [CGPoint] = [hexPoints[2], hexPoints[3], hexPoints[4]]
     let topSideHexPoints: [CGPoint] = [hexPoints[4], hexPoints[5], hexPoints[0]]
     
-    
+    drawRightSideOfCube(withPoints: rightSideHexPoints, view: cubeView, color:UIColor(red: (252/255.0), green: 1.0, blue: (245.0/255.0), alpha: 1.0))
+    drawLeftSideOfCube(withPoints: leftSideHexPoints, view: cubeView, color: UIColor(red: (145.0/255.0), green: (170.0/255.0), blue: (157.0/255.0), alpha: 1.0))
+    drawTopSideOfCube(withPoints: topSideHexPoints, view: cubeView, color:UIColor(red: (209/255.0), green: (219.0/255/0), blue: (189.0/255.0), alpha: 1.0))
   }
-  
-  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  internal func drawRightSideOfCube(withPoints points: [CGPoint], view: UIView, color: UIColor) {
+    let originPoint: CGPoint = CGPointMake(CGRectGetMidX(view.bounds), CGRectGetMidY(view.bounds))
+    
+    let rightsideBezierPath: UIBezierPath = UIBezierPath()
+    rightsideBezierPath.moveToPoint(points[0])
+    rightsideBezierPath.addLineToPoint(points[1])
+    rightsideBezierPath.addLineToPoint(points[2])
+    rightsideBezierPath.addLineToPoint(originPoint)
+    rightsideBezierPath.closePath()
+    
+    let rightsideShapeLayer: CAShapeLayer = CAShapeLayer()
+    rightsideShapeLayer.path = rightsideBezierPath.CGPath
+    rightsideShapeLayer.strokeColor = color.CGColor
+    rightsideShapeLayer.fillColor = color.CGColor
+    rightsideShapeLayer.lineWidth = 2.0
+    
+    view.layer.addSublayer(rightsideShapeLayer)
+    rightsideBezierPath.stroke()
+    
+  }
+  
+  internal func drawLeftSideOfCube(withPoints points: [CGPoint], view: UIView, color: UIColor) {
+    drawRightSideOfCube(withPoints: points, view: view, color: color)
+  }
+  
+  internal func drawTopSideOfCube(withPoints points: [CGPoint], view: UIView, color: UIColor) {
+    drawRightSideOfCube(withPoints: points, view: view, color: color)
   }
   
   internal func configureConstraints() {
@@ -47,6 +77,7 @@ class Day14ViewController: Day13ViewController {
       make.size.equalTo(CGSizeMake(200.0, 200.0))
     }
     view.layoutIfNeeded()
+    view.updateConstraintsIfNeeded()
   }
   
   internal func setupViewHierarchy() {

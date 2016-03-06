@@ -28,17 +28,20 @@ class Day13ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.whiteColor()
-    
+//    performDay13Things()
+    // Do any additional setup after loading the view.
+  }
+  
+  internal func performDay13Things() {
     let circle: CALayer = drawCircle(10.0, center: CGPointMake(200.0, 200.0))
     self.view.layer.addSublayer(circle)
     
     self.view.addSubview(hexView)
-  
+    
     
     let vertices: [CGPoint] = getPointsForHexagonPath(hexView)
     drawHexFromPoints(vertices, view: hexView)
-    
-    // Do any additional setup after loading the view.
+
   }
   
   override func didReceiveMemoryWarning() {
