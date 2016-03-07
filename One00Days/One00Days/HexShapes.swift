@@ -114,7 +114,8 @@ class HexCube {
     layer.path = path.CGPath
     layer.fillColor = color.CGColor
     layer.strokeColor = color.CGColor
-    layer.lineWidth = 2.0
+    layer.lineWidth = 1.0
+    layer.lineJoin = kCALineCapRound
     
     path.stroke()
     return layer
@@ -130,6 +131,6 @@ class HexCube {
   }
   
   private func midPointOf(a: CGPoint, b: CGPoint) -> CGPoint {
-    return CGPointMake((a.x + b.x / 2.0), (a.y + b.y / 2.0))
+    return CGPointMake((a.x + b.x) / 2.0, (a.y + b.y) / 2.0)
   }
 }
