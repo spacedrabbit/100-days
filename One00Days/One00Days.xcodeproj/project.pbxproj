@@ -14,6 +14,7 @@
 		1400D0831C8BE47700ECFA09 /* Day14ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1400D0821C8BE47700ECFA09 /* Day14ViewController.swift */; };
 		141222401C8D35A500BE3DF5 /* Day15ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */; };
 		141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141222421C8D35CC00BE3DF5 /* HexShapes.swift */; };
+		141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141222461C8D369A00BE3DF5 /* ColorSwatch.swift */; };
 		1437843C1C829FA4004F3B05 /* DoorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437843B1C829FA4004F3B05 /* DoorView.swift */; };
 		1437843E1C82A132004F3B05 /* Day7ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437843D1C82A132004F3B05 /* Day7ViewController.swift */; };
 		143ABFCC1C83E668003B9EBF /* Day8ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143ABFCB1C83E668003B9EBF /* Day8ViewController.swift */; };
@@ -51,6 +52,7 @@
 		1400D0821C8BE47700ECFA09 /* Day14ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day14ViewController.swift; sourceTree = "<group>"; };
 		1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day15ViewController.swift; sourceTree = "<group>"; };
 		141222421C8D35CC00BE3DF5 /* HexShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexShapes.swift; sourceTree = "<group>"; };
+		141222461C8D369A00BE3DF5 /* ColorSwatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSwatch.swift; sourceTree = "<group>"; };
 		1437843B1C829FA4004F3B05 /* DoorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorView.swift; sourceTree = "<group>"; };
 		1437843D1C82A132004F3B05 /* Day7ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day7ViewController.swift; sourceTree = "<group>"; };
 		143ABFCB1C83E668003B9EBF /* Day8ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day8ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				141222421C8D35CC00BE3DF5 /* HexShapes.swift */,
+				141222461C8D369A00BE3DF5 /* ColorSwatch.swift */,
 			);
 			name = "Week 3 Other";
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */,
 				143ABFCC1C83E668003B9EBF /* Day8ViewController.swift in Sources */,
 				141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */,
+				141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */,
 				147472271C82B700002C5A02 /* ClockView.swift in Sources */,
 				140057B91C7A922C00E8C850 /* AppDelegate.swift in Sources */,
 				1400D0831C8BE47700ECFA09 /* Day14ViewController.swift in Sources */,

@@ -9,16 +9,20 @@
 import Foundation
 import UIKit
 
-struct ColorSwatch {
-  static let sr_coolWhite: UIColor = UIColor(red: (252/255.0), green: 1.0, blue: (245.0/255.0), alpha: 1.0)
-  static let sr_darkChalkGreen: UIColor = UIColor(red: (145.0/255.0), green: (170.0/255.0), blue: (157.0/255.0), alpha: 1.0)
-  static let sr_mintGreen: UIColor = UIColor(red: (209/255.0), green: (219.0/255/0), blue: (189.0/255.0), alpha: 1.0)
-}
-
 typealias HexPoints = [CGPoint]
+typealias HexColors = (leftColor: UIColor, rightColor: UIColor, topColor: UIColor)
+
 class HexCube {
+  
   static let numberOfVertices: Int = 6
-  let vertexPoints: HexPoints = []
+  var vertexPoints: HexPoints = []
+  
+  var leftsidePoints: HexPoints = []
+  var rightsidePoints: HexPoints = []
+  var topsidePoints: HexPoints = []
+  
+  var centerPoint: CGPoint = CGPointMake(0.0, 0.0)
+  
   
   internal func vertexPointsForHexCube(withOrigin origin: CGPoint, radius: CGFloat) -> HexPoints{
     var points: HexPoints = []
@@ -34,9 +38,56 @@ class HexCube {
       points.append(CGPointMake(dx, dy))
     }
     
+    self.vertexPoints = points;
+    self.leftsidePoints = [points[2], points[3], points[4]]
+    self.rightsidePoints = [points[0], points[1], points[2]]
+    self.topsidePoints = [points[4], points[5], points[0]]
+    self.centerPoint = center
+    
     return points
   }
   
+  
+  /// Drawing functions
+  internal func drawHexCube(inView view: UIView, colors: HexColors) {
+    
+    let leftsideLayer: CAShapeLayer = self.drawLeftsideOfHex(self.leftsidePoints, color: colors.leftColor)
+    let rightsideLayer: CAShapeLayer = self.drawRightsideOfHex(self.rightsidePoints, color: colors.rightColor)
+    let topsideLayer: CAShapeLayer = self.drawTopsideOfHex(self.topsidePoints, color: colors.topColor)
+    
+    view.layer.addSublayer(leftsideLayer)
+    view.layer.addSublayer(rightsideLayer)
+    view.layer.addSublayer(topsideLayer)
+  }
+  
+  /// Helper Drawing Functions
+  private func drawLeftsideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+    let path: UIBezierPath = UIBezierPath()
+    path.moveToPoint(points[0])
+    path.addLineToPoint(points[1])
+    path.addLineToPoint(points[2])
+    path.addLineToPoint(self.centerPoint)
+    path.closePath()
+    
+    let layer: CAShapeLayer = CAShapeLayer()
+    layer.path = path.CGPath
+    layer.fillColor = color.CGColor
+    layer.strokeColor = color.CGColor
+    layer.lineWidth = 2.0
+    
+    path.stroke()
+    return layer
+  }
+  
+  private func drawRightsideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+    return self.drawLeftsideOfHex(points, color: color)
+  }
+  
+  private func drawTopsideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+    return self.drawLeftsideOfHex(points, color: color)
+  }
+  
+  /// Helpers
   private func deg2Rad(degrees: CGFloat) -> CGFloat {
     return CGFloat(M_PI) * degrees/180.0
   }
