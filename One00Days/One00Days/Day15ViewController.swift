@@ -38,11 +38,13 @@ class Day15ViewController: UIViewController {
   
   internal func hexItUp() {
     let colorPalette: HexColors = (ColorSwatch.sr_coolWhite, ColorSwatch.sr_darkChalkGreen, ColorSwatch.sr_mintGreen)
+    let prismPalette: PrismColors = (ColorSwatch.sr_darkTeal, ColorSwatch.sr_mediumTeal, ColorSwatch.sr_coolWhite)
     let cubeOriginPoint: CGPoint = CGPointMake(CGRectGetMidX(self.cubeView.bounds), CGRectGetMidY(self.cubeView.bounds))
-    let cubeRadius: CGFloat = CGRectGetWidth(self.cubeView.frame)
+    let cubeRadius: CGFloat = CGRectGetWidth(self.cubeView.frame) / 2.0
     
     self.hexGenerator.vertexPointsForHexCube(withOrigin: cubeOriginPoint, radius: cubeRadius)
     self.hexGenerator.drawHexCube(inView: self.cubeView, colors: colorPalette)
+    self.hexGenerator.drawPrismOnCube(inView: self.cubeView, colors: prismPalette)
   }
   
   internal func configureConstraints() {
