@@ -18,11 +18,11 @@ class HexCube {
   static let numberOfVertices: Int = 6
   var vertexPoints: HexPoints = []
   
-  var leftsidePoints: HexPoints = []
-  var rightsidePoints: HexPoints = []
-  var topsidePoints: HexPoints = []
+  var leftSidePoints: HexPoints = []
+  var frontSidePoints: HexPoints = []
+  var topSidePoints: HexPoints = []
   var prismLeftSidePoints: HexPoints = []
-  var prismRightSidePoints: HexPoints = []
+  var prismFrontSidePoints: HexPoints = []
   
   var centerPoint: CGPoint = CGPointMake(0.0, 0.0)
   var prismApexPoint: CGPoint = CGPointMake(0.0, 0.0)
@@ -45,14 +45,14 @@ class HexCube {
     }
     
     self.vertexPoints = points;
-    self.leftsidePoints = [points[2], points[3], points[4]]
-    self.rightsidePoints = [points[0], points[1], points[2]]
-    self.topsidePoints = [points[4], points[5], points[0]]
+    self.leftSidePoints = [points[2], points[3], points[4]]
+    self.frontSidePoints = [points[0], points[1], points[2]]
+    self.topSidePoints = [points[4], points[5], points[0]]
     self.centerPoint = center
     
     self.prismApexPoint = self.midPointOf(points[4], b: points[0])
     self.prismLeftSidePoints = [self.prismApexPoint, points[2], points[3]]
-    self.prismRightSidePoints = [self.prismApexPoint, points[1], points[2]]
+    self.prismFrontSidePoints = [self.prismApexPoint, points[1], points[2]]
     
     return points
   }
@@ -61,12 +61,12 @@ class HexCube {
   /// Drawing functions
   internal func drawHexCube(inView view: UIView, colors: HexColors) {
     
-    let leftsideLayer: CAShapeLayer = self.drawLeftsideOfHex(self.leftsidePoints, color: colors.leftColor)
-    let rightsideLayer: CAShapeLayer = self.drawRightsideOfHex(self.rightsidePoints, color: colors.rightColor)
-    let topsideLayer: CAShapeLayer = self.drawTopsideOfHex(self.topsidePoints, color: colors.topColor)
+    let leftsideLayer: CAShapeLayer = self.drawLeftSideOfHex(self.leftSidePoints, color: colors.leftColor)
+    let frontSideLayer: CAShapeLayer = self.drawFrontSideOfHex(self.frontSidePoints, color: colors.rightColor)
+    let topsideLayer: CAShapeLayer = self.drawTopSideOfHex(self.topSidePoints, color: colors.topColor)
     
     view.layer.addSublayer(leftsideLayer)
-    view.layer.addSublayer(rightsideLayer)
+    view.layer.addSublayer(frontSideLayer)
     view.layer.addSublayer(topsideLayer)
   }
   
@@ -75,11 +75,11 @@ class HexCube {
   }
   
   internal func drawPrismOnCube(inView view: UIView, colors: PrismColors) {
-    let prismLeftLayer: CAShapeLayer = self.drawLeftsideOfPrism(self.prismLeftSidePoints, color: colors.leftColor)
-    let prismRightLayer: CAShapeLayer = self.drawRightsideOfPrism(self.prismRightSidePoints, color: colors.rightColor)
+    let prismLeftLayer: CAShapeLayer = self.drawLeftSideOfPrism(self.prismLeftSidePoints, color: colors.leftColor)
+    let prismFrontLayer: CAShapeLayer = self.drawFrontSideOfPrism(self.prismFrontSidePoints, color: colors.rightColor)
     
     view.layer.addSublayer(prismLeftLayer)
-    view.layer.addSublayer(prismRightLayer)
+    view.layer.addSublayer(prismFrontLayer)
   }
   
   internal func drawDefaultPrismOnCube(inView view: UIView) {
@@ -87,7 +87,7 @@ class HexCube {
   }
   
   /// Helper Drawing Functions
-  private func drawLeftsideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  private func drawLeftSideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
     let path: UIBezierPath = UIBezierPath()
     path.moveToPoint(points[0])
     path.addLineToPoint(points[1])
@@ -105,15 +105,15 @@ class HexCube {
     return layer
   }
   
-  private func drawRightsideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
-    return self.drawLeftsideOfHex(points, color: color)
+  private func drawFrontSideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+    return self.drawLeftSideOfHex(points, color: color)
   }
   
-  private func drawTopsideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
-    return self.drawLeftsideOfHex(points, color: color)
+  private func drawTopSideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+    return self.drawLeftSideOfHex(points, color: color)
   }
   
-  private func drawLeftsideOfPrism(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  private func drawLeftSideOfPrism(points: HexPoints, color: UIColor) -> CAShapeLayer {
     let path: UIBezierPath = UIBezierPath()
     path.moveToPoint(points[0])
     path.addLineToPoint(points[1])
@@ -131,8 +131,8 @@ class HexCube {
     return layer
   }
   
-  private func drawRightsideOfPrism(points: HexPoints, color: UIColor) -> CAShapeLayer {
-    return self.drawLeftsideOfPrism(points, color: color)
+  private func drawFrontSideOfPrism(points: HexPoints, color: UIColor) -> CAShapeLayer {
+    return self.drawLeftSideOfPrism(points, color: color)
   }
   
   /// Helpers
