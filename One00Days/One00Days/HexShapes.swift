@@ -27,6 +27,8 @@ class HexCube {
   var centerPoint: CGPoint = CGPointMake(0.0, 0.0)
   var prismApexPoint: CGPoint = CGPointMake(0.0, 0.0)
   
+  let defaultHexColorPalette: HexColors = (ColorSwatch.sr_coolWhite, ColorSwatch.sr_darkChalkGreen, ColorSwatch.sr_mintGreen)
+  let defaultPrismColorPalette: PrismColors = (ColorSwatch.sr_darkTeal, ColorSwatch.sr_mediumTeal, ColorSwatch.sr_coolWhite)
   
   internal func vertexPointsForHexCube(withOrigin origin: CGPoint, radius: CGFloat) -> HexPoints{
     var points: HexPoints = []
@@ -68,12 +70,20 @@ class HexCube {
     view.layer.addSublayer(topsideLayer)
   }
   
+  internal func drawDefaultHexCube(inView view: UIView) {
+    self.drawHexCube(inView: view, colors: self.defaultHexColorPalette)
+  }
+  
   internal func drawPrismOnCube(inView view: UIView, colors: PrismColors) {
     let prismLeftLayer: CAShapeLayer = self.drawLeftsideOfPrism(self.prismLeftSidePoints, color: colors.leftColor)
     let prismRightLayer: CAShapeLayer = self.drawRightsideOfPrism(self.prismRightSidePoints, color: colors.rightColor)
     
     view.layer.addSublayer(prismLeftLayer)
     view.layer.addSublayer(prismRightLayer)
+  }
+  
+  internal func drawDefaultPrismOnCube(inView view: UIView) {
+    self.drawPrismOnCube(inView: view, colors: self.defaultPrismColorPalette)
   }
   
   /// Helper Drawing Functions

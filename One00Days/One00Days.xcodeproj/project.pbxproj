@@ -12,6 +12,7 @@
 		140057C01C7A922C00E8C850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140057BF1C7A922C00E8C850 /* Assets.xcassets */; };
 		140057C31C7A922C00E8C850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140057C11C7A922C00E8C850 /* LaunchScreen.storyboard */; };
 		1400D0831C8BE47700ECFA09 /* Day14ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1400D0821C8BE47700ECFA09 /* Day14ViewController.swift */; };
+		14039EF81C8E864700F68A4B /* Day16ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14039EF71C8E864700F68A4B /* Day16ViewController.swift */; };
 		141222401C8D35A500BE3DF5 /* Day15ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */; };
 		141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141222421C8D35CC00BE3DF5 /* HexShapes.swift */; };
 		141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141222461C8D369A00BE3DF5 /* ColorSwatch.swift */; };
@@ -50,6 +51,7 @@
 		140057C21C7A922C00E8C850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		140057C41C7A922C00E8C850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1400D0821C8BE47700ECFA09 /* Day14ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day14ViewController.swift; sourceTree = "<group>"; };
+		14039EF71C8E864700F68A4B /* Day16ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day16ViewController.swift; sourceTree = "<group>"; };
 		1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day15ViewController.swift; sourceTree = "<group>"; };
 		141222421C8D35CC00BE3DF5 /* HexShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexShapes.swift; sourceTree = "<group>"; };
 		141222461C8D369A00BE3DF5 /* ColorSwatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSwatch.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				141222451C8D360800BE3DF5 /* Week 3 Other */,
 				1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */,
+				14039EF71C8E864700F68A4B /* Day16ViewController.swift */,
 			);
 			name = "Week 3 VCs";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */,
 				14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */,
 				143ABFCC1C83E668003B9EBF /* Day8ViewController.swift in Sources */,
+				14039EF81C8E864700F68A4B /* Day16ViewController.swift in Sources */,
 				141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */,
 				141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */,
 				147472271C82B700002C5A02 /* ClockView.swift in Sources */,
