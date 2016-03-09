@@ -22,7 +22,18 @@ class Day17ViewController: UIViewController {
     
     setupViewHierarchy()
     configureConstraints()
-    drawFoldingLayers()
+    self.foldingView.layer.addSublayer(drawFoldingLayers())
+    
+    let currentBounds: CGRect = self.foldingView.layer.bounds
+    
+    self.foldingView.layer.transform = CATransform3DIdentity
+    self.foldingView.layer.anchorPoint = CGPointMake(0.5, 0.0)
+    self.foldingView.layer.position = CGPointMake(0.0, -100.0)
+    UIView.animateWithDuration(2.0, animations: { () -> Void in
+      self.foldingView.layer.transform = CATransform3DMakeRotation(degreesToRadians(75.0), 1.0, 0.0, 0.0)
+      }) { (complete: Bool) -> Void in
+        
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -44,24 +55,24 @@ class Day17ViewController: UIViewController {
     self.view.addSubview(foldingView)
   }
   
-  internal func drawFoldingLayers() {
+  internal func drawFoldingLayers() -> CALayer {
     let containerLayer: CALayer = CALayer()
-    containerLayer.frame = self.foldingView.frame
+    containerLayer.frame = self.foldingView.bounds
     
     let topPath: UIBezierPath = UIBezierPath(rect: CGRectMake(0.0, 0.0, 100.0, 100.0))
     let bottomPath: UIBezierPath = UIBezierPath(rect: CGRectMake(0.0, 100.0, 100.0, 100.0))
     
     let topLayer: CAShapeLayer = CAShapeLayer()
     topLayer.path = topPath.CGPath
-    topLayer.strokeColor = UIColor.redColor().CGColor
+    topLayer.strokeColor = UIColor.purpleColor().CGColor
     topLayer.fillColor = UIColor.redColor().CGColor
-    topLayer.lineWidth = 1.0
+    topLayer.lineWidth = 3.0
     
     let bottomLayer: CAShapeLayer = CAShapeLayer()
     bottomLayer.path = bottomPath.CGPath
     bottomLayer.strokeColor = UIColor.blueColor().CGColor
     bottomLayer.fillColor = UIColor.redColor().CGColor
-    bottomLayer.lineWidth = 1.0
+    bottomLayer.lineWidth = 3.0
     
     containerLayer.addSublayer(topLayer)
     containerLayer.addSublayer(bottomLayer)
@@ -69,6 +80,17 @@ class Day17ViewController: UIViewController {
     topPath.stroke()
     bottomPath.stroke()
     
+    return containerLayer
+  }
+  
+  internal func topFoldAnimation(layer: CALayer) {
+    let fold: CATransform3D = CATransform3DMakeRotation(degreesToRadians(75.0), 1.0, 0.0, 0.0)
+    layer.anchorPoint = CGPointMake(0.5, 0.0) // top middle
+    
+    layer.transform = CATransform3DIdentity
+    UIView.animateWithDuration(3.0) { () -> Void in
+      layer.transform = fold
+    }
   }
   
 }
