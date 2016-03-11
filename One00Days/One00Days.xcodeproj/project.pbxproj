@@ -26,6 +26,7 @@
 		147472271C82B700002C5A02 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147472261C82B6FF002C5A02 /* ClockView.swift */; };
 		148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A964D1C8153EB00988EB8 /* Day6ViewController.swift */; };
 		148D45351C854D3D00B32D68 /* Day9ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D45341C854D3D00B32D68 /* Day9ViewController.swift */; };
+		148F37011C924D7F00148CB8 /* Day19ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F37001C924D7F00148CB8 /* Day19ViewController.swift */; };
 		14A2BF5F1C8F893F004C09CF /* StackTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2BF5E1C8F893F004C09CF /* StackTestViewController.swift */; };
 		14A2BF631C8FC5D3004C09CF /* Day17ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */; };
 		14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */; };
@@ -69,6 +70,7 @@
 		147472261C82B6FF002C5A02 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		148A964D1C8153EB00988EB8 /* Day6ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day6ViewController.swift; sourceTree = "<group>"; };
 		148D45341C854D3D00B32D68 /* Day9ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day9ViewController.swift; sourceTree = "<group>"; };
+		148F37001C924D7F00148CB8 /* Day19ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day19ViewController.swift; sourceTree = "<group>"; };
 		14A2BF5E1C8F893F004C09CF /* StackTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTestViewController.swift; sourceTree = "<group>"; };
 		14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day17ViewController.swift; sourceTree = "<group>"; };
 		14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day13ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				14039EF71C8E864700F68A4B /* Day16ViewController.swift */,
 				14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */,
 				143D18A61C911D3F0086657F /* Day18ViewController.swift */,
+				148F37001C924D7F00148CB8 /* Day19ViewController.swift */,
 			);
 			name = "Week 3 VCs";
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				14039EF81C8E864700F68A4B /* Day16ViewController.swift in Sources */,
 				141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */,
 				141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */,
+				148F37011C924D7F00148CB8 /* Day19ViewController.swift in Sources */,
 				147472271C82B700002C5A02 /* ClockView.swift in Sources */,
 				140057B91C7A922C00E8C850 /* AppDelegate.swift in Sources */,
 				1400D0831C8BE47700ECFA09 /* Day14ViewController.swift in Sources */,
