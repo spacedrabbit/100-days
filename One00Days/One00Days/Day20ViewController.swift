@@ -51,24 +51,29 @@ class Day20ViewController: UIViewController {
     }
     
     self.topStackView.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(self.libraryScrollView.snp_top)
-      make.bottom.equalTo(self.libraryScrollView.snp_bottom)
-      
-      make.right.equalTo(self.view.snp_right)
-      make.left.equalTo(self.view.snp_left)
-      make.width.equalTo(self.view.snp_width)
+      make.edges.equalTo(self.libraryScrollView)
+      make.height.equalTo(self.topContainterView)
     }
     
     self.bottomStackView.snp_makeConstraints { (make) -> Void in
       make.edges.equalTo(self.gridScrollView.snp_edges)
-      make.width.equalTo(self.bottomContainerView.snp_width)
-      make.height.equalTo(self.bottomContainerView.snp_height)
+      make.height.equalTo(self.bottomContainerView)
     }
     
     for stackedView in self.topStackView.arrangedSubviews {
       stackedView.snp_makeConstraints(closure: { (make) -> Void in
-        make.size.equalTo(CGSizeMake(40.0, 40.0))
+        make.size.equalTo(CGSizeMake(175.0, 175.0))
       })
+    }
+    
+    for stackView in self.bottomStackView.arrangedSubviews {
+      if let actualStackView: UIStackView = stackView as? UIStackView {
+        for arrangedView in actualStackView.arrangedSubviews {
+          arrangedView.snp_makeConstraints(closure: { (make) -> Void in
+            make.size.equalTo(CGSizeMake(75.0, 75.0))
+          })
+        }
+      }
     }
     
     self.view.layoutIfNeeded()
@@ -91,11 +96,11 @@ class Day20ViewController: UIViewController {
     for _ in 1...25 {
       self.topStackView.addArrangedSubview(randomColorView())
       
-//      for _ in 1...self.bottomStackView.arrangedSubviews.count {
-//        self.bottomStackViewRow1.addArrangedSubview(randomColorView())
-//        self.bottomStackViewRow2.addArrangedSubview(randomColorView())
-//        self.bottomStackViewRow3.addArrangedSubview(randomColorView())
-//      }
+      for _ in 1...self.bottomStackView.arrangedSubviews.count {
+        self.bottomStackViewRow1.addArrangedSubview(randomColorView())
+        self.bottomStackViewRow2.addArrangedSubview(randomColorView())
+        self.bottomStackViewRow3.addArrangedSubview(randomColorView())
+      }
     }
    
     self.view.layoutIfNeeded()
@@ -106,8 +111,6 @@ class Day20ViewController: UIViewController {
     
     let view: UIView = UIView()
     view.backgroundColor = UIColor.init(red: CGFloat(Double(arc4random_uniform(255))/255.0), green: CGFloat(Double(arc4random_uniform(255))/255.0), blue: CGFloat(Double(arc4random_uniform(255))/255.0), alpha: 1.0)
-    
-    view.frame = CGRectMake(0, 0, 40.0, 40.0)
     return view
   }
   
@@ -142,9 +145,8 @@ class Day20ViewController: UIViewController {
   // top stack
   lazy var topStackView: UIStackView = {
     let view: UIStackView = UIStackView()
-//    view.distribution = .EqualCentering
-//    view.spacing = 5.0
-//    view.alignment = .Center
+    view.distribution = .EqualSpacing
+    view.alignment = .Center
     view.axis = .Horizontal
     return view
   }()
@@ -166,7 +168,7 @@ class Day20ViewController: UIViewController {
     
     view.distribution = .EqualSpacing
     view.alignment = .Center
-    view.axis = .Horizontal
+    view.axis = .Vertical
     
     return view
   }()
@@ -177,7 +179,7 @@ class Day20ViewController: UIViewController {
     view.distribution = .EqualSpacing
     view.alignment = .Center
     view.axis = .Horizontal
-    
+
     return view
   }()
   
