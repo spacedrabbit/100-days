@@ -17,27 +17,34 @@ class GridView: UIView {
     let ctx = UIGraphicsGetCurrentContext()
     CGContextMoveToPoint(ctx, xt, yt)
     
+    CGContextSetFillColorWithColor(ctx, UIColor.blackColor().CGColor)
+    CGContextFillRect(ctx, rect)
+    CGContextSetLineWidth(ctx, 5.0)
+    
     CGContextSaveGState(ctx)
-    for step in 1...Int(ceil(wt / 10.0)) {
+    CGContextSetLineWidth(ctx, 1.0)
+    for step in 1...Int(ceil(ht / 10.0)) {
       CGContextMoveToPoint(ctx, 0.0, CGFloat(step) * 10.0) // horizontal
       CGContextAddLineToPoint(ctx, wt, CGFloat(step) * 10.0)
     }
+
+    CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_mintGreen.CGColor)
+    CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
     CGContextRestoreGState(ctx)
     
-    CGContextSaveGState(ctx)
-    for step in 1...(Int(ceil(ht / 10.0)) + 1) {
+    for step in 1...Int(ceil(wt / 10.0)) {
       CGContextMoveToPoint(ctx, CGFloat(step) * 10.0, 0.0) // vertical
       CGContextAddLineToPoint(ctx, CGFloat(step) * 10.0, ht)
     }
-    CGContextRestoreGState(ctx)
-
-    CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_coolWhite.CGColor)
+    
+    CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_darkTeal.CGColor)
     CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
+    
   }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = ColorSwatch.sr_darkChalkGreen
+//    self.backgroundColor = ColorSwatch.sr_darkChalkGreen
   }
   
   required convenience init?(coder aDecoder: NSCoder) {
@@ -61,7 +68,6 @@ class Day21ViewController: UIViewController {
   
   lazy var bottomView: UIView = {
     let view: UIView = UIView()
-    
     return view
   }()
   
@@ -75,17 +81,17 @@ class Day21ViewController: UIViewController {
     
     var t = CATransform3DIdentity
 //    t.m44 = -1.0
-    t.m13 = 1.0
-    t.m23 = 0.0
-    t.m33 = 0.0
-    t.m34 = -0.5
+//    t.m13 = 1.0
+//    t.m23 = 0.0
+//    t.m33 = 0.0
+//    t.m34 = -0.5
 
     
-    UIView.animateWithDuration(3.0, delay: 0.0, options: .Autoreverse, animations: { () -> Void in
-          self.simulationView.layer.transform = t
-      }) { (complete: Bool) -> Void in
-        self.simulationView.layer.transform = CATransform3DIdentity
-    }
+//    UIView.animateWithDuration(3.0, delay: 0.0, options: .Autoreverse, animations: { () -> Void in
+//          self.simulationView.layer.transform = t
+//      }) { (complete: Bool) -> Void in
+//        self.simulationView.layer.transform = CATransform3DIdentity
+//    }
     
     
   }
@@ -98,12 +104,18 @@ class Day21ViewController: UIViewController {
   
   internal func configureConstraints() {
     self.simulationView.snp_makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSizeMake(125.0, 125.0))
+      make.center.equalTo(self.gridView)
+    }
+    
+    self.gridView.snp_makeConstraints { (make) -> Void in
       make.top.left.right.equalTo(self.view)
       make.height.equalTo(220.0)
     }
     
-    self.gridView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.simulationView)
+    self.bottomView.snp_makeConstraints { (make) -> Void in
+      make.top.equalTo(self.simulationView.snp_bottom)
+      make.left.right.bottom.equalTo(self.view)
     }
     
   }
@@ -111,6 +123,7 @@ class Day21ViewController: UIViewController {
   internal func setupViewHierarchy() {
     self.view.addSubview(simulationView)
     self.view.addSubview(gridView)
+    self.view.addSubview(bottomView)
   }
   
 }
