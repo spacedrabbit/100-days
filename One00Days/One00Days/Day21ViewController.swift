@@ -15,36 +15,48 @@ class GridView: UIView {
     let wt = rect.size.width; let ht = rect.size.height
 
     let ctx = UIGraphicsGetCurrentContext()
-    CGContextMoveToPoint(ctx, xt, yt)
+    CGContextMoveToPoint(ctx, xt, yt) // necessary call
     
+    // start off by drawing the layer black
     CGContextSetFillColorWithColor(ctx, UIColor.blackColor().CGColor)
     CGContextFillRect(ctx, rect)
+    
+    // Purposefully set the line width to 5.0 here for save/restores. Currently, in this state the next stroke 
+    // should produce lines of 5.0 width
     CGContextSetLineWidth(ctx, 5.0)
     
+    // The current context is saved as is, and popped off onto a separate stack
     CGContextSaveGState(ctx)
+    
+    // This begins a new context, where i set the line width to be 1
     CGContextSetLineWidth(ctx, 1.0)
-    for step in 1...Int(ceil(ht / 10.0)) {
+    for step in 0...Int(ceil(ht / 10.0)) {
       CGContextMoveToPoint(ctx, 0.0, CGFloat(step) * 10.0) // horizontal
       CGContextAddLineToPoint(ctx, wt, CGFloat(step) * 10.0)
     }
 
+    // then i go and draw the grid lines
     CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_mintGreen.CGColor)
     CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
+    
+    // This call to restore, pushes the previous context back to be the current one. That context still has its
+    // line width values set to 5.0, so that is why the following draw call produces thicker lines running parallel
+    // to the y-axis
     CGContextRestoreGState(ctx)
     
-    for step in 1...Int(ceil(wt / 10.0)) {
+    
+    for step in 0...Int(ceil(wt / 10.0)) {
       CGContextMoveToPoint(ctx, CGFloat(step) * 10.0, 0.0) // vertical
       CGContextAddLineToPoint(ctx, CGFloat(step) * 10.0, ht)
     }
     
     CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_darkTeal.CGColor)
-    CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
+    CGContextDrawPath(ctx, CGPathDrawingMode.EOFillStroke)
     
   }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-//    self.backgroundColor = ColorSwatch.sr_darkChalkGreen
   }
   
   required convenience init?(coder aDecoder: NSCoder) {
