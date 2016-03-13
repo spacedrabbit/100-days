@@ -151,7 +151,6 @@
 		141222441C8D35FD00BE3DF5 /* Week 3 VCs */ = {
 			isa = PBXGroup;
 			children = (
-				145760F11C951F1D00277426 /* Day21ViewController.swift */,
 				141222451C8D360800BE3DF5 /* Week 3 Other */,
 				1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */,
 				14039EF71C8E864700F68A4B /* Day16ViewController.swift */,
@@ -159,6 +158,7 @@
 				143D18A61C911D3F0086657F /* Day18ViewController.swift */,
 				148F37001C924D7F00148CB8 /* Day19ViewController.swift */,
 				146A291E1C93CD1000C9FF71 /* Day20ViewController.swift */,
+				145760F11C951F1D00277426 /* Day21ViewController.swift */,
 			);
 			name = "Week 3 VCs";
 			sourceTree = "<group>";

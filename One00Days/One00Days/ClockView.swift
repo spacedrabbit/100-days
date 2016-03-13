@@ -11,7 +11,7 @@ import UIKit
 import CoreGraphics
 
 func degreesToRadians(degrees: CGFloat) -> CGFloat {
-  return CGFloat(M_PI) * degrees/180
+  return (180 / CGFloat(M_PI)) * degrees
 }
 
 func drawSecondsMarker(context: CGContextRef, x: CGFloat, y: CGFloat, radius: CGFloat, color: UIColor) {
