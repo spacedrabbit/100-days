@@ -1,0 +1,9 @@
+[submodule "Carthage/Checkouts/Curry"]
+	path = One00Days/SR100DaysFrameworks/Carthage/Checkouts/Curry
+	url = https://github.com/thoughtbot/Curry.git
+[submodule "Carthage/Checkouts/Nimble"]
+	path = One00Days/SR100DaysFrameworks/Carthage/Checkouts/Nimble
+	url = https://github.com/Quick/Nimble.git
+[submodule "Carthage/Checkouts/Quick"]
+	path = One00Days/SR100DaysFrameworks/Carthage/Checkouts/Quick
+	url = https://github.com/Quick/Quick.git
