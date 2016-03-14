@@ -47,6 +47,7 @@ class Day22ViewController: UIViewController {
     
     setupViewHierarchy()
     configureConstraints()
+    addTapGestureToView()
   }
   
   override func didReceiveMemoryWarning() {
@@ -56,10 +57,82 @@ class Day22ViewController: UIViewController {
   
   internal func addTapGestureToView () {
     let g: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "didTapTransformView:")
+    self.transformView.addGestureRecognizer(g)
   }
   
   internal func didTapTransformView(sender: AnyObject?) {
-    
+    if let tapG: UITapGestureRecognizer = sender as? UITapGestureRecognizer {
+      if tapG.view == self.transformView {
+        self.getCurrentSliderValuesAndAnimate()
+      }
+    }
+  }
+  
+  internal func addTransform(transform: CATransform3D?) {
+    self.transformView.layer.transform = CATransform3DIdentity
+    if var t = transform {
+//      t.m41 = 0.0
+//      t.m42 = 0.40
+//      t.m43 = 0.40
+//      t.m44 = 0.0
+      
+      t.m23 = -1.0
+//      t.m31 = -1.0
+//      t.m34 = -1.0
+//      t.m33 = -0.5
+//      print("\(t)")
+      let originalFrame: CGRect = self.transformView.layer.frame
+      let originalBounds: CGRect = self.transformView.layer.bounds
+      
+      self.transformView.layer.anchorPoint = CGPointMake(0.0, 0.0)
+//      self.transformView.layer.position = CGPointMake(CGRectGetMinX(self.transformView.frame) - CGRectGetMidX(self.transformView.bounds), CGRectGetMinY(self.transformView.frame) - CGRectGetMidY(self.transformView.bounds))
+      UIView.animateWithDuration(3.0, delay: 0.0, options: [.LayoutSubviews], animations: { () -> Void in
+        self.transformView.layer.transform = t
+        }, completion: { (complete: Bool) -> Void in
+          self.transformView.layer.frame = originalFrame
+          self.transformView.layer.position = originalFrame.origin
+      })
+    }
+  }
+  
+  internal func getCurrentSliderValuesAndAnimate() {
+    var trans: CATransform3D?
+    for slider in self.stackView.arrangedSubviews {
+      if let actuallyASlider: UISlider = slider as? UISlider {
+          self.updateTransform(&trans, slider: actuallyASlider)
+      }
+    }
+//    print("\(trans)")
+    self.addTransform(trans)
+  }
+  
+  internal func updateTransform(inout transform: CATransform3D?, slider: UISlider) {
+    if var t = transform {
+      switch slider.tag {
+      case MatrixKey.M31:
+        t.m31 = CGFloat(slider.value)
+        print("M31: \(slider.value)")
+        
+      case MatrixKey.M32:
+        t.m32 = CGFloat(slider.value)
+        print("M32: \(slider.value)")
+        
+      case MatrixKey.M33:
+        t.m33 = CGFloat(slider.value)
+        print("M33: \(slider.value)")
+        
+      case MatrixKey.M34:
+        t.m34 = CGFloat(slider.value)
+        print("M34: \(slider.value)\n\n")
+        
+      default:
+        print("unknown slider tag")
+      }
+    } else {
+      print("identity")
+      transform = CATransform3DIdentity
+      self.updateTransform(&transform, slider: slider)
+    }
   }
   
   internal func configureConstraints() {
