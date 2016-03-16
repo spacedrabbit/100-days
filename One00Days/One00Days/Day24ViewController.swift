@@ -8,26 +8,56 @@
 
 import UIKit
 
+infix operator +&{
+  associativity left
+  precedence 150
+}
+
+public func +&(lhs: CGFloat, rhs: CGFloat) -> CGSize {
+  return CGSizeMake(lhs, rhs)
+}
+
 class Day24ViewController: UIViewController {
+  
+  lazy var gradientView: UIView = {
+  let view: UIView = UIView()
+    view.layer.borderColor = UIColor.blackColor().CGColor
+    view.layer.borderWidth = 3.0
+  return view
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = ColorSwatch.sr_coolWhite
+    setupViewHierarchy()
+    configureConstraints()
+    drawGradientIn(self.gradientView)
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
+  internal func drawGradientIn(view: UIView) {
+    let gradientLayer: CAGradientLayer = CAGradientLayer()
+    gradientLayer.frame = view.bounds
+    gradientLayer.colors = [ColorSwatch.sr_hipsterAvocado.CGColor, ColorSwatch.sr_coolWhite.CGColor]
+    gradientLayer.locations = [0.0, 1.0]
+    
+    view.layer.addSublayer(gradientLayer)
+  }
   
   internal func configureConstraints() {
+    self.gradientView.snp_makeConstraints { (make) -> Void in
+      make.center.equalTo(self.view)
+      make.size.equalTo(150.0+&150.0)
+    }
     
+    self.view.layoutIfNeeded()
   }
   
   internal func setupViewHierarchy() {
-    
+    self.view.addSubview(gradientView)
   }
   
 }
