@@ -52,27 +52,28 @@ class Day23ViewController: UIViewController {
     shapeLayer.fillColor = UIColor.clearColor().CGColor
     
     view.layer.addSublayer(shapeLayer)
-    UIView.animateKeyframesWithDuration(3.0, delay: 0.0, options: [.Repeat, .CalculationModePaced, .BeginFromCurrentState], animations: { () -> Void in
-      
-      view.layer.transform = CATransform3DIdentity
-      UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.25, animations: { () -> Void in
-        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2), 0.0, 0.0, 1.0)
-      })
-      
-      UIView.addKeyframeWithRelativeStartTime(0.25, relativeDuration: 0.25, animations: { () -> Void in
-        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2 * 2), 0.0, 0.0, 1.0)
-      })
-      
-      UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.25, animations: { () -> Void in
-        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2 * 3), 0.0, 0.0, 1.0)
-      })
-      
-      UIView.addKeyframeWithRelativeStartTime(0.75, relativeDuration: 0.25, animations: { () -> Void in
-        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2 * 4), 0.0, 0.0, 1.0)
-      })
-      
-      }) { (complete: Bool) -> Void in
-    }
+    
+//    UIView.animateKeyframesWithDuration(3.0, delay: 0.0, options: [.Repeat, .CalculationModePaced, .BeginFromCurrentState], animations: { () -> Void in
+//      
+//      view.layer.transform = CATransform3DIdentity
+//      UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.25, animations: { () -> Void in
+//        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2), 0.0, 0.0, 1.0)
+//      })
+//      
+//      UIView.addKeyframeWithRelativeStartTime(0.25, relativeDuration: 0.25, animations: { () -> Void in
+//        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2 * 2), 0.0, 0.0, 1.0)
+//      })
+//      
+//      UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.25, animations: { () -> Void in
+//        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2 * 3), 0.0, 0.0, 1.0)
+//      })
+//      
+//      UIView.addKeyframeWithRelativeStartTime(0.75, relativeDuration: 0.25, animations: { () -> Void in
+//        view.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2 * 4), 0.0, 0.0, 1.0)
+//      })
+//      
+//      }) { (complete: Bool) -> Void in
+//    }
   }
   
   internal func configureConstraints() {
