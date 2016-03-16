@@ -13,8 +13,17 @@ infix operator +&{
   precedence 150
 }
 
+infix operator *&{
+  associativity left
+  precedence 150
+}
+
 public func +&(lhs: CGFloat, rhs: CGFloat) -> CGSize {
   return CGSizeMake(lhs, rhs)
+}
+
+public func *&(lhs: CGFloat, rhs: CGFloat) -> CGPoint {
+  return CGPointMake(lhs, rhs)
 }
 
 class Day24ViewController: UIViewController {
@@ -42,7 +51,9 @@ class Day24ViewController: UIViewController {
     let gradientLayer: CAGradientLayer = CAGradientLayer()
     gradientLayer.frame = view.bounds
     gradientLayer.colors = [ColorSwatch.sr_hipsterAvocado.CGColor, ColorSwatch.sr_coolWhite.CGColor]
-    gradientLayer.locations = [0.0, 1.0]
+    gradientLayer.locations = [0.0, 0.8]
+    gradientLayer.startPoint = 0.0*&0.0
+    gradientLayer.endPoint = 1.0*&1.0
     
     view.layer.addSublayer(gradientLayer)
   }
