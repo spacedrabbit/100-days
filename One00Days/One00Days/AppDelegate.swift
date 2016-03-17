@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let rootVC: Day21ViewController = Day21ViewController()
 //    let rootVC: Day22ViewController = Day22ViewController()
 //    let rootVC: Day23ViewController = Day23ViewController()
-    let rootVC: Day24ViewController = Day24ViewController()
+//    let rootVC: Day24ViewController = Day24ViewController()
+    let rootVC: Day25ViewController = Day25ViewController()
     
 //    let rootVC: StackTestViewController = StackTestViewController()
     self.window?.rootViewController = rootVC

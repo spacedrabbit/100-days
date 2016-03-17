@@ -40,6 +40,7 @@
 		14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EADFF61C894A6F00965C7F /* Day12ViewController.swift */; };
 		14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */; };
 		14EB517B1C80071C00D31EF0 /* Day5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */; };
+		14EB828F1C9A5DF400224CB6 /* Day25ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */; };
 		7B3E8D1D22499A9797A3D883 /* Pods_One00Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804278F7B6F9725A5925319 /* Pods_One00Days.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		14EADFF61C894A6F00965C7F /* Day12ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day12ViewController.swift; sourceTree = "<group>"; };
 		14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableCircleButton.swift; sourceTree = "<group>"; };
 		14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day5ViewController.swift; sourceTree = "<group>"; };
+		14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day25ViewController.swift; sourceTree = "<group>"; };
 		8804278F7B6F9725A5925319 /* Pods_One00Days.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_One00Days.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF81FFC6BEE8E10D7005B44 /* Pods-One00Days.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.release.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.release.xcconfig"; sourceTree = "<group>"; };
 		DF560FD2FB7C544CE95A1BBE /* Pods-One00Days.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.debug.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.debug.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				144327A91C965E100066A8D3 /* Day22ViewController.swift */,
 				143672971C971792000A6E65 /* Day23ViewController.swift */,
 				144C32B61C990CFC00CD3698 /* Day24ViewController.swift */,
+				14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */,
 			);
 			name = "Week 4 VCs";
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				1400D0831C8BE47700ECFA09 /* Day14ViewController.swift in Sources */,
 				141222401C8D35A500BE3DF5 /* Day15ViewController.swift in Sources */,
 				14EB517B1C80071C00D31EF0 /* Day5ViewController.swift in Sources */,
+				14EB828F1C9A5DF400224CB6 /* Day25ViewController.swift in Sources */,
 				143D18A71C911D3F0086657F /* Day18ViewController.swift in Sources */,
 				14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */,
 				143672931C97126D000A6E65 /* CircularProgressView.swift in Sources */,
