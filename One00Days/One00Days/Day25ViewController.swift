@@ -28,6 +28,18 @@ class Day25ViewController: UIViewController {
     
     setupViewHierarchy()
     configureConstraints()
+    
+    let g: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "addAnimation:")
+    self.gView.addGestureRecognizer(g)
+  }
+  
+  internal func addAnimation(sender: AnyObject?) {
+    
+    let scaleTransform: CGAffineTransform = CGAffineTransformMakeScale(2.0, 2.0)
+    UIView.animateWithDuration(2.0) { () -> Void in
+      self.view.transform = scaleTransform
+    }
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -41,22 +53,12 @@ class Day25ViewController: UIViewController {
     }
     
     gView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.circularGradientView)
+      make.edges.equalTo(self.view)
     }
     
     self.view.layoutIfNeeded()
   }
   
-  internal func drawRadialGradient() {
-    let center: CGPoint = CGRectGetMidX(self.circularGradientView.bounds)*&CGRectGetMidY(self.circularGradientView.bounds)
-    let endPoint: CGPoint = CGRectGetMaxX(self.circularGradientView.bounds)*&CGRectGetMaxY(self.circularGradientView.bounds)
-    
-    let ctx = UIGraphicsGetCurrentContext()
-    let colorSpace = CGColorSpaceCreateDeviceRGB()
-    let gradient = CGGradientCreateWithColors(colorSpace, [ColorSwatch.sr_mediumTeal.CGColor, ColorSwatch.sr_darkChalkGreen.CGColor], [0.0, 1.0])
-    CGContextDrawRadialGradient(ctx, gradient, center, 20.0, endPoint, 50.0, .DrawsAfterEndLocation)
-    
-  }
   
   internal func setupViewHierarchy() {
     self.view.addSubview(circularGradientView)
@@ -67,11 +69,10 @@ class Day25ViewController: UIViewController {
 class GradientView: UIView {
   override func drawRect(rect: CGRect) {
     let center: CGPoint = CGRectGetMidX(rect)*&CGRectGetMidY(rect)
-    let endPoint: CGPoint = CGRectGetMaxX(rect)*&CGRectGetMaxY(rect)
     
     let ctx = UIGraphicsGetCurrentContext()
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     let gradient = CGGradientCreateWithColors(colorSpace, [ColorSwatch.sr_mediumTeal.CGColor, ColorSwatch.sr_darkChalkGreen.CGColor], [0.0, 1.0])
-    CGContextDrawRadialGradient(ctx, gradient, center, 20.0, endPoint, 50.0, .DrawsAfterEndLocation)
+    CGContextDrawRadialGradient(ctx, gradient, center, 0.0, center, 50.0, [])
   }
 }
