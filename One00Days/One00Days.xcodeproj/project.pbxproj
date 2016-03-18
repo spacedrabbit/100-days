@@ -35,6 +35,7 @@
 		148F37011C924D7F00148CB8 /* Day19ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F37001C924D7F00148CB8 /* Day19ViewController.swift */; };
 		14A2BF5F1C8F893F004C09CF /* StackTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2BF5E1C8F893F004C09CF /* StackTestViewController.swift */; };
 		14A2BF631C8FC5D3004C09CF /* Day17ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */; };
+		14A831FF1C9BADE9002899E1 /* Day26ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A831FE1C9BADE9002899E1 /* Day26ViewController.swift */; };
 		14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */; };
 		14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */; };
 		14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EADFF61C894A6F00965C7F /* Day12ViewController.swift */; };
@@ -101,6 +102,7 @@
 		148F37001C924D7F00148CB8 /* Day19ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day19ViewController.swift; sourceTree = "<group>"; };
 		14A2BF5E1C8F893F004C09CF /* StackTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTestViewController.swift; sourceTree = "<group>"; };
 		14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day17ViewController.swift; sourceTree = "<group>"; };
+		14A831FE1C9BADE9002899E1 /* Day26ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day26ViewController.swift; sourceTree = "<group>"; };
 		14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day13ViewController.swift; sourceTree = "<group>"; };
 		14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day4ViewController.swift; sourceTree = "<group>"; };
 		14EADFF61C894A6F00965C7F /* Day12ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day12ViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				143672971C971792000A6E65 /* Day23ViewController.swift */,
 				144C32B61C990CFC00CD3698 /* Day24ViewController.swift */,
 				14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */,
+				14A831FE1C9BADE9002899E1 /* Day26ViewController.swift */,
 			);
 			name = "Week 4 VCs";
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */,
 				14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */,
 				143ABFCC1C83E668003B9EBF /* Day8ViewController.swift in Sources */,
+				14A831FF1C9BADE9002899E1 /* Day26ViewController.swift in Sources */,
 				14039EF81C8E864700F68A4B /* Day16ViewController.swift in Sources */,
 				143672981C971792000A6E65 /* Day23ViewController.swift in Sources */,
 				141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */,
