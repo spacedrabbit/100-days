@@ -26,6 +26,7 @@
 		144327AA1C965E100066A8D3 /* Day22ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144327A91C965E100066A8D3 /* Day22ViewController.swift */; };
 		144C32B71C990CFC00CD3698 /* Day24ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144C32B61C990CFC00CD3698 /* Day24ViewController.swift */; };
 		145760F21C951F1D00277426 /* Day21ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145760F11C951F1D00277426 /* Day21ViewController.swift */; };
+		145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BB71C9CD2950040887D /* Day27ViewController.swift */; };
 		146A291F1C93CD1000C9FF71 /* Day20ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A291E1C93CD1000C9FF71 /* Day20ViewController.swift */; };
 		1472377A1C7C1158000A2458 /* Day2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147237791C7C1158000A2458 /* Day2ViewController.swift */; };
 		1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472377B1C7D6452000A2458 /* Day3ViewController.swift */; };
@@ -92,6 +93,7 @@
 		144327D21C9660A50066A8D3 /* SRHamWorks.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SRHamWorks.xcodeproj; path = SRHamWorks/SRHamWorks.xcodeproj; sourceTree = "<group>"; };
 		144C32B61C990CFC00CD3698 /* Day24ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day24ViewController.swift; sourceTree = "<group>"; };
 		145760F11C951F1D00277426 /* Day21ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day21ViewController.swift; sourceTree = "<group>"; };
+		145F1BB71C9CD2950040887D /* Day27ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day27ViewController.swift; sourceTree = "<group>"; };
 		146A291E1C93CD1000C9FF71 /* Day20ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day20ViewController.swift; sourceTree = "<group>"; };
 		147237791C7C1158000A2458 /* Day2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day2ViewController.swift; sourceTree = "<group>"; };
 		1472377B1C7D6452000A2458 /* Day3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day3ViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				144C32B61C990CFC00CD3698 /* Day24ViewController.swift */,
 				14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */,
 				14A831FE1C9BADE9002899E1 /* Day26ViewController.swift */,
+				145F1BB71C9CD2950040887D /* Day27ViewController.swift */,
 			);
 			name = "Week 4 VCs";
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				143672981C971792000A6E65 /* Day23ViewController.swift in Sources */,
 				141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */,
 				141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */,
+				145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */,
 				148F37011C924D7F00148CB8 /* Day19ViewController.swift in Sources */,
 				147472271C82B700002C5A02 /* ClockView.swift in Sources */,
 				144C32B71C990CFC00CD3698 /* Day24ViewController.swift in Sources */,
