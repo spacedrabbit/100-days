@@ -10,6 +10,11 @@ import UIKit
 
 // ----------------------   GradientView   ------------------- //
 class GradientView: UIView {
+  
+//  override class func layerClass() -> AnyClass {
+//    return CATransformLayer.self
+//  }
+  
   override func drawRect(rect: CGRect) {
     let center: CGPoint = CGRectGetMidX(rect)*&CGRectGetMidY(rect)
     
@@ -79,12 +84,12 @@ class Day29ViewController: UIViewController, TapTrackingViewDelegate {
   }
   
   func viewWasTapped(atPoint: CGPoint) {
-    let centerPointInView: CGPoint = CGRectGetMidX(self.tapView.bounds)*&CGRectGetMidY(self.tapView.bounds)
+//    let centerPointInView: CGPoint = CGRectGetMidX(self.tapView.bounds)*&CGRectGetMidY(self.tapView.bounds)
     let initialRadius: CGFloat = 4.0
     let longestSideLength: CGFloat = fmax(self.tapView.bounds.width, self.tapView.bounds.height)
     let scaleFactor: CGFloat = longestSideLength / (initialRadius * 2)
     
-    let path: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(centerPointInView.x - initialRadius, centerPointInView.y - initialRadius, initialRadius * 2, initialRadius * 2))
+    let path: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(atPoint.x - initialRadius, atPoint.y - initialRadius, initialRadius * 2, initialRadius * 2))
     
     let shapeLayer: CAShapeLayer = CAShapeLayer()
     shapeLayer.path = path.CGPath
@@ -92,29 +97,18 @@ class Day29ViewController: UIViewController, TapTrackingViewDelegate {
     shapeLayer.strokeColor = shapeLayer.fillColor
     shapeLayer.frame = self.tapView.bounds
     
-    print("scale factor: \(scaleFactor)")
-    let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-    scaleAnimation.fromValue = 1.0
-    scaleAnimation.toValue = scaleFactor
-    scaleAnimation.duration = 2.0
-    scaleAnimation.removedOnCompletion = false
+    let containerLayer: CALayer = CALayer()
+    containerLayer.frame = self.tapView.bounds
+    containerLayer.addSublayer(shapeLayer)
     
-//    shapeLayer.addAnimation(scaleAnimation, forKey: "scale")
-    
-    
-    let scaleTransform: CATransform3D = CATransform3DMakeScale(scaleFactor, scaleFactor, 1.0)
-    shapeLayer.transform = scaleTransform
-    UIView.animateKeyframesWithDuration(3.0, delay: 1.0, options: [], animations: { () -> Void in
-      
-      UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 1.0, animations: { () -> Void in
-        
-        self.tapView.layer.addSublayer(shapeLayer)
-        
-      })
-      
-      }) { (complete: Bool) -> Void in
-        
-    }
+    var scaleTransform: CATransform3D = CATransform3DMakeScale(scaleFactor, scaleFactor, 1.0)
+    scaleTransform.m34 = 1.0
+
+//      shapeLayer.transform = scaleTransform
+      containerLayer.addSublayer(shapeLayer)
+      self.tapView.layer.addSublayer(containerLayer)
+//      self.tapView.layer.sublayerTransform = scaleTransform
+//      self.tapView.layer.layoutSublayers()
   }
   
 }
