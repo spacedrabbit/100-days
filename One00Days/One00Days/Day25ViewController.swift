@@ -66,13 +66,3 @@ class Day25ViewController: UIViewController {
   }
 }
 
-class GradientView: UIView {
-  override func drawRect(rect: CGRect) {
-    let center: CGPoint = CGRectGetMidX(rect)*&CGRectGetMidY(rect)
-    
-    let ctx = UIGraphicsGetCurrentContext()
-    let colorSpace = CGColorSpaceCreateDeviceRGB()
-    let gradient = CGGradientCreateWithColors(colorSpace, [ColorSwatch.sr_mediumTeal.CGColor, ColorSwatch.sr_darkChalkGreen.CGColor], [0.0, 1.0])
-    CGContextDrawRadialGradient(ctx, gradient, center, 0.0, center, 50.0, [])
-  }
-}
