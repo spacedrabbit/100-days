@@ -104,6 +104,8 @@ class Day29ViewController: UIViewController, TapTrackingViewDelegate {
     var scaleTransform: CATransform3D = CATransform3DMakeScale(scaleFactor, scaleFactor, 1.0)
     scaleTransform.m34 = 1.0
 
+    
+    // to continue further try out what is listed in http://stackoverflow.com/questions/2981676/catransaction-layer-changes-but-does-not-animate
 //      shapeLayer.transform = scaleTransform
       containerLayer.addSublayer(shapeLayer)
       self.tapView.layer.addSublayer(containerLayer)
