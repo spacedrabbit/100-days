@@ -26,4 +26,8 @@ struct ColorSwatch {
   static let sr_hipsterBlueBlack: UIColor = UIColor(red: 16^, green: 34^, blue: 43^, alpha: 1.0)
   static let sr_hipsterOlive: UIColor = UIColor(red: 149^, green: 171^, blue: 99^, alpha: 1.0)
   static let sr_hipsterAvocado: UIColor = UIColor(red: 189^, green: 214^, blue: 132^, alpha: 1.0)
+  
+  func randomColor() -> UIColor {
+   return UIColor.init(red: CGFloat(Double(arc4random_uniform(255))/255.0), green: CGFloat(Double(arc4random_uniform(255))/255.0), blue: CGFloat(Double(arc4random_uniform(255))/255.0), alpha: 1.0)
+  }
 }
