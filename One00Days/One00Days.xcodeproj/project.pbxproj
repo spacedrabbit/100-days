@@ -30,6 +30,7 @@
 		145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BB71C9CD2950040887D /* Day27ViewController.swift */; };
 		145F1BBD1C9F82780040887D /* Day29ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BBC1C9F82780040887D /* Day29ViewController.swift */; };
 		1469A98F1CA376F90076C570 /* Day32ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469A98E1CA376F90076C570 /* Day32ViewController.swift */; };
+		1469A9941CA380DC0076C570 /* GridCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469A9931CA380DC0076C570 /* GridCharacters.swift */; };
 		146A291F1C93CD1000C9FF71 /* Day20ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A291E1C93CD1000C9FF71 /* Day20ViewController.swift */; };
 		1472377A1C7C1158000A2458 /* Day2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147237791C7C1158000A2458 /* Day2ViewController.swift */; };
 		1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472377B1C7D6452000A2458 /* Day3ViewController.swift */; };
@@ -101,6 +102,7 @@
 		145F1BB71C9CD2950040887D /* Day27ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day27ViewController.swift; sourceTree = "<group>"; };
 		145F1BBC1C9F82780040887D /* Day29ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day29ViewController.swift; sourceTree = "<group>"; };
 		1469A98E1CA376F90076C570 /* Day32ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day32ViewController.swift; sourceTree = "<group>"; };
+		1469A9931CA380DC0076C570 /* GridCharacters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCharacters.swift; sourceTree = "<group>"; };
 		146A291E1C93CD1000C9FF71 /* Day20ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day20ViewController.swift; sourceTree = "<group>"; };
 		147237791C7C1158000A2458 /* Day2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day2ViewController.swift; sourceTree = "<group>"; };
 		1472377B1C7D6452000A2458 /* Day3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day3ViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		14A2BF611C8F8945004C09CF /* Non Sequitors */ = {
 			isa = PBXGroup;
 			children = (
+				1469A9931CA380DC0076C570 /* GridCharacters.swift */,
 				14A2BF5E1C8F893F004C09CF /* StackTestViewController.swift */,
 				143672921C97126D000A6E65 /* CircularProgressView.swift */,
 			);
@@ -521,6 +524,7 @@
 				14EB828F1C9A5DF400224CB6 /* Day25ViewController.swift in Sources */,
 				14C682DA1CA0F9890091C492 /* Day30ViewController.swift in Sources */,
 				143D18A71C911D3F0086657F /* Day18ViewController.swift in Sources */,
+				1469A9941CA380DC0076C570 /* GridCharacters.swift in Sources */,
 				14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */,
 				143672931C97126D000A6E65 /* CircularProgressView.swift in Sources */,
 				1437843C1C829FA4004F3B05 /* DoorView.swift in Sources */,
