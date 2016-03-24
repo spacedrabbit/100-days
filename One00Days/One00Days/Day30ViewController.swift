@@ -8,7 +8,6 @@
 
 import UIKit
 
-internal typealias CubicGrid = [[CubicUnit]]
 class CubicUnit: UIView {
   
   var sideLength: CGFloat = 0.0
