@@ -26,6 +26,7 @@
 		143EFA8C1C869DD500B5BBEC /* Day10ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143EFA8B1C869DD500B5BBEC /* Day10ViewController.swift */; };
 		144327AA1C965E100066A8D3 /* Day22ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144327A91C965E100066A8D3 /* Day22ViewController.swift */; };
 		144C32B71C990CFC00CD3698 /* Day24ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144C32B61C990CFC00CD3698 /* Day24ViewController.swift */; };
+		145608B71CA8D8DA00644BE9 /* Day36ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */; };
 		145760F21C951F1D00277426 /* Day21ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145760F11C951F1D00277426 /* Day21ViewController.swift */; };
 		145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BB71C9CD2950040887D /* Day27ViewController.swift */; };
 		145F1BBD1C9F82780040887D /* Day29ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BBC1C9F82780040887D /* Day29ViewController.swift */; };
@@ -100,6 +101,7 @@
 		144327A91C965E100066A8D3 /* Day22ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day22ViewController.swift; sourceTree = "<group>"; };
 		144327D21C9660A50066A8D3 /* SRHamWorks.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SRHamWorks.xcodeproj; path = SRHamWorks/SRHamWorks.xcodeproj; sourceTree = "<group>"; };
 		144C32B61C990CFC00CD3698 /* Day24ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day24ViewController.swift; sourceTree = "<group>"; };
+		145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day36ViewController.swift; sourceTree = "<group>"; };
 		145760F11C951F1D00277426 /* Day21ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day21ViewController.swift; sourceTree = "<group>"; };
 		145F1BB71C9CD2950040887D /* Day27ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day27ViewController.swift; sourceTree = "<group>"; };
 		145F1BBC1C9F82780040887D /* Day29ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day29ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
+				145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */,
 				145F1BBE1C9F82920040887D /* Week 5 VCs */,
 				144327AC1C965E280066A8D3 /* Week 4 VCs */,
 				141222441C8D35FD00BE3DF5 /* Week 3 VCs */,
@@ -502,6 +505,7 @@
 				140057BB1C7A922C00E8C850 /* One00DaysViewController.swift in Sources */,
 				143EFA8C1C869DD500B5BBEC /* Day10ViewController.swift in Sources */,
 				14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */,
+				145608B71CA8D8DA00644BE9 /* Day36ViewController.swift in Sources */,
 				14A2BF631C8FC5D3004C09CF /* Day17ViewController.swift in Sources */,
 				146A291F1C93CD1000C9FF71 /* Day20ViewController.swift in Sources */,
 				148D45351C854D3D00B32D68 /* Day9ViewController.swift in Sources */,
