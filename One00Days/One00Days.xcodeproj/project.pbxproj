@@ -54,6 +54,7 @@
 		14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */; };
 		14EB517B1C80071C00D31EF0 /* Day5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */; };
 		14EB828F1C9A5DF400224CB6 /* Day25ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */; };
+		14FA9C0D1CAE26D600328921 /* Day40ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA9C0C1CAE26D600328921 /* Day40ViewController.swift */; };
 		7B3E8D1D22499A9797A3D883 /* Pods_One00Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804278F7B6F9725A5925319 /* Pods_One00Days.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableCircleButton.swift; sourceTree = "<group>"; };
 		14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day5ViewController.swift; sourceTree = "<group>"; };
 		14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day25ViewController.swift; sourceTree = "<group>"; };
+		14FA9C0C1CAE26D600328921 /* Day40ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day40ViewController.swift; sourceTree = "<group>"; };
 		8804278F7B6F9725A5925319 /* Pods_One00Days.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_One00Days.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF81FFC6BEE8E10D7005B44 /* Pods-One00Days.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.release.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.release.xcconfig"; sourceTree = "<group>"; };
 		DF560FD2FB7C544CE95A1BBE /* Pods-One00Days.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.debug.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,10 +173,7 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
-				143CD6BA1CAB85E500E2FABC /* Day38ViewController.swift */,
-				145984691CACD41E000C5457 /* Day39ViewController.swift */,
-				145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */,
-				1437A4F91CAA1A1A00272DD6 /* Day37ViewController.swift */,
+				14FA9C111CAE26E600328921 /* Week 6 VCs */,
 				145F1BBE1C9F82920040887D /* Week 5 VCs */,
 				144327AC1C965E280066A8D3 /* Week 4 VCs */,
 				141222441C8D35FD00BE3DF5 /* Week 3 VCs */,
@@ -336,6 +335,18 @@
 				143672921C97126D000A6E65 /* CircularProgressView.swift */,
 			);
 			name = "Non Sequitors";
+			sourceTree = "<group>";
+		};
+		14FA9C111CAE26E600328921 /* Week 6 VCs */ = {
+			isa = PBXGroup;
+			children = (
+				14FA9C0C1CAE26D600328921 /* Day40ViewController.swift */,
+				145984691CACD41E000C5457 /* Day39ViewController.swift */,
+				143CD6BA1CAB85E500E2FABC /* Day38ViewController.swift */,
+				1437A4F91CAA1A1A00272DD6 /* Day37ViewController.swift */,
+				145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */,
+			);
+			name = "Week 6 VCs";
 			sourceTree = "<group>";
 		};
 		360F196AAA5B16431AE11BEB /* Frameworks */ = {
@@ -555,6 +566,7 @@
 				1437843E1C82A132004F3B05 /* Day7ViewController.swift in Sources */,
 				148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */,
 				1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */,
+				14FA9C0D1CAE26D600328921 /* Day40ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
