@@ -37,7 +37,8 @@ class UnOfficialDay42ViewController: UIViewController {
     super.viewDidAppear(animated)
     
 //    self.drawCircleInView(circleView)
-     self.setupEmitterInView(emitterView)
+//     self.setupEmitterInView(emitterView)
+    self.setupExplosionEmitterInView(emitterView)
   }
   
   
@@ -53,16 +54,51 @@ class UnOfficialDay42ViewController: UIViewController {
     view.layer.addSublayer(shapeLayer)
   }
   
+  internal func setupExplosionEmitterInView(view: UIView) {
+    
+    let emitterLayer: CAEmitterLayer = CAEmitterLayer()
+    emitterLayer.emitterPosition = view.center
+    emitterLayer.emitterShape = kCAEmitterLayerSphere
+    emitterLayer.emitterSize = CGSizeMake(10.0, 10.0) // space where an emitter cell could orignate from
+    
+    let blue = self.makeExplosionCellWithColor(ColorSwatch.sr_hipsterBlueBlack)
+    let red = self.makeExplosionCellWithColor(ColorSwatch.sr_darkChalkGreen)
+    let yellow = self.makeExplosionCellWithColor(ColorSwatch.sr_mediumTeal)
+    let other = self.makeExplosionCellWithColor(UIColor.redColor())
+    emitterLayer.emitterCells = [blue, red, yellow, other]
+    
+    view.layer.addSublayer(emitterLayer)
+  }
+  
+  internal func makeExplosionCellWithColor(color: UIColor) -> CAEmitterCell {
+    let cell = CAEmitterCell()
+    cell.scale = 1.0
+    cell.birthRate = 15
+    cell.lifetime = 7.0
+    cell.color = color.CGColor
+    cell.velocity = 100
+    cell.velocityRange = 0
+    cell.scaleRange = 2.0
+    cell.spin = 2.0
+    cell.spinRange = 2.0
+    cell.alphaSpeed = 2.0
+    cell.alphaRange = 4.0
+    cell.emissionLongitude = CGFloat(0.0)
+    cell.emissionLatitude = CGFloat(M_PI)
+    cell.emissionRange = CGFloat(M_PI) * 2.0
+    
+//    cell.contents = UIImage(named: "cat_icon")?.CGImage
+    cell.contents = UIImage(named: "exclamation")?.CGImage
+
+    return cell
+  }
+  
   internal func setupEmitterInView(view: UIView) {
     
     let emitterLayer: CAEmitterLayer = CAEmitterLayer()
-//    emitterLayer.emitterPosition = view.center
-//    emitterLayer.emitterShape = kCAEmitterLayerCircle
-//    emitterLayer.emitterSize = CGSizeMake(view.frame.width/2.0, view.frame.height/2.0)
-    
-    emitterLayer.emitterPosition = CGPoint(x: view.center.x, y: -96)
-    emitterLayer.emitterShape = kCAEmitterLayerLine
-    emitterLayer.emitterSize = CGSize(width: view.frame.size.width, height: 1)
+    emitterLayer.emitterPosition = view.center
+    emitterLayer.emitterShape = kCAEmitterLayerCircle
+
     
     let blue = makeEmitterCellWithColor(UIColor.blueColor())
     emitterLayer.emitterCells = [blue]
@@ -79,10 +115,10 @@ class UnOfficialDay42ViewController: UIViewController {
     cell.velocity = 200
     cell.velocityRange = 50
     cell.emissionLongitude = CGFloat(M_PI)
-    cell.emissionRange = CGFloat(M_PI_4)
+    cell.emissionRange = CGFloat(M_PI)
     cell.spin = 2
     cell.spinRange = 3
-    cell.scaleRange = 0.5
+    cell.scaleRange = 0.1
     cell.scaleSpeed = -0.05
     
     cell.contents = UIImage(named: "cat_icon")?.CGImage
