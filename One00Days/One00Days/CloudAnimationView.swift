@@ -19,8 +19,6 @@ class CloudAnimationView: UIView {
     
     self.setupViewHierarchy()
     self.configureConstraints()
-    
-    self.setupCloudEmitter()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -30,10 +28,13 @@ class CloudAnimationView: UIView {
   
   // MARK: - Emitter Setup
   // ------------------------------------------------------------
-  internal func setupCloudEmitter() {
-    cloudEmitterNode.emitterPosition = self.cloudGeneratorView.center
-    cloudEmitterNode.emitterShape = kCAEmitterLayerLine //kCAEmitterLayerCuboid
-    cloudEmitterNode.emitterSize = CGSizeMake(50.0, 100.0) //self.cloudGeneratorView.frame.size
+  internal func startCloudEmitter() {
+    self.layoutIfNeeded() // needed right before positioning to get correct sizes
+    
+    cloudEmitterNode.emitterMode = kCAEmitterLayerPoints
+    cloudEmitterNode.position = self.cloudGeneratorView.center
+    cloudEmitterNode.emitterShape = kCAEmitterLayerCircle
+    cloudEmitterNode.emitterSize = self.cloudGeneratorView.frame.size
     
     let foregroundCells = self.makeCloudCellForPosition(.ForeGround)
     let midgroundCells = self.makeCloudCellForPosition(.MidGround)
@@ -45,28 +46,32 @@ class CloudAnimationView: UIView {
   
   private func makeCloudCellForPosition(position: ScenePosition) -> CAEmitterCell {
     let cell = CAEmitterCell()
-    cell.color = UIColor.redColor().CGColor
-    cell.lifetime = 10.0
-    cell.emissionRange = CGFloat(M_PI_2)
-    cell.emissionLatitude = 0.0
-    cell.emissionLongitude = CGFloat(M_PI)
+    cell.emissionRange = CGFloat(0.0)
+    cell.emissionLatitude = CGFloat(M_PI)
+    cell.emissionLongitude = CGFloat(0.0)
     cell.contents = Cloud(withRelativePosition: position).image?.CGImage
     
     switch position {
     case .ForeGround:
-      cell.scale = 1.0
+      cell.scale = 2.0
       cell.birthRate = 1.0
-      cell.velocity = 100.0
+      cell.velocity = 750.0
+      cell.alphaRange = 0.0
+      cell.lifetime = 10.0
       
     case .MidGround:
-      cell.scale = 0.75
-      cell.birthRate = 0.5
-      cell.velocity = 70.0
+      cell.scale = 0.50
+      cell.birthRate = 0.25
+      cell.velocity = 50.0
+      cell.alphaRange = 0.5
+      cell.alphaSpeed = 10.0
+      cell.lifetime = 20.0
       
     case .BackGround:
-      cell.scale = 0.25
-      cell.birthRate = 0.25
-      cell.velocity = 25.0
+      cell.scale = 0.15
+      cell.birthRate = 0.1
+      cell.velocity = 20.0
+      cell.lifetime = 100.0
       
     }
     return cell

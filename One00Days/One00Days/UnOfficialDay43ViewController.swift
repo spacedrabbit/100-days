@@ -20,7 +20,13 @@ class UnOfficialDay43ViewController: UIViewController {
     self.setupViewHierarchy()
     self.configureConstraints()
   }
-
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    cloudView.startCloudEmitter()
+  }
+  
   
   // MARK: - Layout
   // ------------------------------------------------------------
@@ -30,15 +36,12 @@ class UnOfficialDay43ViewController: UIViewController {
     }
     
     self.cloudView.snp_makeConstraints { (make) -> Void in
-      make.left.top.equalTo(self.sceneBackground)
+      make.left.top.right.equalTo(self.sceneBackground)
       make.bottom.equalTo(self.sceneBackground.snp_centerY)
-      make.right.equalTo(self.sceneBackground.snp_centerX)
     }
   }
   
   internal func setupViewHierarchy() {
-//    cloudView.backgroundColor = UIColor.purpleColor()
-    
     self.view.addSubview(self.sceneBackground)
     self.sceneBackground.addSubview(cloudView)
   }
