@@ -13,6 +13,9 @@
 		140057C31C7A922C00E8C850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140057C11C7A922C00E8C850 /* LaunchScreen.storyboard */; };
 		1400D0831C8BE47700ECFA09 /* Day14ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1400D0821C8BE47700ECFA09 /* Day14ViewController.swift */; };
 		14039EF81C8E864700F68A4B /* Day16ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14039EF71C8E864700F68A4B /* Day16ViewController.swift */; };
+		14057E631CD56DAA00717202 /* UnOfficialDay43ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14057E621CD56DAA00717202 /* UnOfficialDay43ViewController.swift */; };
+		14057E651CD57A2400717202 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14057E641CD57A2400717202 /* BackgroundView.swift */; };
+		14057E671CD57E1200717202 /* UIView+LiRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14057E661CD57E1200717202 /* UIView+LiRx.swift */; };
 		1408711C1CA24812003043B1 /* Day31ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408711B1CA24812003043B1 /* Day31ViewController.swift */; };
 		141222401C8D35A500BE3DF5 /* Day15ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */; };
 		141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141222421C8D35CC00BE3DF5 /* HexShapes.swift */; };
@@ -52,6 +55,8 @@
 		14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */; };
 		14C682DA1CA0F9890091C492 /* Day30ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C682D91CA0F9890091C492 /* Day30ViewController.swift */; };
 		14DBD1601CA782BC007D9C11 /* Day35ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DBD15F1CA782BC007D9C11 /* Day35ViewController.swift */; };
+		14E27EF71CD583EB0096B716 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E27EF61CD583EB0096B716 /* CloudView.swift */; };
+		14E27EFC1CD58FA20096B716 /* CloudAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E27EFB1CD58FA20096B716 /* CloudAnimationView.swift */; };
 		14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EADFF61C894A6F00965C7F /* Day12ViewController.swift */; };
 		14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */; };
 		14EB517B1C80071C00D31EF0 /* Day5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */; };
@@ -93,6 +98,9 @@
 		140057C41C7A922C00E8C850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1400D0821C8BE47700ECFA09 /* Day14ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day14ViewController.swift; sourceTree = "<group>"; };
 		14039EF71C8E864700F68A4B /* Day16ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day16ViewController.swift; sourceTree = "<group>"; };
+		14057E621CD56DAA00717202 /* UnOfficialDay43ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnOfficialDay43ViewController.swift; sourceTree = "<group>"; };
+		14057E641CD57A2400717202 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		14057E661CD57E1200717202 /* UIView+LiRx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LiRx.swift"; sourceTree = "<group>"; };
 		1408711B1CA24812003043B1 /* Day31ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day31ViewController.swift; sourceTree = "<group>"; };
 		1412223F1C8D35A500BE3DF5 /* Day15ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day15ViewController.swift; sourceTree = "<group>"; };
 		141222421C8D35CC00BE3DF5 /* HexShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexShapes.swift; sourceTree = "<group>"; };
@@ -134,6 +142,8 @@
 		14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day4ViewController.swift; sourceTree = "<group>"; };
 		14C682D91CA0F9890091C492 /* Day30ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day30ViewController.swift; sourceTree = "<group>"; };
 		14DBD15F1CA782BC007D9C11 /* Day35ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day35ViewController.swift; sourceTree = "<group>"; };
+		14E27EF61CD583EB0096B716 /* CloudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudView.swift; sourceTree = "<group>"; };
+		14E27EFB1CD58FA20096B716 /* CloudAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudAnimationView.swift; sourceTree = "<group>"; };
 		14EADFF61C894A6F00965C7F /* Day12ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day12ViewController.swift; sourceTree = "<group>"; };
 		14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableCircleButton.swift; sourceTree = "<group>"; };
 		14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day5ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +187,11 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
+				14E27EFB1CD58FA20096B716 /* CloudAnimationView.swift */,
+				14057E661CD57E1200717202 /* UIView+LiRx.swift */,
+				14057E621CD56DAA00717202 /* UnOfficialDay43ViewController.swift */,
+				14057E641CD57A2400717202 /* BackgroundView.swift */,
+				14E27EF61CD583EB0096B716 /* CloudView.swift */,
 				14FA9C111CAE26E600328921 /* Week 6 VCs */,
 				145F1BBE1C9F82920040887D /* Week 5 VCs */,
 				144327AC1C965E280066A8D3 /* Week 4 VCs */,
@@ -185,7 +200,6 @@
 				147237781C7C10F7000A2458 /* Week 1 VCs */,
 				140057CA1C7A924500E8C850 /* Supporting Files */,
 				14A2BF611C8F8945004C09CF /* Non Sequitors */,
-				14437A331CCF03CD00028A50 /* UnOfficialDay42ViewController.swift */,
 			);
 			path = One00Days;
 			sourceTree = "<group>";
@@ -351,6 +365,7 @@
 				1437A4F91CAA1A1A00272DD6 /* Day37ViewController.swift */,
 				145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */,
 				1454AB501CAF73270033E4AF /* Day41ViewController.swift */,
+				14437A331CCF03CD00028A50 /* UnOfficialDay42ViewController.swift */,
 			);
 			name = "Week 6 VCs";
 			sourceTree = "<group>";
@@ -527,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E27EF71CD583EB0096B716 /* CloudView.swift in Sources */,
 				1472377A1C7C1158000A2458 /* Day2ViewController.swift in Sources */,
 				140057BB1C7A922C00E8C850 /* One00DaysViewController.swift in Sources */,
 				143EFA8C1C869DD500B5BBEC /* Day10ViewController.swift in Sources */,
@@ -550,6 +566,7 @@
 				145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */,
 				148F37011C924D7F00148CB8 /* Day19ViewController.swift in Sources */,
 				1408711C1CA24812003043B1 /* Day31ViewController.swift in Sources */,
+				14057E671CD57E1200717202 /* UIView+LiRx.swift in Sources */,
 				147472271C82B700002C5A02 /* ClockView.swift in Sources */,
 				144C32B71C990CFC00CD3698 /* Day24ViewController.swift in Sources */,
 				140057B91C7A922C00E8C850 /* AppDelegate.swift in Sources */,
@@ -565,7 +582,10 @@
 				1454AB511CAF73270033E4AF /* Day41ViewController.swift in Sources */,
 				14EB828F1C9A5DF400224CB6 /* Day25ViewController.swift in Sources */,
 				14C682DA1CA0F9890091C492 /* Day30ViewController.swift in Sources */,
+				14057E631CD56DAA00717202 /* UnOfficialDay43ViewController.swift in Sources */,
 				143D18A71C911D3F0086657F /* Day18ViewController.swift in Sources */,
+				14057E651CD57A2400717202 /* BackgroundView.swift in Sources */,
+				14E27EFC1CD58FA20096B716 /* CloudAnimationView.swift in Sources */,
 				1469A9941CA380DC0076C570 /* GridCharacters.swift in Sources */,
 				14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */,
 				14437A341CCF03CD00028A50 /* UnOfficialDay42ViewController.swift in Sources */,
