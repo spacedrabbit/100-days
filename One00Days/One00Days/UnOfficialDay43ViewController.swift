@@ -20,7 +20,7 @@ class UnOfficialDay43ViewController: UIViewController {
     self.setupViewHierarchy()
     self.configureConstraints()
   }
-  
+
   
   // MARK: - Layout
   // ------------------------------------------------------------
@@ -28,15 +28,24 @@ class UnOfficialDay43ViewController: UIViewController {
     self.sceneBackground.snp_makeConstraints { (make) -> Void in
       make.left.right.bottom.top.equalTo(self.view)
     }
+    
+    self.cloudView.snp_makeConstraints { (make) -> Void in
+      make.left.top.equalTo(self.sceneBackground)
+      make.bottom.equalTo(self.sceneBackground.snp_centerY)
+      make.right.equalTo(self.sceneBackground.snp_centerX)
+    }
   }
   
   internal func setupViewHierarchy() {
+//    cloudView.backgroundColor = UIColor.purpleColor()
+    
     self.view.addSubview(self.sceneBackground)
+    self.sceneBackground.addSubview(cloudView)
   }
   
   
   // MARK: Lazy Inits
   // ------------------------------------------------------------
   internal lazy var sceneBackground: BackgroundView = BackgroundView(forTimeOfDay: .Afternoon)
-  
+  internal lazy var cloudView: CloudAnimationView = CloudAnimationView()
 }

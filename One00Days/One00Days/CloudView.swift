@@ -51,6 +51,7 @@ internal class Cloud: UIView {
   convenience internal init(withRelativePosition position: ScenePosition) {
     self.init(frame: CGRectZero)
     self.relativePosition = position
+    self.image = self.cloudImageView.image
     
     switch position {
     case .ForeGround: self.postionIndicator.text = "Fg"
@@ -74,7 +75,13 @@ internal class Cloud: UIView {
   // MARK: - Layout
   // ------------------------------------------------------------
   internal func configureConstraints() {
+    self.cloudImageView.snp_makeConstraints { (make) -> Void in
+      make.edges.equalTo(self)
+    }
     
+    self.postionIndicator.snp_makeConstraints { (make) -> Void in
+      make.center.equalTo(self.cloudImageView)
+    }
   }
   
   internal func setupViewHierarchy() {
