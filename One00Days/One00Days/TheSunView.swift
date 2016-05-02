@@ -51,20 +51,35 @@ class TheSunView: UIView {
   
   internal func attachFullAnimationToRays() {
     
-    let animationGroup: CAAnimationGroup = CAAnimationGroup()
+//    let animationGroup: CAAnimationGroup = CAAnimationGroup()
     
     let rotationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-    rotationAnimation.duration = 2.0
+    rotationAnimation.duration = 5.0
     rotationAnimation.additive = true
-    rotationAnimation.repeatDuration = Double.infinity
-    rotationAnimation.values = [0.0, 1.0]
+    rotationAnimation.repeatCount = HUGE
+    rotationAnimation.keyTimes = [0.0, 1.0]
     rotationAnimation.values = [0, M_PI]
-//    rotationAnimation.fillMode = kCAFillModeForwards
-//    rotationAnimation.removedOnCompletion = false
     
-    let scaleXTransFormAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.scale.x")
+    let scaleXTransformAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.scale.x")
+    scaleXTransformAnimation.duration = 2.0
+    scaleXTransformAnimation.timeOffset = 1.0
+    scaleXTransformAnimation.repeatCount = HUGE
+    scaleXTransformAnimation.values = [1.0, 1.2, 0.9, 1.0]
+    scaleXTransformAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
     
+    let scaleYTransformationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.scale.y")
+    scaleYTransformationAnimation.duration = 2.0
+    scaleYTransformationAnimation.timeOffset = 1.0
+    scaleYTransformationAnimation.repeatCount = HUGE
+    scaleYTransformationAnimation.values = [1.0, 0.8, 1.0, 1.0]
+    scaleYTransformationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+    
+    
+//    animationGroup.animations = [rotationAnimation, scaleXTransformAnimation, scaleYTransformationAnimation]
+//    self.sunRayImageView.layer.addAnimation(animationGroup, forKey: "grp")
     self.sunRayImageView.layer.addAnimation(rotationAnimation, forKey: "rot")
+    self.sunRayImageView.layer.addAnimation(scaleYTransformationAnimation, forKey: "scaY")
+    self.sunRayImageView.layer.addAnimation(scaleXTransformAnimation, forKey: "sca")
   }
   
   // MARK: - Layout
