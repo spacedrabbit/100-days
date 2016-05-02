@@ -61,6 +61,8 @@
 		14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */; };
 		14EB517B1C80071C00D31EF0 /* Day5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */; };
 		14EB828F1C9A5DF400224CB6 /* Day25ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */; };
+		14F5863D1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F5863C1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift */; };
+		14F5863F1CD6CAA1007F1B31 /* TheSunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F5863E1CD6CAA1007F1B31 /* TheSunView.swift */; };
 		14FA9C0D1CAE26D600328921 /* Day40ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA9C0C1CAE26D600328921 /* Day40ViewController.swift */; };
 		7B3E8D1D22499A9797A3D883 /* Pods_One00Days.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8804278F7B6F9725A5925319 /* Pods_One00Days.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +150,8 @@
 		14EB51781C8006E000D31EF0 /* TappableCircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableCircleButton.swift; sourceTree = "<group>"; };
 		14EB517A1C80071C00D31EF0 /* Day5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day5ViewController.swift; sourceTree = "<group>"; };
 		14EB828E1C9A5DF400224CB6 /* Day25ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day25ViewController.swift; sourceTree = "<group>"; };
+		14F5863C1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnOfficialDay44ViewController.swift; sourceTree = "<group>"; };
+		14F5863E1CD6CAA1007F1B31 /* TheSunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheSunView.swift; sourceTree = "<group>"; };
 		14FA9C0C1CAE26D600328921 /* Day40ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day40ViewController.swift; sourceTree = "<group>"; };
 		8804278F7B6F9725A5925319 /* Pods_One00Days.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_One00Days.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF81FFC6BEE8E10D7005B44 /* Pods-One00Days.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-One00Days.release.xcconfig"; path = "Pods/Target Support Files/Pods-One00Days/Pods-One00Days.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,11 +191,9 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
-				14E27EFB1CD58FA20096B716 /* CloudAnimationView.swift */,
-				14057E661CD57E1200717202 /* UIView+LiRx.swift */,
-				14057E621CD56DAA00717202 /* UnOfficialDay43ViewController.swift */,
-				14057E641CD57A2400717202 /* BackgroundView.swift */,
-				14E27EF61CD583EB0096B716 /* CloudView.swift */,
+				14F5863E1CD6CAA1007F1B31 /* TheSunView.swift */,
+				14F5863C1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift */,
+				14F586381CD6C9A6007F1B31 /* Clouds Animation */,
 				14FA9C111CAE26E600328921 /* Week 6 VCs */,
 				145F1BBE1C9F82920040887D /* Week 5 VCs */,
 				144327AC1C965E280066A8D3 /* Week 4 VCs */,
@@ -354,6 +356,18 @@
 				143672921C97126D000A6E65 /* CircularProgressView.swift */,
 			);
 			name = "Non Sequitors";
+			sourceTree = "<group>";
+		};
+		14F586381CD6C9A6007F1B31 /* Clouds Animation */ = {
+			isa = PBXGroup;
+			children = (
+				14E27EFB1CD58FA20096B716 /* CloudAnimationView.swift */,
+				14057E661CD57E1200717202 /* UIView+LiRx.swift */,
+				14057E621CD56DAA00717202 /* UnOfficialDay43ViewController.swift */,
+				14057E641CD57A2400717202 /* BackgroundView.swift */,
+				14E27EF61CD583EB0096B716 /* CloudView.swift */,
+			);
+			name = "Clouds Animation";
 			sourceTree = "<group>";
 		};
 		14FA9C111CAE26E600328921 /* Week 6 VCs */ = {
@@ -585,6 +599,7 @@
 				14057E631CD56DAA00717202 /* UnOfficialDay43ViewController.swift in Sources */,
 				143D18A71C911D3F0086657F /* Day18ViewController.swift in Sources */,
 				14057E651CD57A2400717202 /* BackgroundView.swift in Sources */,
+				14F5863F1CD6CAA1007F1B31 /* TheSunView.swift in Sources */,
 				14E27EFC1CD58FA20096B716 /* CloudAnimationView.swift in Sources */,
 				1469A9941CA380DC0076C570 /* GridCharacters.swift in Sources */,
 				14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */,
@@ -595,6 +610,7 @@
 				148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */,
 				1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */,
 				14FA9C0D1CAE26D600328921 /* Day40ViewController.swift in Sources */,
+				14F5863D1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
