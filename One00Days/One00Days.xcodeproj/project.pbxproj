@@ -191,8 +191,7 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
-				14F5863E1CD6CAA1007F1B31 /* TheSunView.swift */,
-				14F5863C1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift */,
+				145E34FF1CD78B3E00A37B00 /* Sun Animation */,
 				14F586381CD6C9A6007F1B31 /* Clouds Animation */,
 				14FA9C111CAE26E600328921 /* Week 6 VCs */,
 				145F1BBE1C9F82920040887D /* Week 5 VCs */,
@@ -286,6 +285,15 @@
 				1472FD801C87E8C0000DE5A1 /* IntroSpriteKit.xcodeproj */,
 			);
 			name = "Week 2 Other";
+			sourceTree = "<group>";
+		};
+		145E34FF1CD78B3E00A37B00 /* Sun Animation */ = {
+			isa = PBXGroup;
+			children = (
+				14F5863E1CD6CAA1007F1B31 /* TheSunView.swift */,
+				14F5863C1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift */,
+			);
+			name = "Sun Animation";
 			sourceTree = "<group>";
 		};
 		145F1BBE1C9F82920040887D /* Week 5 VCs */ = {

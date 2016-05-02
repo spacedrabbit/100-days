@@ -32,18 +32,25 @@ class UnOfficialDay43ViewController: UIViewController {
   // ------------------------------------------------------------
   internal func configureConstraints() {
     self.sceneBackground.snp_makeConstraints { (make) -> Void in
-      make.left.right.bottom.top.equalTo(self.view)
+      make.left.right.top.equalTo(self.view)
+      make.height.equalTo(300.0)
     }
     
     self.cloudView.snp_makeConstraints { (make) -> Void in
       make.left.top.right.equalTo(self.sceneBackground)
       make.bottom.equalTo(self.sceneBackground.snp_centerY)
     }
+    
+    self.sunView.snp_makeConstraints { (make) -> Void in
+      make.width.height.equalTo(70.0)
+      make.left.equalTo(self.sceneBackground).offset(44.0)
+      make.top.equalTo(self.sceneBackground).offset(24.0)
+    }
   }
   
   internal func setupViewHierarchy() {
     self.view.addSubview(self.sceneBackground)
-    self.sceneBackground.addSubview(cloudView)
+    self.sceneBackground.addSubviews([sunView, cloudView])
   }
   
   
@@ -51,4 +58,5 @@ class UnOfficialDay43ViewController: UIViewController {
   // ------------------------------------------------------------
   internal lazy var sceneBackground: BackgroundView = BackgroundView(forTimeOfDay: .Afternoon)
   internal lazy var cloudView: CloudAnimationView = CloudAnimationView()
+  internal lazy var sunView: TheSunView = TheSunView()
 }

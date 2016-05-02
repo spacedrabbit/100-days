@@ -15,14 +15,16 @@ class TheSunView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-//    let tapG: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "attachRotationAnimationToRays")
-    
     self.setupViewHierarchy()
     self.configureConstraints()
     
 //    self.attachRotationAnimationToRays()
 //    self.attachTranslationScaleTransformToRays()
-    self.attachFullAnimationToRays()
+    self.attachFullAnimationToRays(self.sunRayImageView)
+    self.attachFullAnimationToRays(self.sunRayImageView2)
+    
+    self.attachRotationAnimation(self.sunRayImageView3)
+    self.attachRotationAnimation(self.sunRayImageView4)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -49,10 +51,7 @@ class TheSunView: UIView {
     }
   }
   
-  internal func attachFullAnimationToRays() {
-    
-//    let animationGroup: CAAnimationGroup = CAAnimationGroup()
-    
+  internal func attachFullAnimationToRays(view: UIView) {
     let rotationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
     rotationAnimation.duration = 5.0
     rotationAnimation.additive = true
@@ -74,12 +73,20 @@ class TheSunView: UIView {
     scaleYTransformationAnimation.values = [1.0, 0.8, 1.0, 1.0]
     scaleYTransformationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     
+    view.layer.addAnimation(rotationAnimation, forKey: "rot")
+    view.layer.addAnimation(scaleYTransformationAnimation, forKey: "scaY")
+    view.layer.addAnimation(scaleXTransformAnimation, forKey: "sca")
+  }
+  
+  internal func attachRotationAnimation(view: UIView) {
+    let rotationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+    rotationAnimation.duration = 5.0
+    rotationAnimation.additive = true
+    rotationAnimation.repeatCount = HUGE
+    rotationAnimation.keyTimes = [0.0, 1.0]
+    rotationAnimation.values = [0, M_PI]
     
-//    animationGroup.animations = [rotationAnimation, scaleXTransformAnimation, scaleYTransformationAnimation]
-//    self.sunRayImageView.layer.addAnimation(animationGroup, forKey: "grp")
-    self.sunRayImageView.layer.addAnimation(rotationAnimation, forKey: "rot")
-    self.sunRayImageView.layer.addAnimation(scaleYTransformationAnimation, forKey: "scaY")
-    self.sunRayImageView.layer.addAnimation(scaleXTransformAnimation, forKey: "sca")
+    view.layer.addAnimation(rotationAnimation, forKey: "rot")
   }
   
   // MARK: - Layout
@@ -87,6 +94,18 @@ class TheSunView: UIView {
     self.sunRayImageView.snp_makeConstraints { (make) -> Void in
       make.center.width.equalTo(self)
       make.height.equalTo(30.0)
+    }
+    
+    self.sunRayImageView2.snp_makeConstraints { (make) -> Void in
+      make.center.width.height.equalTo(self.sunRayImageView)
+    }
+    
+    self.sunRayImageView3.snp_makeConstraints { (make) -> Void in
+      make.center.width.height.equalTo(self.sunRayImageView)
+    }
+    
+    self.sunRayImageView4.snp_makeConstraints { (make) -> Void in
+      make.center.width.height.equalTo(self.sunRayImageView)
     }
     
     self.sunBodyImageView.snp_makeConstraints { (make) -> Void in
@@ -97,7 +116,7 @@ class TheSunView: UIView {
   }
   
   internal func setupViewHierarchy() {
-    self.addSubviews([sunRayImageView, sunBodyImageView])
+    self.addSubviews([sunRayImageView, sunRayImageView2, sunRayImageView3, sunRayImageView4, sunBodyImageView])
   }
   
   
@@ -117,5 +136,60 @@ class TheSunView: UIView {
     imageView.clipsToBounds = false
     return imageView
   }()
+  
+  
+  lazy var sunRayImageView2: UIImageView = {
+    let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.backgroundColor = UIColor.clearColor()
+    imageView.clipsToBounds = false
+    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+    return imageView
+  }()
+  
+  
+  
+  lazy var sunRayImageView3: UIImageView = {
+    let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.backgroundColor = UIColor.clearColor()
+    imageView.clipsToBounds = false
+    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+    return imageView
+  }()
+  
+  
+  
+  lazy var sunRayImageView4: UIImageView = {
+    let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.backgroundColor = UIColor.clearColor()
+    imageView.clipsToBounds = false
+    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4 * 3.0))
+    return imageView
+  }()
+  
+  
+  
+  lazy var sunRayImageView5: UIImageView = {
+    let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.backgroundColor = UIColor.clearColor()
+    imageView.clipsToBounds = false
+    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+    return imageView
+  }()
+  
+  
+  
+  lazy var sunRayImageView6: UIImageView = {
+    let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
+    imageView.contentMode = .ScaleAspectFit
+    imageView.backgroundColor = UIColor.clearColor()
+    imageView.clipsToBounds = false
+    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+    return imageView
+  }()
+  
   
 }
