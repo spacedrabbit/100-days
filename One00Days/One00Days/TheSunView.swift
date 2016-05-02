@@ -20,7 +20,9 @@ class TheSunView: UIView {
     self.setupViewHierarchy()
     self.configureConstraints()
     
-    self.attachRotationAnimationToRays()
+//    self.attachRotationAnimationToRays()
+//    self.attachTranslationScaleTransformToRays()
+    self.attachFullAnimationToRays()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -38,8 +40,31 @@ class TheSunView: UIView {
   }
   
   internal func attachTranslationScaleTransformToRays() {
-    let scaleTransform = CGAffineTransformMakeScale(1.2, 1.2)
+    let scaleTransform = CGAffineTransformMakeScale(1.25, 1.1)
     
+    UIView.animateWithDuration(1.0, delay: 0.0, options: [.CurveLinear, .Repeat, .Autoreverse], animations: { () -> Void in
+      self.sunRayImageView.layer.transform = CATransform3DMakeAffineTransform(scaleTransform)
+      }) { (complete: Bool) -> Void in
+        
+    }
+  }
+  
+  internal func attachFullAnimationToRays() {
+    
+    let animationGroup: CAAnimationGroup = CAAnimationGroup()
+    
+    let rotationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+    rotationAnimation.duration = 2.0
+    rotationAnimation.additive = true
+    rotationAnimation.repeatDuration = Double.infinity
+    rotationAnimation.values = [0.0, 1.0]
+    rotationAnimation.values = [0, M_PI]
+//    rotationAnimation.fillMode = kCAFillModeForwards
+//    rotationAnimation.removedOnCompletion = false
+    
+    let scaleXTransFormAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.scale.x")
+    
+    self.sunRayImageView.layer.addAnimation(rotationAnimation, forKey: "rot")
   }
   
   // MARK: - Layout
