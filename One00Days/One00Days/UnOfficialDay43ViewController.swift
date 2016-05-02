@@ -33,7 +33,7 @@ class UnOfficialDay43ViewController: UIViewController {
   internal func configureConstraints() {
     self.sceneBackground.snp_makeConstraints { (make) -> Void in
       make.left.right.top.equalTo(self.view)
-      make.height.equalTo(300.0)
+      make.height.equalTo(200.0)
     }
     
     self.cloudView.snp_makeConstraints { (make) -> Void in
@@ -46,11 +46,16 @@ class UnOfficialDay43ViewController: UIViewController {
       make.left.equalTo(self.sceneBackground).offset(44.0)
       make.top.equalTo(self.sceneBackground).offset(24.0)
     }
+    
+    self.vanView.snp_makeConstraints { (make) -> Void in
+      make.centerY.equalTo(self.sceneBackground.groundView.snp_top)
+      make.left.equalTo(self.sunView.snp_centerX)
+    }
   }
   
   internal func setupViewHierarchy() {
     self.view.addSubview(self.sceneBackground)
-    self.sceneBackground.addSubviews([sunView, cloudView])
+    self.sceneBackground.addSubviews([sunView, cloudView, vanView])
   }
   
   
@@ -59,4 +64,9 @@ class UnOfficialDay43ViewController: UIViewController {
   internal lazy var sceneBackground: BackgroundView = BackgroundView(forTimeOfDay: .Afternoon)
   internal lazy var cloudView: CloudAnimationView = CloudAnimationView()
   internal lazy var sunView: TheSunView = TheSunView()
+  internal lazy var vanView: DeliveryVanView = {
+    let view: DeliveryVanView = DeliveryVanView()
+    view.transform = CGAffineTransformMakeScale(0.5, 0.5)
+    return view
+  }()
 }

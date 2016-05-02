@@ -36,6 +36,8 @@
 		145608B71CA8D8DA00644BE9 /* Day36ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */; };
 		145760F21C951F1D00277426 /* Day21ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145760F11C951F1D00277426 /* Day21ViewController.swift */; };
 		1459846A1CACD41E000C5457 /* Day39ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145984691CACD41E000C5457 /* Day39ViewController.swift */; };
+		145E35041CD78DFB00A37B00 /* UnOfficialDay45ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E35031CD78DFB00A37B00 /* UnOfficialDay45ViewController.swift */; };
+		145E35071CD79D9A00A37B00 /* DeliveryVanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145E35061CD79D9A00A37B00 /* DeliveryVanView.swift */; };
 		145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BB71C9CD2950040887D /* Day27ViewController.swift */; };
 		145F1BBD1C9F82780040887D /* Day29ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F1BBC1C9F82780040887D /* Day29ViewController.swift */; };
 		1469A98F1CA376F90076C570 /* Day32ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469A98E1CA376F90076C570 /* Day32ViewController.swift */; };
@@ -124,6 +126,8 @@
 		145608B61CA8D8DA00644BE9 /* Day36ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day36ViewController.swift; sourceTree = "<group>"; };
 		145760F11C951F1D00277426 /* Day21ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day21ViewController.swift; sourceTree = "<group>"; };
 		145984691CACD41E000C5457 /* Day39ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day39ViewController.swift; sourceTree = "<group>"; };
+		145E35031CD78DFB00A37B00 /* UnOfficialDay45ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnOfficialDay45ViewController.swift; sourceTree = "<group>"; };
+		145E35061CD79D9A00A37B00 /* DeliveryVanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryVanView.swift; sourceTree = "<group>"; };
 		145F1BB71C9CD2950040887D /* Day27ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day27ViewController.swift; sourceTree = "<group>"; };
 		145F1BBC1C9F82780040887D /* Day29ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day29ViewController.swift; sourceTree = "<group>"; };
 		1469A98E1CA376F90076C570 /* Day32ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day32ViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 		140057B71C7A922C00E8C850 /* One00Days */ = {
 			isa = PBXGroup;
 			children = (
+				145E35051CD79D4900A37B00 /* Van Animation */,
 				145E34FF1CD78B3E00A37B00 /* Sun Animation */,
 				14F586381CD6C9A6007F1B31 /* Clouds Animation */,
 				14FA9C111CAE26E600328921 /* Week 6 VCs */,
@@ -294,6 +299,15 @@
 				14F5863C1CD6C9DB007F1B31 /* UnOfficialDay44ViewController.swift */,
 			);
 			name = "Sun Animation";
+			sourceTree = "<group>";
+		};
+		145E35051CD79D4900A37B00 /* Van Animation */ = {
+			isa = PBXGroup;
+			children = (
+				145E35031CD78DFB00A37B00 /* UnOfficialDay45ViewController.swift */,
+				145E35061CD79D9A00A37B00 /* DeliveryVanView.swift */,
+			);
+			name = "Van Animation";
 			sourceTree = "<group>";
 		};
 		145F1BBE1C9F82920040887D /* Week 5 VCs */ = {
@@ -584,6 +598,7 @@
 				143672981C971792000A6E65 /* Day23ViewController.swift in Sources */,
 				141222431C8D35CC00BE3DF5 /* HexShapes.swift in Sources */,
 				14DBD1601CA782BC007D9C11 /* Day35ViewController.swift in Sources */,
+				145E35041CD78DFB00A37B00 /* UnOfficialDay45ViewController.swift in Sources */,
 				141222471C8D369A00BE3DF5 /* ColorSwatch.swift in Sources */,
 				145F1BB81C9CD2950040887D /* Day27ViewController.swift in Sources */,
 				148F37011C924D7F00148CB8 /* Day19ViewController.swift in Sources */,
@@ -615,6 +630,7 @@
 				143672931C97126D000A6E65 /* CircularProgressView.swift in Sources */,
 				1437843C1C829FA4004F3B05 /* DoorView.swift in Sources */,
 				1437843E1C82A132004F3B05 /* Day7ViewController.swift in Sources */,
+				145E35071CD79D9A00A37B00 /* DeliveryVanView.swift in Sources */,
 				148A964E1C8153EB00988EB8 /* Day6ViewController.swift in Sources */,
 				1472377C1C7D6452000A2458 /* Day3ViewController.swift in Sources */,
 				14FA9C0D1CAE26D600328921 /* Day40ViewController.swift in Sources */,
