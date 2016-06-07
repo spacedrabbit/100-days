@@ -54,6 +54,8 @@
 		14A2BF631C8FC5D3004C09CF /* Day17ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */; };
 		14A38D9D1CA4D50D003F574C /* Day33ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A38D9C1CA4D50D003F574C /* Day33ViewController.swift */; };
 		14A831FF1C9BADE9002899E1 /* Day26ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A831FE1C9BADE9002899E1 /* Day26ViewController.swift */; };
+		14B05EF01D03354B006F3ED5 /* DragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B05EEF1D03354B006F3ED5 /* DragViewController.swift */; };
+		14B05EF51D0335D1006F3ED5 /* TouchDragControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B05EF41D0335D1006F3ED5 /* TouchDragControl.swift */; };
 		14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */; };
 		14C2B9AA1C7EA65E00FBEC81 /* Day4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */; };
 		14C682DA1CA0F9890091C492 /* Day30ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C682D91CA0F9890091C492 /* Day30ViewController.swift */; };
@@ -146,6 +148,8 @@
 		14A2BF621C8FC5D3004C09CF /* Day17ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day17ViewController.swift; sourceTree = "<group>"; };
 		14A38D9C1CA4D50D003F574C /* Day33ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day33ViewController.swift; sourceTree = "<group>"; };
 		14A831FE1C9BADE9002899E1 /* Day26ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day26ViewController.swift; sourceTree = "<group>"; };
+		14B05EEF1D03354B006F3ED5 /* DragViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DragViewController.swift; path = One00Days/DragViewController.swift; sourceTree = "<group>"; };
+		14B05EF41D0335D1006F3ED5 /* TouchDragControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TouchDragControl.swift; path = One00Days/TouchDragControl.swift; sourceTree = "<group>"; };
 		14BA0F5B1C8A6C420007AC3E /* Day13ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day13ViewController.swift; sourceTree = "<group>"; };
 		14C2B9A91C7EA65E00FBEC81 /* Day4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day4ViewController.swift; sourceTree = "<group>"; };
 		14C682D91CA0F9890091C492 /* Day30ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day30ViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 		140057AC1C7A922C00E8C850 = {
 			isa = PBXGroup;
 			children = (
+				14B05EEF1D03354B006F3ED5 /* DragViewController.swift */,
+				14B05EF41D0335D1006F3ED5 /* TouchDragControl.swift */,
 				140057B71C7A922C00E8C850 /* One00Days */,
 				140057B61C7A922C00E8C850 /* Products */,
 				EE40DAF305ED8667E49BE6FE /* Pods */,
@@ -586,6 +592,7 @@
 				140057BB1C7A922C00E8C850 /* One00DaysViewController.swift in Sources */,
 				143EFA8C1C869DD500B5BBEC /* Day10ViewController.swift in Sources */,
 				14EADFF71C894A6F00965C7F /* Day12ViewController.swift in Sources */,
+				14B05EF01D03354B006F3ED5 /* DragViewController.swift in Sources */,
 				145608B71CA8D8DA00644BE9 /* Day36ViewController.swift in Sources */,
 				14A2BF631C8FC5D3004C09CF /* Day17ViewController.swift in Sources */,
 				146A291F1C93CD1000C9FF71 /* Day20ViewController.swift in Sources */,
@@ -595,6 +602,7 @@
 				1437A4FA1CAA1A1A00272DD6 /* Day37ViewController.swift in Sources */,
 				14BA0F5C1C8A6C420007AC3E /* Day13ViewController.swift in Sources */,
 				14EB51791C8006E000D31EF0 /* TappableCircleButton.swift in Sources */,
+				14B05EF51D0335D1006F3ED5 /* TouchDragControl.swift in Sources */,
 				143ABFCC1C83E668003B9EBF /* Day8ViewController.swift in Sources */,
 				14A831FF1C9BADE9002899E1 /* Day26ViewController.swift in Sources */,
 				14039EF81C8E864700F68A4B /* Day16ViewController.swift in Sources */,
