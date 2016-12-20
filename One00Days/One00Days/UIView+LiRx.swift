@@ -11,7 +11,7 @@ import UIKit
 
 internal extension UIView {
   
-  internal func addSubviews(views: [UIView]) {
+  internal func addSubviews(_ views: [UIView]) {
     for view in views {
       self.addSubview(view)
     }

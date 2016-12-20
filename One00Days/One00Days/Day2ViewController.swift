@@ -9,10 +9,10 @@
 import UIKit
 
 extension CGRect {
-  func CGRectLengthenFromRect(rect: CGRect) -> CGRect {
+  func CGRectLengthenFromRect(_ rect: CGRect) -> CGRect {
     let originalRect: CGRect = rect
     let orignalHeight: CGFloat = originalRect.size.height
-    return CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, orignalHeight * 2.0)
+    return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.width, height: orignalHeight * 2.0)
   }
 }
 
@@ -23,7 +23,7 @@ class Day2ViewController: UIViewController, UIGestureRecognizerDelegate {
   
   lazy var expandingView: UIView = {
     var view: UIView = UIView()
-    view.backgroundColor = UIColor.redColor()
+    view.backgroundColor = UIColor.red
     return view
   }()
   
@@ -60,23 +60,23 @@ class Day2ViewController: UIViewController, UIGestureRecognizerDelegate {
   }
   
   internal func configureConstraints() {
-    self.expandingView.snp_makeConstraints { (make) -> Void in
-      make.left.equalTo(self.view.snp_left).offset(8.0)
-      make.right.equalTo(self.view.snp_right).offset(-8.0)
-      make.top.equalTo(self.view.snp_top).offset(10.0)
+    self.expandingView.snp.makeConstraints { (make) -> Void in
+      make.left.equalTo(self.view.snp.left).offset(8.0)
+      make.right.equalTo(self.view.snp.right).offset(-8.0)
+      make.top.equalTo(self.view.snp.top).offset(10.0)
       make.height.equalTo(60.0)
     }
     
-    self.day1Slider.snp_makeConstraints { (make) -> Void in
-      make.left.equalTo(self.view.snp_left).offset(40.0)
-      make.right.equalTo(self.view.snp_right).offset(-40.0)
-      make.bottom.equalTo(self.view.snp_bottom).offset(-10.0)
+    self.day1Slider.snp.makeConstraints { (make) -> Void in
+      make.left.equalTo(self.view.snp.left).offset(40.0)
+      make.right.equalTo(self.view.snp.right).offset(-40.0)
+      make.bottom.equalTo(self.view.snp.bottom).offset(-10.0)
       make.height.equalTo(60.0)
     }
     
-    self.dayLabel.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(self.expandingView.snp_top).offset(10.0)
-      make.centerX.equalTo(self.expandingView.snp_centerX)
+    self.dayLabel.snp.makeConstraints { (make) -> Void in
+      make.top.equalTo(self.expandingView.snp.top).offset(10.0)
+      make.centerX.equalTo(self.expandingView.snp.centerX)
       make.height.equalTo(30.0)
       
     }
@@ -87,7 +87,7 @@ class Day2ViewController: UIViewController, UIGestureRecognizerDelegate {
   }
   
   internal func setupActions() {
-    let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "expandingViewWasHeld:")
+    let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(Day2ViewController.expandingViewWasHeld(_:)))
     longPressGesture.minimumPressDuration = 0.30
     longPressGesture.allowableMovement = 20.0
     longPressGesture.delegate = self
@@ -95,32 +95,32 @@ class Day2ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     self.dayLabel.text = "Day 2"
     self.dayLabel.alpha = 0.0
-    self.dayLabel.font = UIFont.boldSystemFontOfSize(30.0)
-    self.dayLabel.textColor = UIColor.whiteColor()
+    self.dayLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
+    self.dayLabel.textColor = UIColor.white
   }
   
-  internal func expandingViewWasHeld(sender: UILongPressGestureRecognizer) {
+  internal func expandingViewWasHeld(_ sender: UILongPressGestureRecognizer) {
     print("damn straight you're touching")
     let currentFrame: CGRect = self.expandingView.frame
-    UIView.animateWithDuration(1.0, animations: { () -> Void in
-      self.expandingView.frame = CGRectMake(currentFrame.origin.x, currentFrame.origin.y, currentFrame.size.width, self.maxViewHeight)
+    UIView.animate(withDuration: 1.0, animations: { () -> Void in
+      self.expandingView.frame = CGRect(x: currentFrame.origin.x, y: currentFrame.origin.y, width: currentFrame.size.width, height: self.maxViewHeight)
       self.dayLabel.alpha = 1.0
-      }) { (complete: Bool) -> Void in
-    }
+      }, completion: { (complete: Bool) -> Void in
+    }) 
   }
   
   internal func expandingViewWasReleased() {
     
   }
   
-  func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
     if let longPressGesture: UILongPressGestureRecognizer = gestureRecognizer as? UILongPressGestureRecognizer {
       let currentState: UIGestureRecognizerState = longPressGesture.state
       switch currentState {
-      case .Possible: print("possible")
-      case .Began, .Changed: print("began or changed")
-      case .Ended: print("ended")
-      case .Failed: print("failed")
+      case .possible: print("possible")
+      case .began, .changed: print("began or changed")
+      case .ended: print("ended")
+      case .failed: print("failed")
       default: print("default state")
       }
     }

@@ -12,8 +12,8 @@ class Day14ViewController: Day13ViewController {
   
   lazy var cubeView: UIView = {
     let view: UIView = UIView()
-    view.frame = CGRectMake(0,0,200,200)
-    view.backgroundColor = UIColor.yellowColor()
+    view.frame = CGRect(x: 0,y: 0,width: 200,height: 200)
+    view.backgroundColor = UIColor.yellow
     return view
   }()
   
@@ -43,19 +43,19 @@ class Day14ViewController: Day13ViewController {
   }
   
   internal func drawRightSideOfCube(withPoints points: [CGPoint], view: UIView, color: UIColor) {
-    let originPoint: CGPoint = CGPointMake(CGRectGetMidX(view.bounds), CGRectGetMidY(view.bounds))
+    let originPoint: CGPoint = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
     
     let rightsideBezierPath: UIBezierPath = UIBezierPath()
-    rightsideBezierPath.moveToPoint(points[0])
-    rightsideBezierPath.addLineToPoint(points[1])
-    rightsideBezierPath.addLineToPoint(points[2])
-    rightsideBezierPath.addLineToPoint(originPoint)
-    rightsideBezierPath.closePath()
+    rightsideBezierPath.move(to: points[0])
+    rightsideBezierPath.addLine(to: points[1])
+    rightsideBezierPath.addLine(to: points[2])
+    rightsideBezierPath.addLine(to: originPoint)
+    rightsideBezierPath.close()
     
     let rightsideShapeLayer: CAShapeLayer = CAShapeLayer()
-    rightsideShapeLayer.path = rightsideBezierPath.CGPath
-    rightsideShapeLayer.strokeColor = color.CGColor
-    rightsideShapeLayer.fillColor = color.CGColor
+    rightsideShapeLayer.path = rightsideBezierPath.cgPath
+    rightsideShapeLayer.strokeColor = color.cgColor
+    rightsideShapeLayer.fillColor = color.cgColor
     rightsideShapeLayer.lineWidth = 2.0
     
     view.layer.addSublayer(rightsideShapeLayer)
@@ -72,9 +72,9 @@ class Day14ViewController: Day13ViewController {
   }
   
   internal func configureConstraints() {
-    self.cubeView.snp_makeConstraints { (make) -> Void in
-      make.center.equalTo(self.view.snp_center)
-      make.size.equalTo(CGSizeMake(200.0, 200.0))
+    self.cubeView.snp.makeConstraints { (make) -> Void in
+      make.center.equalTo(self.view.snp.center)
+      make.size.equalTo(CGSize(width: 200.0, height: 200.0))
     }
     view.layoutIfNeeded()
     view.updateConstraintsIfNeeded()

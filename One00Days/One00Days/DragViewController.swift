@@ -13,22 +13,22 @@ class DragViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     self.setupViewHierarchy()
     self.configureConstraints()
   }
 
   internal func configureConstraints() {
-    self.touchDragControl.snp_makeConstraints { (make) -> Void in
+    self.touchDragControl.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self.view)
-      make.size.equalTo(CGSizeMake(100.0, 100.0))
+      make.size.equalTo(CGSize(width: 100.0, height: 100.0))
     }
     
   }
   
   internal func setupViewHierarchy() {
-    touchDragControl.backgroundColor = UIColor.yellowColor()
+    touchDragControl.backgroundColor = UIColor.yellow
     
     self.view.addSubviews([touchDragControl])
     

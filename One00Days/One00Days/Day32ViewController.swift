@@ -25,7 +25,7 @@ class CubicGrid: Equatable {
     self.cubicBackgroundColor = color
   }
   
-  private func gridSizeForView(view: UIView) -> CubicGridSize {
+  fileprivate func gridSizeForView(_ view: UIView) -> CubicGridSize {
     let cubesByWidth: CGFloat = ceil(view.bounds.width / self.cubicSideLength)
     let cubesByHeight: CGFloat = ceil(view.bounds.height / self.cubicSideLength)
     
@@ -33,7 +33,7 @@ class CubicGrid: Equatable {
   }
   
   
-  func createGridForView(view: UIView) -> CubicGrid{
+  func createGridForView(_ view: UIView) -> CubicGrid{
     let (rows, columns) = self.gridSizeForView(view)
     
     var tempGrid = [[CubicUnit]]()
@@ -52,16 +52,16 @@ class CubicGrid: Equatable {
     return self // returns self because I wanted a 1 liner
   }
   
-  func drawGridInView(view: UIView) -> CubicGrid {
+  func drawGridInView(_ view: UIView) -> CubicGrid {
     var currentOrigin: CGPoint = 0.0*&0.0
     
     for cubicRow: [CubicUnit] in self.grid {
       for cubic: CubicUnit in cubicRow {
         view.addSubview(cubic)
-        cubic.frame = CGRectMake(currentOrigin.x, currentOrigin.y, Day30ViewController.blockSize, Day30ViewController.blockSize)
-        currentOrigin = CGPointMake(currentOrigin.x + Day30ViewController.blockSize, currentOrigin.y)
+        cubic.frame = CGRect(x: currentOrigin.x, y: currentOrigin.y, width: Day30ViewController.blockSize, height: Day30ViewController.blockSize)
+        currentOrigin = CGPoint(x: currentOrigin.x + Day30ViewController.blockSize, y: currentOrigin.y)
       }
-      currentOrigin = CGPointMake(0.0, currentOrigin.y + Day30ViewController.blockSize)
+      currentOrigin = CGPoint(x: 0.0, y: currentOrigin.y + Day30ViewController.blockSize)
     }
 
     return self

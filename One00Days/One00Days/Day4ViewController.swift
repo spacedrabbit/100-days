@@ -12,7 +12,7 @@ class Day4ViewController: UIViewController {
   
   lazy var contentView: UIView = {
     var view: UIView = UIView()
-    view.backgroundColor = UIColor.purpleColor()
+    view.backgroundColor = UIColor.purple
     return view
   }()
   
@@ -35,17 +35,17 @@ class Day4ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.contentView.snp_makeConstraints { (make) -> Void in
+    self.contentView.snp.makeConstraints { (make) -> Void in
       make.height.equalTo(100.0)
-      make.leading.equalTo(self.view.snp_leading)
-      make.trailing.equalTo(self.view.snp_trailing)
-      make.centerY.equalTo(self.view.snp_centerY)
+      make.leading.equalTo(self.view.snp.leading)
+      make.trailing.equalTo(self.view.snp.trailing)
+      make.centerY.equalTo(self.view.snp.centerY)
     }
     
-    self.plusButton.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(50.0, 50.0))
-      make.leading.equalTo(self.contentView.snp_leading).offset(15.0)
-      make.top.equalTo(self.contentView.snp_top).offset(15.0)
+    self.plusButton.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 50.0, height: 50.0))
+      make.leading.equalTo(self.contentView.snp.leading).offset(15.0)
+      make.top.equalTo(self.contentView.snp.top).offset(15.0)
     }
   }
   

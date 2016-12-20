@@ -12,13 +12,13 @@ class Day17ViewController: UIViewController {
   
   lazy var foldingView: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.yellowColor()
+    view.backgroundColor = UIColor.yellow
     return view
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     setupViewHierarchy()
     configureConstraints()
@@ -27,13 +27,13 @@ class Day17ViewController: UIViewController {
     let currentBounds: CGRect = self.foldingView.layer.bounds
     
     self.foldingView.layer.transform = CATransform3DIdentity
-    self.foldingView.layer.anchorPoint = CGPointMake(0.5, 0.0)
-    self.foldingView.layer.position = CGPointMake(0.0, -100.0)
-    UIView.animateWithDuration(2.0, animations: { () -> Void in
+    self.foldingView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+    self.foldingView.layer.position = CGPoint(x: 0.0, y: -100.0)
+    UIView.animate(withDuration: 2.0, animations: { () -> Void in
       self.foldingView.layer.transform = CATransform3DMakeRotation(degreesToRadians(75.0), 1.0, 0.0, 0.0)
-      }) { (complete: Bool) -> Void in
+      }, completion: { (complete: Bool) -> Void in
         
-    }
+    }) 
   }
   
   override func didReceiveMemoryWarning() {
@@ -43,9 +43,9 @@ class Day17ViewController: UIViewController {
   
   
   internal func configureConstraints() {
-    foldingView.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(200.0, 200.0))
-      make.center.equalTo(self.view.snp_center)
+    foldingView.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 200.0, height: 200.0))
+      make.center.equalTo(self.view.snp.center)
     }
     
     view.layoutIfNeeded()
@@ -59,19 +59,19 @@ class Day17ViewController: UIViewController {
     let containerLayer: CALayer = CALayer()
     containerLayer.frame = self.foldingView.bounds
     
-    let topPath: UIBezierPath = UIBezierPath(rect: CGRectMake(0.0, 0.0, 100.0, 100.0))
-    let bottomPath: UIBezierPath = UIBezierPath(rect: CGRectMake(0.0, 100.0, 100.0, 100.0))
+    let topPath: UIBezierPath = UIBezierPath(rect: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
+    let bottomPath: UIBezierPath = UIBezierPath(rect: CGRect(x: 0.0, y: 100.0, width: 100.0, height: 100.0))
     
     let topLayer: CAShapeLayer = CAShapeLayer()
-    topLayer.path = topPath.CGPath
-    topLayer.strokeColor = UIColor.purpleColor().CGColor
-    topLayer.fillColor = UIColor.redColor().CGColor
+    topLayer.path = topPath.cgPath
+    topLayer.strokeColor = UIColor.purple.cgColor
+    topLayer.fillColor = UIColor.red.cgColor
     topLayer.lineWidth = 3.0
     
     let bottomLayer: CAShapeLayer = CAShapeLayer()
-    bottomLayer.path = bottomPath.CGPath
-    bottomLayer.strokeColor = UIColor.blueColor().CGColor
-    bottomLayer.fillColor = UIColor.redColor().CGColor
+    bottomLayer.path = bottomPath.cgPath
+    bottomLayer.strokeColor = UIColor.blue.cgColor
+    bottomLayer.fillColor = UIColor.red.cgColor
     bottomLayer.lineWidth = 3.0
     
     containerLayer.addSublayer(topLayer)
@@ -83,14 +83,14 @@ class Day17ViewController: UIViewController {
     return containerLayer
   }
   
-  internal func topFoldAnimation(layer: CALayer) {
+  internal func topFoldAnimation(_ layer: CALayer) {
     let fold: CATransform3D = CATransform3DMakeRotation(degreesToRadians(75.0), 1.0, 0.0, 0.0)
-    layer.anchorPoint = CGPointMake(0.5, 0.0) // top middle
+    layer.anchorPoint = CGPoint(x: 0.5, y: 0.0) // top middle
     
     layer.transform = CATransform3DIdentity
-    UIView.animateWithDuration(3.0) { () -> Void in
+    UIView.animate(withDuration: 3.0, animations: { () -> Void in
       layer.transform = fold
-    }
+    }) 
   }
   
 }

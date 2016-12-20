@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-postfix operator ^{
-}
+postfix operator ^
 
 public postfix func ^(a: CGFloat) -> CGFloat {
   return (a/255.0)

@@ -20,20 +20,20 @@ import CoreGraphics
 class Day13ViewController: UIViewController {
   
   lazy var hexView: UIView = {
-    let view: UIView = UIView(frame: CGRectMake(150.0,150.0, 100.0, 100.0))
-    view.backgroundColor = UIColor.grayColor()
+    let view: UIView = UIView(frame: CGRect(x: 150.0,y: 150.0, width: 100.0, height: 100.0))
+    view.backgroundColor = UIColor.gray
     return view
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
-//    performDay13Things()
+    self.view.backgroundColor = UIColor.white
+    performDay13Things()
     // Do any additional setup after loading the view.
   }
   
   internal func performDay13Things() {
-    let circle: CALayer = drawCircle(10.0, center: CGPointMake(200.0, 200.0))
+    let circle: CALayer = drawCircle(10.0, center: CGPoint(x: 200.0, y: 200.0))
     self.view.layer.addSublayer(circle)
     
     self.view.addSubview(hexView)
@@ -49,23 +49,23 @@ class Day13ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  internal func degrees2Rad(degrees: CGFloat) -> CGFloat {
+  internal func degrees2Rad(_ degrees: CGFloat) -> CGFloat {
     return CGFloat(M_PI) * degrees/180.0
   }
   
-  internal func drawCircle(radius: CGFloat, center: CGPoint) -> CALayer {
+  internal func drawCircle(_ radius: CGFloat, center: CGPoint) -> CALayer {
     
     let circleArcPaths: UIBezierPath = UIBezierPath()
     for segment in 0...6 {
       let arc: UIBezierPath = UIBezierPath(arcCenter: center, radius: radius, startAngle:degrees2Rad(1.0 * CGFloat(segment)), endAngle: degrees2Rad(60.0 * CGFloat(segment)), clockwise: true)
-      circleArcPaths.appendPath(arc) // appendPath() doesn't force a closePath(), so there aren't any unwanted lines when creating the arcs
+      circleArcPaths.append(arc) // appendPath() doesn't force a closePath(), so there aren't any unwanted lines when creating the arcs
     }
     
     let circleShapeLayer: CAShapeLayer = CAShapeLayer()
-    circleShapeLayer.path = circleArcPaths.CGPath
+    circleShapeLayer.path = circleArcPaths.cgPath
     circleShapeLayer.lineWidth = 2.0
-    circleShapeLayer.strokeColor = UIColor.blackColor().CGColor
-    circleShapeLayer.fillColor = UIColor.clearColor().CGColor
+    circleShapeLayer.strokeColor = UIColor.black.cgColor
+    circleShapeLayer.fillColor = UIColor.clear.cgColor
     
     circleArcPaths.stroke()
     
@@ -73,31 +73,31 @@ class Day13ViewController: UIViewController {
     
   }
   
-  internal func drawHexFromPoints(vertices: [CGPoint], view: UIView) {
+  internal func drawHexFromPoints(_ vertices: [CGPoint], view: UIView) {
     
     let hexPath: UIBezierPath = UIBezierPath()
-    hexPath.moveToPoint(vertices[0])
-    hexPath.addLineToPoint(vertices[1])
-    hexPath.addLineToPoint(vertices[2])
-    hexPath.addLineToPoint(vertices[3])
-    hexPath.addLineToPoint(vertices[4])
-    hexPath.addLineToPoint(vertices[5])
-    hexPath.closePath()
+    hexPath.move(to: vertices[0])
+    hexPath.addLine(to: vertices[1])
+    hexPath.addLine(to: vertices[2])
+    hexPath.addLine(to: vertices[3])
+    hexPath.addLine(to: vertices[4])
+    hexPath.addLine(to: vertices[5])
+    hexPath.close()
     
     
     let hexShapeLayer: CAShapeLayer = CAShapeLayer()
-    hexShapeLayer.strokeColor = UIColor.redColor().CGColor
-    hexShapeLayer.fillColor = UIColor.clearColor().CGColor
+    hexShapeLayer.strokeColor = UIColor.red.cgColor
+    hexShapeLayer.fillColor = UIColor.clear.cgColor
     hexShapeLayer.lineWidth = 3.0
-    hexShapeLayer.path = hexPath.CGPath
+    hexShapeLayer.path = hexPath.cgPath
     
     hexPath.stroke()
     
     view.layer.addSublayer(hexShapeLayer)
   }
   
-  internal func getPointsForHexagonPath(inView: UIView) -> [CGPoint] {
-    let viewCenter: CGPoint = CGPointMake(CGRectGetMidX(inView.bounds), CGRectGetMidY(inView.bounds)) // effectively the origin of the circle to use
+  internal func getPointsForHexagonPath(_ inView: UIView) -> [CGPoint] {
+    let viewCenter: CGPoint = CGPoint(x: inView.bounds.midX, y: inView.bounds.midY) // effectively the origin of the circle to use
     let viewRadius: CGFloat = viewCenter.x // the radius of the circle that fits in this square
     let numberOfPoints: Int = 6 // 6 vertices in a hexagon
     let angleSize: CGFloat =  degrees2Rad((360.0 / CGFloat(numberOfPoints))) // size of angle for each arc in the circle, in radians. where each arc meets is effectively a point in the hexagon
@@ -140,7 +140,7 @@ class Day13ViewController: UIViewController {
       */
       
       
-      vertexPoints.append(CGPointMake(dx, dy))
+      vertexPoints.append(CGPoint(x: dx, y: dy))
     }
     
     return vertexPoints

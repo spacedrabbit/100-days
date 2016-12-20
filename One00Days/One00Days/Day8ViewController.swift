@@ -12,13 +12,13 @@ class Day8ViewController: UIViewController {
   
   let frontCardView: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.lightGrayColor()
+    view.backgroundColor = UIColor.lightGray
     return view
   }()
   
   let backCardView: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.blueColor()
+    view.backgroundColor = UIColor.blue
     return view
   }()
   
@@ -42,7 +42,7 @@ class Day8ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.brownColor()
+    self.view.backgroundColor = UIColor.brown
     
     self.setupViewHierarchy()
     self.configureConstraints()
@@ -53,22 +53,22 @@ class Day8ViewController: UIViewController {
   override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
   
   internal func configureConstraints() {
-    self.frontCardView.snp_makeConstraints { (make) -> Void in
+    self.frontCardView.snp.makeConstraints { (make) -> Void in
       make.width.equalTo(200.0)
       make.height.equalTo(170.0)
-      make.center.equalTo(self.view.snp_center)
+      make.center.equalTo(self.view.snp.center)
     }
     
-    self.backCardView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.frontCardView.snp_edges)
+    self.backCardView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.frontCardView.snp.edges)
     }
     
-    self.frontCardText.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.frontCardView.snp_edges)
+    self.frontCardText.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.frontCardView.snp.edges)
     }
     
-    self.insideCardText.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.backCardView.snp_edges)
+    self.insideCardText.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.backCardView.snp.edges)
     }
   }
   
@@ -85,7 +85,7 @@ class Day8ViewController: UIViewController {
     
     let frontCardAngle: CGFloat = degreesToRadians(35.0)
     let sideTwist: CGFloat = degreesToRadians(20.0)
-    self.frontCardView.layer.anchorPoint = CGPointMake(0.0, 0.0)
+    self.frontCardView.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
 //    self.frontCardView.layer.position = CGPointMake( CGRectGetMidX(self.frontCardView.frame), CGRectGetMaxY(self.frontCardView.frame))
     let rotateForwardOnX = CATransform3DMakeRotation(frontCardAngle, 1.0, 0.0, 0.0)
     let rotateLeftOnY = CATransform3DMakeRotation(sideTwist, 0.0, -1.0, 0.0)

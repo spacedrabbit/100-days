@@ -10,9 +10,9 @@ import UIKit
 import SnapKit
 
 internal enum SceneTimeOfDay {
-  case Morning
-  case Afternoon
-  case Evening
+  case morning
+  case afternoon
+  case evening
 }
 
 internal struct SceneColor {
@@ -36,7 +36,7 @@ internal class BackgroundView: UIView {
   // MARK: - Inits
   // ------------------------------------------------------------
   convenience init(forTimeOfDay timeOfDay: SceneTimeOfDay) {
-    self.init(frame: CGRectZero)
+    self.init(frame: CGRect.zero)
     
     self.updateSceneForTimeOfDay(timeOfDay)
   }
@@ -56,19 +56,19 @@ internal class BackgroundView: UIView {
   
   // MARK: - Helpers
   // ------------------------------------------------------------
-  internal func updateSceneForTimeOfDay(timeOfDay: SceneTimeOfDay) {
+  internal func updateSceneForTimeOfDay(_ timeOfDay: SceneTimeOfDay) {
 
     switch timeOfDay {
-    case .Morning: print("not implemented")
+    case .morning: print("not implemented")
       
-    case .Afternoon:
+    case .afternoon:
       self.skyColor = SceneColor.Sky.Afternoon
       self.groundColor = SceneColor.Ground.Afternoon
       
-    case .Evening: print("not implemented")
+    case .evening: print("not implemented")
     }
     
-    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+    DispatchQueue.main.async { () -> Void in
       self.skyView.backgroundColor = self.skyColor
       self.groundView.backgroundColor = self.groundColor
     }
@@ -78,11 +78,11 @@ internal class BackgroundView: UIView {
   // MARK: - Layout
   // ------------------------------------------------------------
   internal func configureConstraints() {
-    self.skyView.snp_makeConstraints { (make) -> Void in
+    self.skyView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self)
     }
     
-    self.groundView.snp_makeConstraints { (make) -> Void in
+    self.groundView.snp.makeConstraints { (make) -> Void in
       make.left.right.bottom.equalTo(self)
       make.height.equalTo(60.0)
     }

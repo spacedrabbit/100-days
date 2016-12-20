@@ -15,20 +15,20 @@ class GradientView: UIView {
 //    return CATransformLayer.self
 //  }
   
-  override func drawRect(rect: CGRect) {
-    let center: CGPoint = CGRectGetMidX(rect)*&CGRectGetMidY(rect)
+  override func draw(_ rect: CGRect) {
+//    let center: CGPoint = rect.midX*&rect.midY
     
-    let ctx = UIGraphicsGetCurrentContext()
-    let colorSpace = CGColorSpaceCreateDeviceRGB()
-    let gradient = CGGradientCreateWithColors(colorSpace, [ColorSwatch.sr_mediumTeal.CGColor, ColorSwatch.sr_darkChalkGreen.CGColor], [0.0, 1.0])
-    CGContextDrawRadialGradient(ctx, gradient, center, 0.0, center, 50.0, [])
+//    let ctx = UIGraphicsGetCurrentContext()
+//    let colorSpace = CGColorSpaceCreateDeviceRGB()
+//    let gradient = CGGradient(colorsSpace: colorSpace, colors: [ColorSwatch.sr_mediumTeal.cgColor, ColorSwatch.sr_darkChalkGreen.cgColor], locations: [0.0, 1.0])
+//    ctx.drawRadialGradient(gradient, startCenter: center, startRadius: 0.0, endCenter: center, endRadius: 50.0, options: [])
   }
 }
 
 
 // ---------------------   TapTrackingViewDelegate   ------------------ //
 protocol TapTrackingViewDelegate {
-  func viewWasTapped(atPoint: CGPoint);
+  func viewWasTapped(_ atPoint: CGPoint);
 }
 
 // ----------------------   TapTrackingView   ----------------------- //
@@ -36,8 +36,8 @@ class TapTrackingView: UIView {
   
   internal var tapTrackingDelegate: TapTrackingViewDelegate?
   
-  override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-    let hitView = super.hitTest(point, withEvent: event)
+  override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    let hitView = super.hitTest(point, with: event)
     if hitView == self {
       self.tapTrackingDelegate?.viewWasTapped(point)
       return self
@@ -73,7 +73,7 @@ class Day29ViewController: UIViewController, TapTrackingViewDelegate {
   }
   
   internal func configureConstraints() {
-    self.tapView.snp_makeConstraints { (make) -> Void in
+    self.tapView.snp.makeConstraints { (make) -> Void in
       make.left.right.centerY.equalTo(self.view)
       make.height.equalTo(300.0)
     }
@@ -83,17 +83,17 @@ class Day29ViewController: UIViewController, TapTrackingViewDelegate {
     self.view.addSubview(tapView)
   }
   
-  func viewWasTapped(atPoint: CGPoint) {
+  func viewWasTapped(_ atPoint: CGPoint) {
 //    let centerPointInView: CGPoint = CGRectGetMidX(self.tapView.bounds)*&CGRectGetMidY(self.tapView.bounds)
     let initialRadius: CGFloat = 4.0
     let longestSideLength: CGFloat = fmax(self.tapView.bounds.width, self.tapView.bounds.height)
     let scaleFactor: CGFloat = longestSideLength / (initialRadius * 2)
     
-    let path: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(atPoint.x - initialRadius, atPoint.y - initialRadius, initialRadius * 2, initialRadius * 2))
+    let path: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: atPoint.x - initialRadius, y: atPoint.y - initialRadius, width: initialRadius * 2, height: initialRadius * 2))
     
     let shapeLayer: CAShapeLayer = CAShapeLayer()
-    shapeLayer.path = path.CGPath
-    shapeLayer.fillColor = ColorSwatch.sr_hipsterBlueBlack.CGColor
+    shapeLayer.path = path.cgPath
+    shapeLayer.fillColor = ColorSwatch.sr_hipsterBlueBlack.cgColor
     shapeLayer.strokeColor = shapeLayer.fillColor
     shapeLayer.frame = self.tapView.bounds
     

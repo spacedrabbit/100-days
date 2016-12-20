@@ -12,106 +12,106 @@ class Day9ViewController: UIViewController {
   
   var containerView: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.clearColor()
-    view.layer.doubleSided = true
+    view.backgroundColor = UIColor.clear
+    view.layer.isDoubleSided = true
     return view;
   }()
   
   var side1: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.blueColor()
+    view.backgroundColor = UIColor.blue
     return view
   }()
   
   var label1: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(24.0)
-    label.textColor = UIColor.whiteColor()
+    label.font = UIFont.systemFont(ofSize: 24.0)
+    label.textColor = UIColor.white
     label.text = "1"
     return label
   }()
   
   var side2: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.purpleColor()
+    view.backgroundColor = UIColor.purple
     return view
   }()
   
   var label2: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(24.0)
-    label.textColor = UIColor.whiteColor()
+    label.font = UIFont.systemFont(ofSize: 24.0)
+    label.textColor = UIColor.white
     label.text = "2"
     return label
   }()
   
   var side3: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.redColor()
+    view.backgroundColor = UIColor.red
     return view
   }()
   
   var label3: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(24.0)
-    label.textColor = UIColor.whiteColor()
+    label.font = UIFont.systemFont(ofSize: 24.0)
+    label.textColor = UIColor.white
     label.text = "3"
     return label
   }()
   
   var side4: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.greenColor()
+    view.backgroundColor = UIColor.green
     return view
     
   }()
   
   var label4: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(24.0)
-    label.textColor = UIColor.whiteColor()
+    label.font = UIFont.systemFont(ofSize: 24.0)
+    label.textColor = UIColor.white
     label.text = "4"
     return label
   }()
   
   var side5: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.yellowColor()
+    view.backgroundColor = UIColor.yellow
     return view
   }()
   
   var label5: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(24.0)
-    label.textColor = UIColor.whiteColor()
+    label.font = UIFont.systemFont(ofSize: 24.0)
+    label.textColor = UIColor.white
     label.text = "5"
     return label
   }()
   
   var side6: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.orangeColor()
+    view.backgroundColor = UIColor.orange
     return view
   }()
   
   var label6: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(24.0)
-    label.textColor = UIColor.whiteColor()
+    label.font = UIFont.systemFont(ofSize: 24.0)
+    label.textColor = UIColor.white
     label.text = "6"
     return label
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     self.setupViewHierarchy()
     self.configureConstraints()
 
     
-    UIView.animateWithDuration(5.0) { () -> Void in
+    UIView.animate(withDuration: 5.0, animations: { () -> Void in
       self.transformLayersOfCube()
-    }
+    }) 
     
   }
   
@@ -125,12 +125,12 @@ class Day9ViewController: UIViewController {
     let boundingRect: CGRect = self.containerView.frame
     
     // left/right sides
-    self.side1.layer.anchorPoint = CGPointMake(1.0, 0.5)
-    self.side1.layer.position = CGPointMake(self.side1.frame.origin.x / 2.0, self.side1.frame.origin.y)
+    self.side1.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+    self.side1.layer.position = CGPoint(x: self.side1.frame.origin.x / 2.0, y: self.side1.frame.origin.y)
     self.side1.layer.transform = CATransform3DMakeRotation(ninety, 0.0, 1.0, 0.0)
 //    self.side1.layer.transform = CATransform3DMakeTranslation(1.0, 0.0, 0.0)
-    self.side2.layer.anchorPoint = CGPointMake(0.0, 0.5)
-    self.side2.layer.position = CGPointMake(self.side2.frame.size.width, self.side2.frame.origin.y)
+    self.side2.layer.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+    self.side2.layer.position = CGPoint(x: self.side2.frame.size.width, y: self.side2.frame.origin.y)
     self.side2.layer.transform = CATransform3DMakeRotation(ninety, 0.0, 0.0, 1.0)
 //    self.side2.layer.transform = CATransform3DMakeTranslation(0.0, 1.0, 0.0)
     
@@ -148,35 +148,35 @@ class Day9ViewController: UIViewController {
   
   
   internal func configureConstraints() {
-    self.containerView.snp_makeConstraints { (make) -> Void in
-      make.leading.equalTo(self.view.snp_leading)
-      make.trailing.equalTo(self.view.snp_trailing)
-      make.top.equalTo(self.view.snp_bottom).multipliedBy(0.25)
-      make.bottom.equalTo(self.view.snp_bottom).multipliedBy(0.75)
+    self.containerView.snp.makeConstraints { (make) -> Void in
+      make.leading.equalTo(self.view.snp.leading)
+      make.trailing.equalTo(self.view.snp.trailing)
+      make.top.equalTo(self.view.snp.bottom).multipliedBy(0.25)
+      make.bottom.equalTo(self.view.snp.bottom).multipliedBy(0.75)
     }
-    self.side1.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(100.0, 100.0))
-      make.center.equalTo(self.containerView.snp_center)
+    self.side1.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 100.0, height: 100.0))
+      make.center.equalTo(self.containerView.snp.center)
     }
-    self.side2.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(100.0, 100.0))
-      make.center.equalTo(self.containerView.snp_center)
+    self.side2.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 100.0, height: 100.0))
+      make.center.equalTo(self.containerView.snp.center)
     }
-//    self.side3.snp_makeConstraints { (make) -> Void in
+//    self.side3.snp.makeConstraints { (make) -> Void in
 //      make.size.equalTo(CGSizeMake(100.0, 100.0))
-//      make.center.equalTo(self.containerView.snp_center)
+//      make.center.equalTo(self.containerView.snp.center)
 //    }
-//    self.side4.snp_makeConstraints { (make) -> Void in
+//    self.side4.snp.makeConstraints { (make) -> Void in
 //      make.size.equalTo(CGSizeMake(100.0, 100.0))
-//      make.center.equalTo(self.containerView.snp_center)
+//      make.center.equalTo(self.containerView.snp.center)
 //    }
-//    self.side5.snp_makeConstraints { (make) -> Void in
+//    self.side5.snp.makeConstraints { (make) -> Void in
 //      make.size.equalTo(CGSizeMake(100.0, 100.0))
-//      make.center.equalTo(self.containerView.snp_center)
+//      make.center.equalTo(self.containerView.snp.center)
 //    }
-//    self.side6.snp_makeConstraints { (make) -> Void in
+//    self.side6.snp.makeConstraints { (make) -> Void in
 //      make.size.equalTo(CGSizeMake(100.0, 100.0))
-//      make.center.equalTo(self.containerView.snp_center)
+//      make.center.equalTo(self.containerView.snp.center)
 //    }
 
   }

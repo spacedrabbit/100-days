@@ -10,7 +10,7 @@ import UIKit
 
 class TouchDragControl: UIControl {
   
-  private var lastMeasurement: NSDate?
+  fileprivate var lastMeasurement: Date?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -24,7 +24,7 @@ class TouchDragControl: UIControl {
   }
   
   internal func configureConstraints() {
-    self.interiorControl.snp_makeConstraints { (make) -> Void in
+    self.interiorControl.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self)
       make.edges.equalTo(self).inset(UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0))
     }
@@ -35,41 +35,41 @@ class TouchDragControl: UIControl {
   }
   
   // MARK: - Helpers
-  internal func updateControlLocation(offset: CGPoint, currentFrame: CGRect, xAxisVelocity: Double = 0.0, yAxisVelocity: Double = 0.0) {
+  internal func updateControlLocation(_ offset: CGPoint, currentFrame: CGRect, xAxisVelocity: Double = 0.0, yAxisVelocity: Double = 0.0) {
     
     let newX = currentFrame.origin.x + offset.x
     let newY = currentFrame.origin.y + offset.y
-    let newControlFrame = CGRectMake(newX, newY, currentFrame.size.width, currentFrame.size.height)
+    let newControlFrame = CGRect(x: newX, y: newY, width: currentFrame.size.width, height: currentFrame.size.height)
 
-    let convertedInitialPoint: CGPoint = self.convertPoint(self.interiorControl.center, toView: self.superview!)
+    let convertedInitialPoint: CGPoint = self.convert(self.interiorControl.center, to: self.superview!)
     self.interiorControl.center = convertedInitialPoint
     
-    UIView.animateWithDuration(0.000001, animations: { () -> Void in
+    UIView.animate(withDuration: 0.000001, animations: { () -> Void in
       self.frame = newControlFrame
       self.interiorControl.center = convertedInitialPoint
-      }) { (complete: Bool) -> Void in
+      }, completion: { (complete: Bool) -> Void in
         if complete {
-          UIView.animateWithDuration(0.000001, delay: 0.25, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: [.LayoutSubviews, .BeginFromCurrentState], animations: { () -> Void in
-            self.interiorControl.center = self.convertPoint(self.interiorControl.center, toView: self.superview!)
+          UIView.animate(withDuration: 0.000001, delay: 0.25, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: [.layoutSubviews, .beginFromCurrentState], animations: { () -> Void in
+            self.interiorControl.center = self.convert(self.interiorControl.center, to: self.superview!)
             }) { (complete: Bool) -> Void in
               
           }
         }
-    }
+    }) 
   }
   
   // MARK: - UIControl Override
-  override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-    let now: NSDate = NSDate()
+  override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+    let now: Date = Date()
     if lastMeasurement == nil {
       print("date was nil")
-      lastMeasurement = NSDate()
+      lastMeasurement = Date()
     }
     
-    let lastTimeSinceMeasurement: NSTimeInterval = (lastMeasurement?.timeIntervalSinceDate(now))!
+    let lastTimeSinceMeasurement: TimeInterval = (lastMeasurement?.timeIntervalSince(now))!
     
-    let currentRelativeLocation: CGPoint = touch.preciseLocationInView(self.superview!)
-    let previousRelativeLocation: CGPoint = touch.precisePreviousLocationInView(self.superview!)
+    let currentRelativeLocation: CGPoint = touch.preciseLocation(in: self.superview!)
+    let previousRelativeLocation: CGPoint = touch.precisePreviousLocation(in: self.superview!)
     let currentFrame: CGRect = touch.view!.frame
     
     
@@ -79,7 +79,7 @@ class TouchDragControl: UIControl {
     let relativeXVelocity = fabs(Double(deltaX) / Double(lastTimeSinceMeasurement))
     let relativeYVelocity = fabs(Double(deltaY) / Double(lastTimeSinceMeasurement))
     
-    self.updateControlLocation(CGPointMake( deltaX, deltaY), currentFrame: currentFrame, xAxisVelocity: relativeXVelocity, yAxisVelocity: relativeYVelocity)
+    self.updateControlLocation(CGPoint( x: deltaX, y: deltaY), currentFrame: currentFrame, xAxisVelocity: relativeXVelocity, yAxisVelocity: relativeYVelocity)
     
     return true
   }
@@ -87,7 +87,7 @@ class TouchDragControl: UIControl {
   // MARK: - Lazys
   internal lazy var interiorControl: UIControl = {
     let control: UIControl = UIControl()
-    control.backgroundColor = UIColor.redColor()
+    control.backgroundColor = UIColor.red
     return control
   }()
   

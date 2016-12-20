@@ -30,9 +30,9 @@ class Day36ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  func splitNumberIntoComponents(num: Int) {
+  func splitNumberIntoComponents(_ num: Int) {
     
-    let nsnum: NSNumber = NSNumber(integer: num)
+    let nsnum: NSNumber = NSNumber(value: num as Int)
     let stringNum: String = nsnum.stringValue
     
     

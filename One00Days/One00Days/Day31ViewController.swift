@@ -12,7 +12,7 @@ class CubicUnitManager {
   
   static let manager: CubicUnitManager = CubicUnitManager()
   
-  class func generateGridToFit(view: UIView, usingLength length: CGFloat) -> CubicGrid {
+  class func generateGridToFit(_ view: UIView, usingLength length: CGFloat) -> CubicGrid {
     let cubicGrid: CubicGrid = CubicGrid(withCubicSideLength: length).createGridForView(view).drawGridInView(view)
     return cubicGrid
   }

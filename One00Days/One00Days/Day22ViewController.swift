@@ -15,7 +15,7 @@ internal struct MatrixKey {
   static let M34: Int = 4
 }
 
-public class Random {
+open class Random {
   class func Color() -> UIColor {
     return UIColor.init(red: CGFloat(Double(arc4random_uniform(255))/255.0), green: CGFloat(Double(arc4random_uniform(255))/255.0), blue: CGFloat(Double(arc4random_uniform(255))/255.0), alpha: 1.0)
   }
@@ -36,9 +36,9 @@ class Day22ViewController: UIViewController {
   
   lazy var stackView: UIStackView = {
     let stack: UIStackView = UIStackView()
-    stack.axis = .Vertical
-    stack.alignment = .Fill
-    stack.distribution = .EqualSpacing
+    stack.axis = .vertical
+    stack.alignment = .fill
+    stack.distribution = .equalSpacing
     return stack
   }()
   
@@ -56,11 +56,11 @@ class Day22ViewController: UIViewController {
   }
   
   internal func addTapGestureToView () {
-    let g: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "didTapTransformView:")
+    let g: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Day22ViewController.didTapTransformView(_:)))
     self.transformView.addGestureRecognizer(g)
   }
   
-  internal func didTapTransformView(sender: AnyObject?) {
+  internal func didTapTransformView(_ sender: AnyObject?) {
     if let tapG: UITapGestureRecognizer = sender as? UITapGestureRecognizer {
       if tapG.view == self.transformView {
         self.getCurrentSliderValuesAndAnimate()
@@ -68,7 +68,7 @@ class Day22ViewController: UIViewController {
     }
   }
   
-  internal func addTransform(transform: CATransform3D?) {
+  internal func addTransform(_ transform: CATransform3D?) {
     self.transformView.layer.transform = CATransform3DIdentity
     if var t = transform {
 //      t.m41 = 0.0
@@ -84,9 +84,9 @@ class Day22ViewController: UIViewController {
       let originalFrame: CGRect = self.transformView.layer.frame
       let originalBounds: CGRect = self.transformView.layer.bounds
       
-      self.transformView.layer.anchorPoint = CGPointMake(0.0, 0.0)
+      self.transformView.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
 //      self.transformView.layer.position = CGPointMake(CGRectGetMinX(self.transformView.frame) - CGRectGetMidX(self.transformView.bounds), CGRectGetMinY(self.transformView.frame) - CGRectGetMidY(self.transformView.bounds))
-      UIView.animateWithDuration(3.0, delay: 0.0, options: [.LayoutSubviews], animations: { () -> Void in
+      UIView.animate(withDuration: 3.0, delay: 0.0, options: [.layoutSubviews], animations: { () -> Void in
         self.transformView.layer.transform = t
         }, completion: { (complete: Bool) -> Void in
           self.transformView.layer.frame = originalFrame
@@ -106,7 +106,7 @@ class Day22ViewController: UIViewController {
     self.addTransform(trans)
   }
   
-  internal func updateTransform(inout transform: CATransform3D?, slider: UISlider) {
+  internal func updateTransform(_ transform: inout CATransform3D?, slider: UISlider) {
     if var t = transform {
       switch slider.tag {
       case MatrixKey.M31:
@@ -137,18 +137,18 @@ class Day22ViewController: UIViewController {
   
   internal func configureConstraints() {
     
-    self.gridView.snp_makeConstraints { (make) -> Void in
+    self.gridView.snp.makeConstraints { (make) -> Void in
       make.top.left.right.equalTo(self.view)
       make.height.equalTo(400.0)
     }
     
-    self.transformView.snp_makeConstraints { (make) -> Void in
+    self.transformView.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self.gridView)
-      make.size.equalTo(CGSizeMake(150.0, 150.0))
+      make.size.equalTo(CGSize(width: 150.0, height: 150.0))
     }
     
-    self.stackView.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(self.gridView.snp_bottom)
+    self.stackView.snp.makeConstraints { (make) -> Void in
+      make.top.equalTo(self.gridView.snp.bottom)
       make.left.bottom.right.equalTo(self.view).inset(10.0)
     }
   }

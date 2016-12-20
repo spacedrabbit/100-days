@@ -20,14 +20,14 @@ class UnOfficialDay44ViewController: UIViewController {
   
   
   internal func configureConstraints() {
-    self.backgroundView.snp_makeConstraints { (make) -> Void in
+    self.backgroundView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self.view)
     }
     
-    self.theSunView.snp_makeConstraints { (make) -> Void in
+    self.theSunView.snp.makeConstraints { (make) -> Void in
       make.centerX.equalTo(self.backgroundView)
-      make.size.equalTo(CGSizeMake(150.0, 150.0))
-      make.top.equalTo(self.backgroundView.snp_centerY)
+      make.size.equalTo(CGSize(width: 150.0, height: 150.0))
+      make.top.equalTo(self.backgroundView.snp.centerY)
     }
   }
   
@@ -38,7 +38,7 @@ class UnOfficialDay44ViewController: UIViewController {
   
   // MARK: - Lazy
   lazy var backgroundView: BackgroundView = {
-    let view: BackgroundView = BackgroundView(forTimeOfDay: .Afternoon)
+    let view: BackgroundView = BackgroundView(forTimeOfDay: .afternoon)
     return view
   }()
   

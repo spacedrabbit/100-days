@@ -17,13 +17,13 @@ class Day23ViewController: UIViewController {
   }()
   
   let progress: CircularProgressView = {
-    let view: CircularProgressView = CircularProgressView(frame: CGRectMake(0,0,200,200))
+    let view: CircularProgressView = CircularProgressView(frame: CGRect(x: 0,y: 0,width: 200,height: 200))
     return view
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     
     
@@ -37,19 +37,19 @@ class Day23ViewController: UIViewController {
   }
   
   
-  internal func drawVerticalGreenLineIn(view view: UIView) {
-    let midPoint: CGPoint = CGPointMake(CGRectGetMidX(view.bounds), CGRectGetMidY(view.bounds))
+  internal func drawVerticalGreenLineIn(view: UIView) {
+    let midPoint: CGPoint = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
     let radius: CGFloat = fmax(view.bounds.width, view.bounds.height) / 2.0
     
     let linePath: UIBezierPath = UIBezierPath()
-    linePath.moveToPoint(midPoint)
-    linePath.addLineToPoint(CGPointMake(midPoint.x, midPoint.y + radius))
+    linePath.move(to: midPoint)
+    linePath.addLine(to: CGPoint(x: midPoint.x, y: midPoint.y + radius))
     
     let shapeLayer: CAShapeLayer = CAShapeLayer()
-    shapeLayer.path = linePath.CGPath
+    shapeLayer.path = linePath.cgPath
     shapeLayer.lineWidth = 5.0
-    shapeLayer.strokeColor = ColorSwatch.sr_hipsterOlive.CGColor
-    shapeLayer.fillColor = UIColor.clearColor().CGColor
+    shapeLayer.strokeColor = ColorSwatch.sr_hipsterOlive.cgColor
+    shapeLayer.fillColor = UIColor.clear.cgColor
     
     view.layer.addSublayer(shapeLayer)
     
@@ -77,7 +77,7 @@ class Day23ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.radarView.snp_makeConstraints { (make) -> Void in
+    self.radarView.snp.makeConstraints { (make) -> Void in
       make.left.right.centerY.equalTo(self.view)
       make.height.equalTo(self.view.bounds.width)
     }

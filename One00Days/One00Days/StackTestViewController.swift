@@ -12,9 +12,9 @@ class StackTestViewController: UIViewController {
   
   lazy var stackView: UIStackView = {
     let stackView: UIStackView = UIStackView()
-    stackView.axis = .Vertical
-    stackView.alignment = .Center
-    stackView.distribution = .EqualSpacing
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.distribution = .equalSpacing
     stackView.spacing = 10.0
     return stackView
   }()
@@ -22,13 +22,13 @@ class StackTestViewController: UIViewController {
   lazy var scrollingView: UIScrollView = {
     let scrollView: UIScrollView = UIScrollView()
     scrollView.alwaysBounceHorizontal = false
-    scrollView.backgroundColor = UIColor.redColor()
+    scrollView.backgroundColor = UIColor.red
     return scrollView
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     setupViewHierarchy()
     configureConstraints()
@@ -41,17 +41,17 @@ class StackTestViewController: UIViewController {
   
   internal func configureConstraints() {
     
-    scrollingView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.view.snp_edges)
+    scrollingView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.view.snp.edges)
     }
     
-    stackView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.scrollingView.snp_edges)
+    stackView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.scrollingView.snp.edges)
     }
     
     for view in stackView.arrangedSubviews {
-      view.snp_makeConstraints(closure: { (make) -> Void in
-        make.size.equalTo(CGSizeMake(self.view.bounds.width, 200.0))
+      view.snp.makeConstraints({ (make) -> Void in
+        make.size.equalTo(CGSize(width: self.view.bounds.width, height: 200.0))
       })
     }
     
@@ -63,7 +63,7 @@ class StackTestViewController: UIViewController {
     self.scrollingView.addSubview(stackView)
     
     let viewsArray: [UIView] = [createView(), createView(), createView(), createView(), createView(), createView(), createView()]
-    for (idx, view) in viewsArray.enumerate() {
+    for (idx, view) in viewsArray.enumerated() {
       view.tag = idx
       self.stackView.addArrangedSubview(view)
     }

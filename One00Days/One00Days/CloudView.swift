@@ -12,9 +12,9 @@ import SnapKit
 
 
 internal enum ScenePosition {
-  case ForeGround
-  case MidGround
-  case BackGround
+  case foreGround
+  case midGround
+  case backGround
 }
 
 
@@ -39,24 +39,24 @@ internal struct CloundHelper {
 
 internal class Cloud: UIView {
   
-  internal static let positions: [ScenePosition] = [.ForeGround, .MidGround, .BackGround]
+  internal static let positions: [ScenePosition] = [.foreGround, .midGround, .backGround]
   internal static let clouds: [UIImage?] = CloundHelper.allCloudImages()
   
-  internal var relativePosition: ScenePosition = .ForeGround
+  internal var relativePosition: ScenePosition = .foreGround
   internal var image: UIImage?
   
   
   // MARK: - Initialization
   // ------------------------------------------------------------
   convenience internal init(withRelativePosition position: ScenePosition) {
-    self.init(frame: CGRectZero)
+    self.init(frame: CGRect.zero)
     self.relativePosition = position
     self.image = self.cloudImageView.image
     
     switch position {
-    case .ForeGround: self.postionIndicator.text = "Fg"
-    case .MidGround: self.postionIndicator.text = "Mg"
-    case .BackGround: self.postionIndicator.text = "Bg"
+    case .foreGround: self.postionIndicator.text = "Fg"
+    case .midGround: self.postionIndicator.text = "Mg"
+    case .backGround: self.postionIndicator.text = "Bg"
     }
   }
   
@@ -75,11 +75,11 @@ internal class Cloud: UIView {
   // MARK: - Layout
   // ------------------------------------------------------------
   internal func configureConstraints() {
-    self.cloudImageView.snp_makeConstraints { (make) -> Void in
+    self.cloudImageView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self)
     }
     
-    self.postionIndicator.snp_makeConstraints { (make) -> Void in
+    self.postionIndicator.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self.cloudImageView)
     }
   }
@@ -94,24 +94,24 @@ internal class Cloud: UIView {
   // ------------------------------------------------------------
   lazy var cloudImageView: UIImageView = {
     let imageView: UIImageView = UIImageView(image: self.cloudImage())
-    imageView.contentMode = .ScaleAspectFill
+    imageView.contentMode = .scaleAspectFill
     return imageView
   }()
   
   lazy var postionIndicator: UILabel = {
     let label: UILabel = UILabel()
-    label.font = UIFont.systemFontOfSize(20.0)
-    label.textColor = UIColor.redColor()
+    label.font = UIFont.systemFont(ofSize: 20.0)
+    label.textColor = UIColor.red
     return label
   }()
   
   // MARK: - Helpers
   // ------------------------------------------------------------
-  private func cloudImage() -> UIImage? {
+  fileprivate func cloudImage() -> UIImage? {
     return Cloud.clouds[ Int(arc4random_uniform( UInt32(Cloud.clouds.count)))]
   }
   
-  internal static func generateClouds(number: Int) -> [Cloud] {
+  internal static func generateClouds(_ number: Int) -> [Cloud] {
     
     var cloudArray: [Cloud] = []
     for _ in 0...number {

@@ -16,12 +16,12 @@ typealias PrismColors = (leftColor: UIColor, rightColor: UIColor, bottomColor: U
 class HexCube {
   // TODO: need to map this enum to their CGPoints
   enum HexPlacement {
-    case ToTheLeft
-    case ToTheRight
-    case Above
-    case Below
-    case Infront
-    case Behind
+    case toTheLeft
+    case toTheRight
+    case above
+    case below
+    case infront
+    case behind
   }
   
   static let numberOfVertices: Int = 6
@@ -37,14 +37,14 @@ class HexCube {
   var prismLeftSidePoints: HexPoints = []
   var prismFrontSidePoints: HexPoints = []
   
-  var centerPoint: CGPoint = CGPointMake(0.0, 0.0)
-  var prismApexPoint: CGPoint = CGPointMake(0.0, 0.0)
-  var originPointForHexPlacedAbove: CGPoint = CGPointMake(0.0, 0.0)
-  var originPointForHexPlacedBelow: CGPoint = CGPointMake(0.0, 0.0)
-  var originPointForHexToTheLeft: CGPoint = CGPointMake(0.0, 0.0)
-  var originPointForHexToTheRight: CGPoint = CGPointMake(0.0, 0.0)
-  var originPointForHexInFront: CGPoint = CGPointMake(0.0, 0.0)
-  var originPointForHexPlacedBehind: CGPoint = CGPointMake(0.0, 0.0)
+  var centerPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var prismApexPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var originPointForHexPlacedAbove: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var originPointForHexPlacedBelow: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var originPointForHexToTheLeft: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var originPointForHexToTheRight: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var originPointForHexInFront: CGPoint = CGPoint(x: 0.0, y: 0.0)
+  var originPointForHexPlacedBehind: CGPoint = CGPoint(x: 0.0, y: 0.0)
   
   let defaultHexColorPalette: HexColors = (ColorSwatch.sr_coolWhite, ColorSwatch.sr_darkChalkGreen, ColorSwatch.sr_mintGreen)
   let defaultPrismColorPalette: PrismColors = (ColorSwatch.sr_darkTeal, ColorSwatch.sr_mediumTeal, ColorSwatch.sr_coolWhite)
@@ -65,7 +65,7 @@ class HexCube {
       let dx: CGFloat = center.x - radius * cos(CGFloat(vertex) * angleSize + rotationAdjustment)
       let dy: CGFloat = center.y - radius * sin(CGFloat(vertex) * angleSize + rotationAdjustment)
       
-      points.append(CGPointMake(dx, dy))
+      points.append(CGPoint(x: dx, y: dy))
     }
     
     self.vertexPoints = points;
@@ -124,43 +124,43 @@ class HexCube {
   }
   
   /// Helper Drawing Functions
-  private func drawLeftSideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  fileprivate func drawLeftSideOfHex(_ points: HexPoints, color: UIColor) -> CAShapeLayer {
     let path: UIBezierPath = UIBezierPath()
-    path.moveToPoint(points[0])
-    path.addLineToPoint(points[1])
-    path.addLineToPoint(points[2])
-    path.addLineToPoint(self.centerPoint)
-    path.closePath()
+    path.move(to: points[0])
+    path.addLine(to: points[1])
+    path.addLine(to: points[2])
+    path.addLine(to: self.centerPoint)
+    path.close()
     
     let layer: CAShapeLayer = CAShapeLayer()
-    layer.path = path.CGPath
-    layer.fillColor = color.CGColor
-    layer.strokeColor = color.CGColor
+    layer.path = path.cgPath
+    layer.fillColor = color.cgColor
+    layer.strokeColor = color.cgColor
     layer.lineWidth = 2.0
     
     path.stroke()
     return layer
   }
   
-  private func drawFrontSideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  fileprivate func drawFrontSideOfHex(_ points: HexPoints, color: UIColor) -> CAShapeLayer {
     return self.drawLeftSideOfHex(points, color: color)
   }
   
-  private func drawTopSideOfHex(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  fileprivate func drawTopSideOfHex(_ points: HexPoints, color: UIColor) -> CAShapeLayer {
     return self.drawLeftSideOfHex(points, color: color)
   }
   
-  private func drawLeftSideOfPrism(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  fileprivate func drawLeftSideOfPrism(_ points: HexPoints, color: UIColor) -> CAShapeLayer {
     let path: UIBezierPath = UIBezierPath()
-    path.moveToPoint(points[0])
-    path.addLineToPoint(points[1])
-    path.addLineToPoint(points[2])
-    path.closePath()
+    path.move(to: points[0])
+    path.addLine(to: points[1])
+    path.addLine(to: points[2])
+    path.close()
     
     let layer: CAShapeLayer = CAShapeLayer()
-    layer.path = path.CGPath
-    layer.fillColor = color.CGColor
-    layer.strokeColor = color.CGColor
+    layer.path = path.cgPath
+    layer.fillColor = color.cgColor
+    layer.strokeColor = color.cgColor
     layer.lineWidth = 1.0
     layer.lineJoin = kCALineCapRound
     
@@ -168,16 +168,16 @@ class HexCube {
     return layer
   }
   
-  private func drawFrontSideOfPrism(points: HexPoints, color: UIColor) -> CAShapeLayer {
+  fileprivate func drawFrontSideOfPrism(_ points: HexPoints, color: UIColor) -> CAShapeLayer {
     return self.drawLeftSideOfPrism(points, color: color)
   }
   
   /// Helpers
-  private func deg2Rad(degrees: CGFloat) -> CGFloat {
+  fileprivate func deg2Rad(_ degrees: CGFloat) -> CGFloat {
     return CGFloat(M_PI) * degrees/180.0
   }
   
-  private func midPointOf(a: CGPoint, b: CGPoint) -> CGPoint {
-    return CGPointMake((a.x + b.x) / 2.0, (a.y + b.y) / 2.0)
+  fileprivate func midPointOf(_ a: CGPoint, b: CGPoint) -> CGPoint {
+    return CGPoint(x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0)
   }
 }

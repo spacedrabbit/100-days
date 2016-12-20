@@ -13,13 +13,13 @@ class Day16ViewController: UIViewController {
   let hexHelper: HexCube = HexCube()
   lazy var hexView: UIView = {
     let view: UIView = UIView()
-    view.backgroundColor = UIColor.yellowColor()
+    view.backgroundColor = UIColor.yellow
     return view
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     setupViewHierarchy()
     configureConstraints()
@@ -31,14 +31,14 @@ class Day16ViewController: UIViewController {
   }
   
   internal func drawHex() {
-    hexHelper.vertexPointsForHexCube(withOrigin: CGPointMake(self.hexView.bounds.midX, self.hexView.bounds.midY), radius:(self.hexView.frame.width / 2.0))
+    hexHelper.vertexPointsForHexCube(withOrigin: CGPoint(x: self.hexView.bounds.midX, y: self.hexView.bounds.midY), radius:(self.hexView.frame.width / 2.0))
     hexHelper.drawDefaultHexCube(inView: self.hexView)
   }
   
   internal func configureConstraints() {
-    self.hexView.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(200.0, 200.0))
-      make.center.equalTo(self.view.snp_center)
+    self.hexView.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 200.0, height: 200.0))
+      make.center.equalTo(self.view.snp.center)
     }
     
     self.view.layoutIfNeeded()

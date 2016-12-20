@@ -9,27 +9,27 @@
 import Foundation
 import UIKit
 
-public class CircularProgressView: UIView {
+open class CircularProgressView: UIView {
   
-    public var lineWidth: CGFloat = 4.0 {
+    open var lineWidth: CGFloat = 4.0 {
       didSet {
         self.configureShapeLayer()
       }
     }
   
-    public var progressColor: UIColor = UIColor.redColor() {
+    open var progressColor: UIColor = UIColor.red {
       didSet {
         self.configureShapeLayer()
       }
     }
   
-    public var trackColor: UIColor = UIColor.orangeColor() {
+    open var trackColor: UIColor = UIColor.orange {
       didSet {
         self.configureShapeLayer()
       }
     }
   
-    public var progress: CGFloat = 25.0 {
+    open var progress: CGFloat = 25.0 {
       didSet {
         self.configureShapeLayer()
       }
@@ -39,7 +39,7 @@ public class CircularProgressView: UIView {
     return CAShapeLayer()
   }()
   
-  private lazy var shapeLayer: CAShapeLayer = {
+  fileprivate lazy var shapeLayer: CAShapeLayer = {
     return CAShapeLayer()
   }()
   
@@ -66,11 +66,11 @@ public class CircularProgressView: UIView {
     self.configureShapeLayer()
     self.layer.addSublayer(self.circleShape)
     
-    let progressTopCirclePath: UIBezierPath = UIBezierPath(ovalInRect: CGRectInset(frame, 2.0, 2.0))
+    let progressTopCirclePath: UIBezierPath = UIBezierPath(ovalIn: frame.insetBy(dx: 2.0, dy: 2.0))
     let topCircleLayer: CAShapeLayer = CAShapeLayer()
-    topCircleLayer.path = progressTopCirclePath.CGPath
-    topCircleLayer.fillColor = UIColor.purpleColor().CGColor
-    topCircleLayer.strokeColor = UIColor.greenColor().CGColor
+    topCircleLayer.path = progressTopCirclePath.cgPath
+    topCircleLayer.fillColor = UIColor.purple.cgColor
+    topCircleLayer.strokeColor = UIColor.green.cgColor
     topCircleLayer.lineWidth = 0.0
     
     self.layer.addSublayer(topCircleLayer)
@@ -82,29 +82,29 @@ public class CircularProgressView: UIView {
     anim.fromValue = 0.0
     anim.toValue = 1.0
     anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-    anim.removedOnCompletion = false
+    anim.isRemovedOnCompletion = false
     
-    self.circleShape.addAnimation(anim, forKey: "progress")
+    self.circleShape.add(anim, forKey: "progress")
   }
   
   internal func configureShapeLayer() {
     if let layer: CAShapeLayer = self.circleShape {
-      layer.path = pathForProgressAmount(self.progress).CGPath
+      layer.path = pathForProgressAmount(self.progress).cgPath
       layer.frame = self.bounds
-      layer.fillColor = self.progressColor.CGColor
+      layer.fillColor = self.progressColor.cgColor
       layer.lineWidth = self.lineWidth
-      layer.strokeColor = self.progressColor.CGColor
-      layer.backgroundColor = UIColor.blueColor().CGColor //UIColor.clearColor().CGColor
+      layer.strokeColor = self.progressColor.cgColor
+      layer.backgroundColor = UIColor.blue.cgColor //UIColor.clearColor().CGColor
     }
   }
   
-  internal func pathForProgressAmount(progress: CGFloat) -> UIBezierPath {
+  internal func pathForProgressAmount(_ progress: CGFloat) -> UIBezierPath {
     let progressInRad: CGFloat = CGFloat(M_PI) * ((3.6 * progress) / 180.0)
     
-    let center: CGPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
+    let center: CGPoint = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
     let startAngle: CGFloat = -CGFloat(M_PI_2)
     let endAngle: CGFloat =  startAngle + progressInRad
-    let radius: CGFloat = fmin(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)) / 2.0 - (self.lineWidth / 2.0);
+    let radius: CGFloat = fmin(self.bounds.width, self.bounds.height) / 2.0 - (self.lineWidth / 2.0);
     return UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
   }
   
@@ -112,7 +112,7 @@ public class CircularProgressView: UIView {
     super.init(coder: aDecoder)
   }
   
-  public func startAnimating(restart restart: Bool) {
+  open func startAnimating(restart: Bool) {
     if restart {
       self.progress = 0.0
     }

@@ -28,49 +28,49 @@ class Day20ViewController: UIViewController {
   
   internal func configureConstraints() {
     
-    self.topContainterView.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(self.view.snp_top)
-      make.left.equalTo(self.view.snp_left)
-      make.right.equalTo(self.view.snp_right)
+    self.topContainterView.snp.makeConstraints { (make) -> Void in
+      make.top.equalTo(self.view.snp.top)
+      make.left.equalTo(self.view.snp.left)
+      make.right.equalTo(self.view.snp.right)
       make.height.equalTo(200.0)
     }
     
-    self.bottomContainerView.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(self.topContainterView.snp_bottom)
-      make.left.equalTo(self.view.snp_left)
-      make.right.equalTo(self.view.snp_right)
-      make.bottom.equalTo(self.view.snp_bottom)
+    self.bottomContainerView.snp.makeConstraints { (make) -> Void in
+      make.top.equalTo(self.topContainterView.snp.bottom)
+      make.left.equalTo(self.view.snp.left)
+      make.right.equalTo(self.view.snp.right)
+      make.bottom.equalTo(self.view.snp.bottom)
     }
     
-    self.libraryScrollView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(topContainterView.snp_edges)
+    self.libraryScrollView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(topContainterView.snp.edges)
     }
     
-    self.gridScrollView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(bottomContainerView.snp_edges)
+    self.gridScrollView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(bottomContainerView.snp.edges)
     }
     
-    self.topStackView.snp_makeConstraints { (make) -> Void in
+    self.topStackView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self.libraryScrollView)
       make.height.equalTo(self.topContainterView)
     }
     
-    self.bottomStackView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.gridScrollView.snp_edges)
+    self.bottomStackView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.gridScrollView.snp.edges)
       make.height.equalTo(self.bottomContainerView)
     }
     
     for stackedView in self.topStackView.arrangedSubviews {
-      stackedView.snp_makeConstraints(closure: { (make) -> Void in
-        make.size.equalTo(CGSizeMake(175.0, 175.0))
+      stackedView.snp.makeConstraints({ (make) -> Void in
+        make.size.equalTo(CGSize(width: 175.0, height: 175.0))
       })
     }
     
     for stackView in self.bottomStackView.arrangedSubviews {
       if let actualStackView: UIStackView = stackView as? UIStackView {
         for arrangedView in actualStackView.arrangedSubviews {
-          arrangedView.snp_makeConstraints(closure: { (make) -> Void in
-            make.size.equalTo(CGSizeMake(75.0, 75.0))
+          arrangedView.snp.makeConstraints({ (make) -> Void in
+            make.size.equalTo(CGSize(width: 75.0, height: 75.0))
           })
         }
       }
@@ -131,13 +131,13 @@ class Day20ViewController: UIViewController {
   // scrolls
   lazy var libraryScrollView: UIScrollView = {
     let view: UIScrollView = UIScrollView()
-    view.backgroundColor = UIColor.yellowColor()
+    view.backgroundColor = UIColor.yellow
     return view
   }()
   
   lazy var gridScrollView: UIScrollView = {
     let view: UIScrollView = UIScrollView()
-    view.backgroundColor = UIColor.redColor()
+    view.backgroundColor = UIColor.red
     return view
   }()
   
@@ -145,9 +145,9 @@ class Day20ViewController: UIViewController {
   // top stack
   lazy var topStackView: UIStackView = {
     let view: UIStackView = UIStackView()
-    view.distribution = .EqualSpacing
-    view.alignment = .Center
-    view.axis = .Horizontal
+    view.distribution = .equalSpacing
+    view.alignment = .center
+    view.axis = .horizontal
     return view
   }()
   
@@ -155,9 +155,9 @@ class Day20ViewController: UIViewController {
   lazy var bottomStackView: UIStackView = {
     let view: UIStackView = UIStackView()
     
-    view.distribution = .FillEqually
-    view.alignment = .Fill
-    view.axis = .Vertical
+    view.distribution = .fillEqually
+    view.alignment = .fill
+    view.axis = .vertical
     
     return view
   }()
@@ -166,9 +166,9 @@ class Day20ViewController: UIViewController {
   lazy var bottomStackViewRow1: UIStackView = {
     let view: UIStackView = UIStackView()
     
-    view.distribution = .EqualSpacing
-    view.alignment = .Center
-    view.axis = .Vertical
+    view.distribution = .equalSpacing
+    view.alignment = .center
+    view.axis = .vertical
     
     return view
   }()
@@ -176,9 +176,9 @@ class Day20ViewController: UIViewController {
   lazy var bottomStackViewRow2: UIStackView = {
     let view: UIStackView = UIStackView()
     
-    view.distribution = .EqualSpacing
-    view.alignment = .Center
-    view.axis = .Horizontal
+    view.distribution = .equalSpacing
+    view.alignment = .center
+    view.axis = .horizontal
 
     return view
   }()
@@ -186,9 +186,9 @@ class Day20ViewController: UIViewController {
   lazy var bottomStackViewRow3: UIStackView = {
     let view: UIStackView = UIStackView()
     
-    view.distribution = .EqualSpacing
-    view.alignment = .Center
-    view.axis = .Horizontal
+    view.distribution = .equalSpacing
+    view.alignment = .center
+    view.axis = .horizontal
     
     return view
   }()

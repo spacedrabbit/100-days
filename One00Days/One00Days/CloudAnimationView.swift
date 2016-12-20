@@ -36,30 +36,30 @@ class CloudAnimationView: UIView {
     cloudEmitterNode.emitterShape = kCAEmitterLayerCircle
     cloudEmitterNode.emitterSize = self.cloudGeneratorView.frame.size
     
-    let foregroundCells = self.makeCloudCellForPosition(.ForeGround)
-    let midgroundCells = self.makeCloudCellForPosition(.MidGround)
-    let backgroundCells = self.makeCloudCellForPosition(.BackGround)
+    let foregroundCells = self.makeCloudCellForPosition(.foreGround)
+    let midgroundCells = self.makeCloudCellForPosition(.midGround)
+    let backgroundCells = self.makeCloudCellForPosition(.backGround)
 
     cloudEmitterNode.emitterCells = [foregroundCells, midgroundCells, backgroundCells]
     self.cloudGeneratorView.layer.addSublayer(self.cloudEmitterNode)
   }
   
-  private func makeCloudCellForPosition(position: ScenePosition) -> CAEmitterCell {
+  fileprivate func makeCloudCellForPosition(_ position: ScenePosition) -> CAEmitterCell {
     let cell = CAEmitterCell()
     cell.emissionRange = CGFloat(0.0)
     cell.emissionLatitude = CGFloat(M_PI)
     cell.emissionLongitude = CGFloat(0.0)
-    cell.contents = Cloud(withRelativePosition: position).image?.CGImage
+    cell.contents = Cloud(withRelativePosition: position).image?.cgImage
     
     switch position {
-    case .ForeGround:
+    case .foreGround:
       cell.scale = 2.0
       cell.birthRate = 1.0
       cell.velocity = 750.0
       cell.alphaRange = 0.0
       cell.lifetime = 10.0
       
-    case .MidGround:
+    case .midGround:
       cell.scale = 0.50
       cell.birthRate = 0.25
       cell.velocity = 50.0
@@ -67,7 +67,7 @@ class CloudAnimationView: UIView {
       cell.alphaSpeed = 10.0
       cell.lifetime = 20.0
       
-    case .BackGround:
+    case .backGround:
       cell.scale = 0.15
       cell.birthRate = 0.1
       cell.velocity = 20.0
@@ -81,12 +81,12 @@ class CloudAnimationView: UIView {
   // MARK: - Layout
   // ------------------------------------------------------------
   internal func configureConstraints() {
-    self.trackView.snp_makeConstraints { (make) -> Void in
+    self.trackView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self)
     }
     
-    self.cloudGeneratorView.snp_makeConstraints { (make) -> Void in
-      make.left.equalTo(self.trackView.snp_right)
+    self.cloudGeneratorView.snp.makeConstraints { (make) -> Void in
+      make.left.equalTo(self.trackView.snp.right)
       make.top.bottom.equalTo(self.trackView)
       make.width.greaterThanOrEqualTo(100.0)
     }

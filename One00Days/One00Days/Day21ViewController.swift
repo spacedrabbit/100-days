@@ -9,73 +9,73 @@
 import UIKit
 
 class GridView: UIView {
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     let wt = rect.size.width; let ht = rect.size.height
     
     let ctx = UIGraphicsGetCurrentContext()
-    CGContextSetFillColorWithColor(ctx, UIColor.blackColor().CGColor)
-    CGContextFillRect(ctx, rect)
+    ctx?.setFillColor(UIColor.black.cgColor)
+    ctx?.fill(rect)
     
-    CGContextSetLineWidth(ctx, 1.0)
+    ctx?.setLineWidth(1.0)
     for step in 0...Int(ceil(ht / 10.0)) {
-      CGContextMoveToPoint(ctx, 0.0, CGFloat(step) * 10.0) // horizontal
-      CGContextAddLineToPoint(ctx, wt, CGFloat(step) * 10.0)
+      ctx?.move(to: CGPoint(x: 0.0, y: CGFloat(step) * 10.0)) // horizontal
+      ctx?.addLine(to: CGPoint(x: wt, y: CGFloat(step) * 10.0))
     }
     
     for step in 0...Int(ceil(wt / 10.0)) {
-      CGContextMoveToPoint(ctx, CGFloat(step) * 10.0, 0.0) // vertical
-      CGContextAddLineToPoint(ctx, CGFloat(step) * 10.0, ht)
+      ctx?.move(to: CGPoint(x: CGFloat(step) * 10.0, y: 0.0)) // vertical
+      ctx?.addLine(to: CGPoint(x: CGFloat(step) * 10.0, y: ht))
     }
     
-    CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_darkTeal.CGColor)
-    CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
+    ctx?.setStrokeColor(ColorSwatch.sr_darkTeal.cgColor)
+    ctx?.drawPath(using: CGPathDrawingMode.stroke)
   }
 }
 
 class AskewGridView: UIView {
   
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     let xt = rect.origin.x; let yt = rect.origin.y
     let wt = rect.size.width; let ht = rect.size.height
 
     let ctx = UIGraphicsGetCurrentContext()
-    CGContextMoveToPoint(ctx, xt, yt) // necessary call
+    ctx?.move(to: CGPoint(x: xt, y: yt)) // necessary call
     
     // start off by drawing the layer black
-    CGContextSetFillColorWithColor(ctx, UIColor.blackColor().CGColor)
-    CGContextFillRect(ctx, rect)
+    ctx?.setFillColor(UIColor.black.cgColor)
+    ctx?.fill(rect)
     
     // Purposefully set the line width to 5.0 here for save/restores. Currently, in this state the next stroke 
     // should produce lines of 5.0 width
-    CGContextSetLineWidth(ctx, 5.0)
+    ctx?.setLineWidth(5.0)
     
     // The current context is saved as is, and popped off onto a separate stack
-    CGContextSaveGState(ctx)
+    ctx?.saveGState()
     
     // This begins a new context, where i set the line width to be 1
-    CGContextSetLineWidth(ctx, 1.0)
+    ctx?.setLineWidth(1.0)
     for step in 0...Int(ceil(ht / 10.0)) {
-      CGContextMoveToPoint(ctx, 0.0, CGFloat(step) * 10.0) // horizontal
-      CGContextAddLineToPoint(ctx, wt, CGFloat(step) * 10.0)
+      ctx?.move(to: CGPoint(x: 0.0, y: CGFloat(step) * 10.0)) // horizontal
+      ctx?.addLine(to: CGPoint(x: wt, y: CGFloat(step) * 10.0))
     }
 
     // then i go and draw the grid lines
-    CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_mintGreen.CGColor)
-    CGContextDrawPath(ctx, CGPathDrawingMode.Stroke)
+    ctx?.setStrokeColor(ColorSwatch.sr_mintGreen.cgColor)
+    ctx?.drawPath(using: CGPathDrawingMode.stroke)
     
     // This call to restore, pushes the previous context back to be the current one. That context still has its
     // line width values set to 5.0, so that is why the following draw call produces thicker lines running parallel
     // to the y-axis
-    CGContextRestoreGState(ctx)
+    ctx?.restoreGState()
     
     
     for step in 0...Int(ceil(wt / 10.0)) {
-      CGContextMoveToPoint(ctx, CGFloat(step) * 10.0, 0.0) // vertical
-      CGContextAddLineToPoint(ctx, CGFloat(step) * 10.0, ht)
+      ctx?.move(to: CGPoint(x: CGFloat(step) * 10.0, y: 0.0)) // vertical
+      ctx?.addLine(to: CGPoint(x: CGFloat(step) * 10.0, y: ht))
     }
     
-    CGContextSetStrokeColorWithColor(ctx, ColorSwatch.sr_darkTeal.CGColor)
-    CGContextDrawPath(ctx, CGPathDrawingMode.EOFillStroke)
+    ctx?.setStrokeColor(ColorSwatch.sr_darkTeal.cgColor)
+    ctx?.drawPath(using: CGPathDrawingMode.eoFillStroke)
     
   }
   
@@ -118,7 +118,7 @@ class Day21ViewController: UIViewController {
     self.drawSmileyFace(self.simulationView)
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
     self.simulationView.clipsToBounds = false
@@ -133,11 +133,11 @@ class Day21ViewController: UIViewController {
   
   
   internal func addTapGestureToView() {
-    let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedView:")
+    let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Day21ViewController.tappedView(_:)))
     self.simulationView.addGestureRecognizer(gesture)
   }
   
-  internal func tappedView(sender: AnyObject?) {
+  internal func tappedView(_ sender: AnyObject?) {
     var t = CATransform3DIdentity
 //    t.m14 = -0.1
 //    t.m24 = -0.1
@@ -151,12 +151,12 @@ class Day21ViewController: UIViewController {
     t.m33 = -0.5
     
     
-    self.simulationView.layer.anchorPoint = CGPointMake(0.0, 0.0)
+    self.simulationView.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
 //    self.simulationView.layer.anchorPointZ = -150.0
-    self.simulationView.layer.position = CGPointMake(CGRectGetMinX(self.simulationView.frame) - CGRectGetMidX(self.simulationView.bounds),CGRectGetMinY(self.simulationView.frame) - CGRectGetMidY(self.simulationView.bounds))
+    self.simulationView.layer.position = CGPoint(x: self.simulationView.frame.minX - self.simulationView.bounds.midX,y: self.simulationView.frame.minY - self.simulationView.bounds.midY)
     
     
-    UIView.animateWithDuration(5.0, delay: 0.0, options: [.Repeat], animations: { () -> Void in
+    UIView.animate(withDuration: 5.0, delay: 0.0, options: [.repeat], animations: { () -> Void in
       self.simulationView.layer.transform = t
 //      self.simulationView.layer.anchorPointZ = -200.0
       }) { (complete: Bool) -> Void in
@@ -167,62 +167,62 @@ class Day21ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.simulationView.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(125.0, 125.0))
+    self.simulationView.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 125.0, height: 125.0))
       make.center.equalTo(self.gridView)
     }
     
-    self.gridView.snp_makeConstraints { (make) -> Void in
+    self.gridView.snp.makeConstraints { (make) -> Void in
       make.top.left.right.equalTo(self.view)
       make.height.equalTo(250.0)
     }
     
-    self.bottomView.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(self.simulationView.snp_bottom)
+    self.bottomView.snp.makeConstraints { (make) -> Void in
+      make.top.equalTo(self.simulationView.snp.bottom)
       make.left.right.bottom.equalTo(self.view)
     }
     
     self.view.layoutIfNeeded()
   }
   
-  internal func drawSmileyFace(view: UIView) {
-    let midX = CGRectGetMidX(view.bounds)
-    let midY = CGRectGetMidY(view.bounds)
-    let quarterW = CGRectGetWidth(view.bounds) / 4.0
-    let quarterH = CGRectGetHeight(view.bounds) / 4.0
+  internal func drawSmileyFace(_ view: UIView) {
+    let midX = view.bounds.midX
+    let midY = view.bounds.midY
+    let quarterW = view.bounds.width / 4.0
+    let quarterH = view.bounds.height / 4.0
     
-    let path: UIBezierPath = UIBezierPath(ovalInRect: CGRectInset(view.bounds, 1, 1)) // inset by 1 b/c of 2pt line width
+    let path: UIBezierPath = UIBezierPath(ovalIn: view.bounds.insetBy(dx: 1, dy: 1)) // inset by 1 b/c of 2pt line width
     
     let circle: CAShapeLayer = CAShapeLayer()
-    circle.path = path.CGPath
-    circle.fillColor = UIColor.yellowColor().CGColor
-    circle.strokeColor = UIColor.yellowColor().CGColor
+    circle.path = path.cgPath
+    circle.fillColor = UIColor.yellow.cgColor
+    circle.strokeColor = UIColor.yellow.cgColor
     circle.lineWidth = 2.0
     
-    let leftEye: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(quarterW, quarterH - 15.0, 20.0, 40.0))
+    let leftEye: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: quarterW, y: quarterH - 15.0, width: 20.0, height: 40.0))
     let leftEyeLayer: CAShapeLayer = CAShapeLayer()
-    leftEyeLayer.path = leftEye.CGPath
-    leftEyeLayer.strokeColor = UIColor.blackColor().CGColor
-    leftEyeLayer.fillColor = UIColor.blackColor().CGColor
+    leftEyeLayer.path = leftEye.cgPath
+    leftEyeLayer.strokeColor = UIColor.black.cgColor
+    leftEyeLayer.fillColor = UIColor.black.cgColor
     leftEyeLayer.lineWidth = 1.0
     
     circle.addSublayer(leftEyeLayer)
     
-    let rightEye: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(midX + (midX - quarterW) - 15.0, quarterH - 15.0 , 20.0, 40.0))
+    let rightEye: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: midX + (midX - quarterW) - 15.0, y: quarterH - 15.0 , width: 20.0, height: 40.0))
     let rightEyeLayer: CAShapeLayer = CAShapeLayer()
-    rightEyeLayer.path = rightEye.CGPath
-    rightEyeLayer.strokeColor = UIColor.blackColor().CGColor
-    rightEyeLayer.fillColor = UIColor.blackColor().CGColor
+    rightEyeLayer.path = rightEye.cgPath
+    rightEyeLayer.strokeColor = UIColor.black.cgColor
+    rightEyeLayer.fillColor = UIColor.black.cgColor
     rightEyeLayer.lineWidth = 1.0
     
     circle.addSublayer(rightEyeLayer)
     
-    let smile: UIBezierPath = UIBezierPath(arcCenter: CGPointMake(midX, midY), radius: quarterW, startAngle: 0.0, endAngle: CGFloat(M_PI), clockwise: true)
+    let smile: UIBezierPath = UIBezierPath(arcCenter: CGPoint(x: midX, y: midY), radius: quarterW, startAngle: 0.0, endAngle: CGFloat(M_PI), clockwise: true)
     
     let smileLayer: CAShapeLayer = CAShapeLayer()
-    smileLayer.path = smile.CGPath
-    smileLayer.strokeColor = UIColor.blackColor().CGColor
-    smileLayer.fillColor = UIColor.yellowColor().CGColor
+    smileLayer.path = smile.cgPath
+    smileLayer.strokeColor = UIColor.black.cgColor
+    smileLayer.fillColor = UIColor.yellow.cgColor
     smileLayer.lineWidth = 3.0
     smileLayer.lineCap = kCALineCapRound
     

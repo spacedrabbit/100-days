@@ -11,8 +11,8 @@ import UIKit
 class Day15ViewController: UIViewController {
   
   lazy var cubeView: UIView = {
-    let view: UIView = UIView(frame: CGRectZero)
-    view.backgroundColor = UIColor.yellowColor()
+    let view: UIView = UIView(frame: CGRect.zero)
+    view.backgroundColor = UIColor.yellow
     return view
   }()
   
@@ -24,7 +24,7 @@ class Day15ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     setupViewHierarchy()
     configureConstraints()
@@ -39,8 +39,8 @@ class Day15ViewController: UIViewController {
   internal func hexItUp() {
     let colorPalette: HexColors = (ColorSwatch.sr_coolWhite, ColorSwatch.sr_darkChalkGreen, ColorSwatch.sr_mintGreen)
     let prismPalette: PrismColors = (ColorSwatch.sr_darkTeal, ColorSwatch.sr_mediumTeal, ColorSwatch.sr_coolWhite)
-    let cubeOriginPoint: CGPoint = CGPointMake(CGRectGetMidX(self.cubeView.bounds), CGRectGetMidY(self.cubeView.bounds))
-    let cubeRadius: CGFloat = CGRectGetWidth(self.cubeView.frame) / 2.0
+    let cubeOriginPoint: CGPoint = CGPoint(x: self.cubeView.bounds.midX, y: self.cubeView.bounds.midY)
+    let cubeRadius: CGFloat = self.cubeView.frame.width / 2.0
     
     self.hexGenerator.vertexPointsForHexCube(withOrigin: cubeOriginPoint, radius: cubeRadius)
     self.hexGenerator.drawHexCube(inView: self.cubeView, colors: colorPalette)
@@ -48,9 +48,9 @@ class Day15ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.cubeView.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(200, 200))
-      make.center.equalTo(self.view.snp_center)
+    self.cubeView.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 200.0, height: 200.0))
+      make.center.equalTo(self.view.snp.center)
     }
     
     self.view.layoutIfNeeded()

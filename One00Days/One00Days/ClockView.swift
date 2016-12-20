@@ -10,67 +10,69 @@
 import UIKit
 import CoreGraphics
 
-func degreesToRadians(degrees: CGFloat) -> CGFloat {
+func degreesToRadians(_ degrees: CGFloat) -> CGFloat {
   return (180 / CGFloat(M_PI)) * degrees
 }
 
-func drawSecondsMarker(context: CGContextRef, x: CGFloat, y: CGFloat, radius: CGFloat, color: UIColor) {
-  let path = CGPathCreateMutable()
-  CGPathMoveToPoint(path, nil, radius, 0)
-  CGPathAddLineToPoint(path, nil, x, y)
-  CGPathCloseSubpath(path)
-  CGContextAddPath(context, path)
-  CGContextSetLineWidth(context, 1.0)
-  CGContextSetStrokeColorWithColor(context, color.CGColor)
-  CGContextStrokePath(context)
+func drawSecondsMarker(_ context: CGContext, x: CGFloat, y: CGFloat, radius: CGFloat, color: UIColor) {
+  let path = CGMutablePath()
+//  CGPathMoveToPoint(path, nil, radius, 0)
+//  CGPathAddLineToPoint(path, nil, x, y)
+  path.closeSubpath()
+  context.addPath(path)
+  context.setLineWidth(1.0)
+  context.setStrokeColor(color.cgColor)
+  context.strokePath()
 }
 
 class ClockView: UIView {
   
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
       let ctx = UIGraphicsGetCurrentContext()
-      let radius = CGRectGetWidth(rect) / 2.5
+      let radius = rect.width / 2.5
       let endAngle: CGFloat = CGFloat(2.0 * M_PI)
       
-      CGContextAddArc(ctx!, CGRectGetMidX(rect), CGRectGetMidY(rect), radius, 0, endAngle, 1)
-      CGContextSetFillColorWithColor(ctx!, UIColor.blueColor().CGColor)
-      CGContextSetStrokeColorWithColor(ctx!, UIColor.whiteColor().CGColor)
-      CGContextSetLineWidth(ctx!, 3.0)
-      CGContextDrawPath(ctx!, .FillStroke)
+//      CGContextAddArc(ctx!, rect.midX, rect.midY, radius, 0, endAngle, 1)
+      ctx!.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: radius, startAngle: 0, endAngle: endAngle, clockwise: true)
+      ctx!.setFillColor(UIColor.blue.cgColor)
+      ctx!.setStrokeColor(UIColor.white.cgColor)
+      ctx!.setLineWidth(3.0)
+      ctx!.drawPath(using: .fillStroke)
       
       for i in 1...60 {
-        CGContextSaveGState(ctx)
-        CGContextTranslateCTM(ctx, CGRectGetMidX(rect), CGRectGetMidY(rect))
-        CGContextRotateCTM(ctx, degreesToRadians(CGFloat(i) * 6.0)) // ((60 ticks / 360 degree) * tick #)
+        ctx?.saveGState()
+        ctx?.translateBy(x: rect.midX, y: rect.midY)
+        ctx?.rotate(by: degreesToRadians(CGFloat(i) * 6.0)) // ((60 ticks / 360 degree) * tick #)
         
         if i%5 == 0 {
-          drawSecondsMarker(ctx!, x: radius - 10.0, y: 0, radius: radius, color: UIColor.whiteColor())
+          drawSecondsMarker(ctx!, x: radius - 10.0, y: 0, radius: radius, color: UIColor.white)
           
-          let aFont = UIFont(name: "Optima-Bold", size: radius/5)
-          let attr:CFDictionaryRef = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.whiteColor()]
-          let text = CFAttributedStringCreate(nil, "\(i)", attr)
-          let line = CTLineCreateWithAttributedString(text)
-          let bounds = CTLineGetBoundsWithOptions(line, .ExcludeTypographicShifts)
-          CGContextSetLineWidth(ctx, 1.0)
-          CGContextSetTextDrawingMode(ctx, .Stroke)
-          CGContextSetTextPosition(ctx, radius - bounds.size.width * 8, -CGRectGetMidY(rect))
-          CTLineDraw(line, ctx!)
+//          let aFont = UIFont(name: "Optima-Bold", size: radius/5)
+//          let attr: CFDictionary = Dictionary.init(dictionaryLiteral: (NSFontAttributeName : aFont!), (NSForegroundColorAttributeName : UIColor.white))
+//          let text = CFAttributedStringCreate(nil, "\(i)" as CFString!, attr)
+//          let line = CTLineCreateWithAttributedString(text!)
+//          let bounds = CTLineGetBoundsWithOptions(line, .excludeTypographicShifts)
+//          ctx?.setLineWidth(1.0)
+//          ctx?.setTextDrawingMode(.stroke)
+//          ctx?.textPosition = CGPoint(x: radius - bounds.size.width * 8, y: -rect.midY)
+////          CGContextSetTextPosition(ctx, radius - bounds.size.width * 8, y: -rect.midY)
+//          CTLineDraw(line, ctx!)
         } else {
-          drawSecondsMarker(ctx!, x: radius - 5.0, y: 0, radius: radius, color: UIColor.whiteColor())
+          drawSecondsMarker(ctx!, x: radius - 5.0, y: 0, radius: radius, color: UIColor.white)
         }
-        CGContextRestoreGState(ctx)
+        ctx?.restoreGState()
       }
       
 //      CGContextSaveGState(ctx)
 //      CGContextTranslateCTM(ctx, CGRectGetMidX(rect), CGRectGetMidY(rect))
       let newCTX = UIGraphicsGetCurrentContext()
-      CGContextRotateCTM(newCTX, degreesToRadians(60.0))
+      newCTX?.rotate(by: degreesToRadians(60.0))
 //      CGContextRestoreGState(ctx)
   }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = UIColor.clearColor()
+    self.backgroundColor = UIColor.clear
   }
   
   required init?(coder aDecoder: NSCoder) {

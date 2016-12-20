@@ -22,11 +22,11 @@ class CubicUnit: UIView {
   }
   
   convenience init(withCubicSideLength length: CGFloat) {
-    self.init(frame: CGRectZero)
+    self.init(frame: CGRect.zero)
     self.sideLength = length
   }
   
-  func setMatrixPosition(row: Int, column: Int) {
+  func setMatrixPosition(_ row: Int, column: Int) {
     self.matrixPosition = (row, column)
   }
   
@@ -78,21 +78,21 @@ class Day30ViewController: UIViewController {
     self.cubicGrid = horizontal
   }
   
-  internal func addCubicsToView(view: UIView) {
+  internal func addCubicsToView(_ view: UIView) {
     var currentOrigin: CGPoint = 0.0*&0.0
     
     for cubicRow: [CubicUnit] in self.cubicGrid {
       for cubic: CubicUnit in cubicRow {
         self.banner8BitView.addSubview(cubic)
-        cubic.frame = CGRectMake(currentOrigin.x, currentOrigin.y, Day30ViewController.blockSize, Day30ViewController.blockSize)
-        currentOrigin = CGPointMake(currentOrigin.x + Day30ViewController.blockSize, currentOrigin.y)
+        cubic.frame = CGRect(x: currentOrigin.x, y: currentOrigin.y, width: Day30ViewController.blockSize, height: Day30ViewController.blockSize)
+        currentOrigin = CGPoint(x: currentOrigin.x + Day30ViewController.blockSize, y: currentOrigin.y)
       }
-      currentOrigin = CGPointMake(0.0, currentOrigin.y + Day30ViewController.blockSize)
+      currentOrigin = CGPoint(x: 0.0, y: currentOrigin.y + Day30ViewController.blockSize)
     }
   }
   
   internal func configureConstraints() {
-    banner8BitView.snp_makeConstraints { (make) -> Void in
+    banner8BitView.snp.makeConstraints { (make) -> Void in
       make.left.right.centerY.equalTo(self.view)
       make.height.equalTo(240.0)
     }

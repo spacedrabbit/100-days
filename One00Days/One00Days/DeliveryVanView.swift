@@ -29,9 +29,9 @@ internal class DeliveryVanView: UIView {
   
   // MARK - Animations
   internal func attachBounceAnimationOnVan() {
-    self.deliveryVanBody.layer.anchorPoint = CGPointMake(0.5, 0.0)
-    self.frontWheel.layer.anchorPoint =  CGPointMake(0.5, -1.75)
-    self.backWheel.layer.anchorPoint =  CGPointMake(0.5, -1.75)
+    self.deliveryVanBody.layer.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+    self.frontWheel.layer.anchorPoint =  CGPoint(x: 0.5, y: -1.75)
+    self.backWheel.layer.anchorPoint =  CGPoint(x: 0.5, y: -1.75)
     
     let bounce: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position.y")
     bounce.duration = 1.2
@@ -55,28 +55,28 @@ internal class DeliveryVanView: UIView {
     wheel2bounce.autoreverses = true
     wheel2bounce.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
     
-    self.deliveryVanBody.layer.addAnimation(bounce, forKey: "bou")
-    self.frontWheel.layer.addAnimation(wheel1bounce, forKey: "w1b")
-    self.backWheel.layer.addAnimation(wheel2bounce, forKey: "w2b")
+    self.deliveryVanBody.layer.add(bounce, forKey: "bou")
+    self.frontWheel.layer.add(wheel1bounce, forKey: "w1b")
+    self.backWheel.layer.add(wheel2bounce, forKey: "w2b")
   }
   
   // MARK: - Layout
   internal func configureConstraints() {
-    self.deliveryVanBody.snp_makeConstraints { (make) -> Void in
+    self.deliveryVanBody.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self)
       make.width.equalTo(132.0)
       make.height.equalTo(57.0)
     }
     
-    self.frontWheel.snp_makeConstraints { (make) -> Void in
+    self.frontWheel.snp.makeConstraints { (make) -> Void in
       make.height.width.equalTo(24.0)
-      make.centerY.equalTo(self.deliveryVanBody.snp_bottom)
-      make.centerX.equalTo(self.deliveryVanBody.snp_centerX).multipliedBy(0.40)
+      make.centerY.equalTo(self.deliveryVanBody.snp.bottom)
+      make.centerX.equalTo(self.deliveryVanBody.snp.centerX).multipliedBy(0.40)
     }
     
-    self.backWheel.snp_makeConstraints { (make) -> Void in
+    self.backWheel.snp.makeConstraints { (make) -> Void in
       make.height.width.centerY.equalTo(self.frontWheel)
-      make.centerX.equalTo(self.deliveryVanBody.snp_centerX).multipliedBy(1.6)
+      make.centerX.equalTo(self.deliveryVanBody.snp.centerX).multipliedBy(1.6)
     }
     
   }
@@ -90,19 +90,19 @@ internal class DeliveryVanView: UIView {
   // MARK: - Lazys
   lazy var deliveryVanBody: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "van_body"))
-    imageView.contentMode = .ScaleAspectFit
+    imageView.contentMode = .scaleAspectFit
     return imageView
   }()
   
   lazy var frontWheel: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "van_full_wheel"))
-    imageView.contentMode = .ScaleAspectFit
+    imageView.contentMode = .scaleAspectFit
     return imageView
   }()
   
   lazy var backWheel: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "van_full_wheel"))
-    imageView.contentMode = .ScaleAspectFit
+    imageView.contentMode = .scaleAspectFit
     return imageView
   }()
 }

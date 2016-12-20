@@ -13,12 +13,12 @@ class UnOfficialDay46ViewController: UIPageViewController, UIPageViewControllerD
   let allViewControllers: [UIViewController] = [Day32ViewController(), Day32ViewController(), Day32ViewController()]
   
   convenience init() {
-    self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    self.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     self.delegate = self
     self.dataSource = self
     
     if let firstViewController = allViewControllers.first {
-      self.setViewControllers([firstViewController], direction: .Forward, animated: true, completion: nil)
+      self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
     }
   }
   
@@ -38,17 +38,17 @@ class UnOfficialDay46ViewController: UIPageViewController, UIPageViewControllerD
   
   
   // MARK: - Delegate Methods
-  func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+  func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
     print("There are \(pendingViewControllers) remaining")
   }
   
-  func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     print("The prior view controllers were \(previousViewControllers)")
   }
  
   // MARK: - Datasource Methods
-  func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-    guard let currentIndex = self.allViewControllers.indexOf(viewController) else {
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    guard let currentIndex = self.allViewControllers.index(of: viewController) else {
       return nil
     }
     
@@ -67,8 +67,8 @@ class UnOfficialDay46ViewController: UIPageViewController, UIPageViewControllerD
     return allViewControllers[previousIndex]
   }
   
-  func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-    guard let currentIndex = self.allViewControllers.indexOf(viewController) else {
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    guard let currentIndex = self.allViewControllers.index(of: viewController) else {
       print("Current Index of viewcontroller not found")
       return nil
     }

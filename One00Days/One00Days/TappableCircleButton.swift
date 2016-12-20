@@ -17,40 +17,40 @@ let kReleasedKey: String = "released"
 class TappableCircleButton: UIControl {
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = UIColor.clearColor()
-    self.userInteractionEnabled = true
-    self.addTarget(self, action: "buttonTouched:", forControlEvents: [.TouchDown, .TouchDragInside])
+    self.backgroundColor = UIColor.clear
+    self.isUserInteractionEnabled = true
+    self.addTarget(self, action: #selector(TappableCircleButton.buttonTouched(_:)), for: [.touchDown, .touchDragInside])
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   
-  override func drawRect(rect: CGRect) {
-    let circlePath: UIBezierPath = UIBezierPath(roundedRect: CGRectInset(rect, 4.0, 4.0), cornerRadius: rect.height/2.0)
+  override func draw(_ rect: CGRect) {
+    let circlePath: UIBezierPath = UIBezierPath(roundedRect: rect.insetBy(dx: 4.0, dy: 4.0), cornerRadius: rect.height/2.0)
     let circleShapeLayer: CAShapeLayer = CAShapeLayer()
-    circleShapeLayer.path = circlePath.CGPath
-    circleShapeLayer.strokeColor = UIColor.blueColor().CGColor
-    circleShapeLayer.fillColor = UIColor.yellowColor().CGColor
+    circleShapeLayer.path = circlePath.cgPath
+    circleShapeLayer.strokeColor = UIColor.blue.cgColor
+    circleShapeLayer.fillColor = UIColor.yellow.cgColor
     circleShapeLayer.lineCap = kCALineCapSquare
     circleShapeLayer.lineWidth = 4.0
     
     let horizontalLinePath: UIBezierPath = UIBezierPath()
-    horizontalLinePath.moveToPoint(CGPointMake(12.0, CGRectGetMidY(rect)))
-    horizontalLinePath.addLineToPoint(CGPointMake(CGRectGetMaxX(rect) - 12.0, CGRectGetMidY(rect)))
-    horizontalLinePath.closePath()
+    horizontalLinePath.move(to: CGPoint(x: 12.0, y: rect.midY))
+    horizontalLinePath.addLine(to: CGPoint(x: rect.maxX - 12.0, y: rect.midY))
+    horizontalLinePath.close()
     let horizontalLineShapeLayer: CAShapeLayer = CAShapeLayer()
-    horizontalLineShapeLayer.path = horizontalLinePath.CGPath
-    horizontalLineShapeLayer.strokeColor = UIColor.redColor().CGColor
+    horizontalLineShapeLayer.path = horizontalLinePath.cgPath
+    horizontalLineShapeLayer.strokeColor = UIColor.red.cgColor
     horizontalLineShapeLayer.lineCap = kCALineCapSquare
     horizontalLineShapeLayer.lineWidth = 4.0
     
     let verticalLinePath: UIBezierPath = UIBezierPath()
-    verticalLinePath.moveToPoint(CGPointMake(rect.width / 2.0, 12.0))
-    verticalLinePath.addLineToPoint(CGPointMake(rect.width / 2.0, rect.height - 12.0))
+    verticalLinePath.move(to: CGPoint(x: rect.width / 2.0, y: 12.0))
+    verticalLinePath.addLine(to: CGPoint(x: rect.width / 2.0, y: rect.height - 12.0))
     let verticalLineShapeLayer: CAShapeLayer = CAShapeLayer()
-    verticalLineShapeLayer.path = verticalLinePath.CGPath
-    verticalLineShapeLayer.strokeColor = UIColor.redColor().CGColor
+    verticalLineShapeLayer.path = verticalLinePath.cgPath
+    verticalLineShapeLayer.strokeColor = UIColor.red.cgColor
     verticalLineShapeLayer.lineCap = kCALineCapSquare
     verticalLineShapeLayer.lineWidth = 4.0
     
@@ -64,22 +64,22 @@ class TappableCircleButton: UIControl {
     verticalLinePath.stroke()
   }
   
-  internal func buttonTouched(sender: AnyObject?) {
+  internal func buttonTouched(_ sender: AnyObject?) {
     print("TOUCHED")
     animateForHightlightedState()
   }
   
-  override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+  override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     print("begin tracking?")
     return true
   }
   
-  override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+  override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     print("continued tracking")
     return true
   }
   
-  override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
+  override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
     print("end tracking")
     if let buttonTouch: UITouch = touch {
       if let touchedView: UIView = buttonTouch.view {
@@ -101,13 +101,13 @@ class TappableCircleButton: UIControl {
     pressedAnimation.keyTimes = [0.0, 1.0]
     pressedAnimation.values = [1.0, 0.85]
     pressedAnimation.timingFunctions = [CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)]
-    pressedAnimation.removedOnCompletion = false
+    pressedAnimation.isRemovedOnCompletion = false
     
-    UIView.animateWithDuration(0.30, animations: { () -> Void in
-      self.layer.addAnimation(pressedAnimation, forKey: kPressedDownKey)
-      }) { (complete: Bool) -> Void in
-        self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(0.85, 0.85))
-    }
+    UIView.animate(withDuration: 0.30, animations: { () -> Void in
+      self.layer.add(pressedAnimation, forKey: kPressedDownKey)
+      }, completion: { (complete: Bool) -> Void in
+        self.layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.85, y: 0.85))
+    }) 
   }
   
   internal func animateForReleaseState() {
@@ -122,18 +122,18 @@ class TappableCircleButton: UIControl {
       CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear),
     ]
     
-    UIView.animateKeyframesWithDuration(1.0, delay: 0.0, options: UIViewKeyframeAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+    UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: UIViewKeyframeAnimationOptions.beginFromCurrentState, animations: { () -> Void in
       
-      UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.25, animations: { () -> Void in
+      UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: { () -> Void in
         self.layer.transform = CATransform3DIdentity
       })
       
-      UIView.addKeyframeWithRelativeStartTime(0.25, relativeDuration: 0.75, animations: { () -> Void in
-        self.layer.addAnimation(releasedAnimation, forKey: kReleasedKey)
+      UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.75, animations: { () -> Void in
+        self.layer.add(releasedAnimation, forKey: kReleasedKey)
       })
       
       }) { (complete: Bool) -> Void in
-        self.layer.removeAnimationForKey(kReleasedKey)
+        self.layer.removeAnimation(forKey: kReleasedKey)
     }
   }
   

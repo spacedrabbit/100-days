@@ -14,7 +14,7 @@ internal class Day5ViewController: UIViewController {
   
   lazy var contentView: UIView = {
     var view: UIView = UIView()
-    view.backgroundColor = UIColor.lightGrayColor()
+    view.backgroundColor = UIColor.lightGray
     return view
   }()
   
@@ -36,17 +36,17 @@ internal class Day5ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.contentView.snp_makeConstraints { (make) -> Void in
-      make.leading.equalTo(self.view.snp_leading).offset(50.0)
-      make.trailing.equalTo(self.view.snp_trailing).inset(50.0)
-      make.top.equalTo(self.view.snp_top).offset(50.0)
-      make.bottom.equalTo(self.view.snp_bottom).inset(50.0)
+    self.contentView.snp.makeConstraints { (make) -> Void in
+      make.leading.equalTo(self.view.snp.leading).offset(50.0)
+      make.trailing.equalTo(self.view.snp.trailing).inset(50.0)
+      make.top.equalTo(self.view.snp.top).offset(50.0)
+      make.bottom.equalTo(self.view.snp.bottom).inset(50.0)
     }
     
-    self.plusButton.snp_makeConstraints { (make) -> Void in
-      make.center.equalTo(self.contentView.snp_center)
+    self.plusButton.snp.makeConstraints { (make) -> Void in
+      make.center.equalTo(self.contentView.snp.center)
       make.height.equalTo(50.0)
-      make.width.equalTo(self.plusButton.snp_height)
+      make.width.equalTo(self.plusButton.snp.height)
     }
   }
   

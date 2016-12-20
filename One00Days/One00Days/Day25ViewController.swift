@@ -24,21 +24,21 @@ class Day25ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     setupViewHierarchy()
     configureConstraints()
     
-    let g: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "addAnimation:")
+    let g: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(Day25ViewController.addAnimation(_:)))
     self.gView.addGestureRecognizer(g)
   }
   
-  internal func addAnimation(sender: AnyObject?) {
+  internal func addAnimation(_ sender: AnyObject?) {
     
-    let scaleTransform: CGAffineTransform = CGAffineTransformMakeScale(2.0, 2.0)
-    UIView.animateWithDuration(2.0) { () -> Void in
+    let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+    UIView.animate(withDuration: 2.0, animations: { () -> Void in
       self.view.transform = scaleTransform
-    }
+    }) 
     
   }
   
@@ -47,12 +47,12 @@ class Day25ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    circularGradientView.snp_makeConstraints { (make) -> Void in
+    circularGradientView.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self.view)
       make.size.equalTo(180.0+&180.0)
     }
     
-    gView.snp_makeConstraints { (make) -> Void in
+    gView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(self.view)
     }
     

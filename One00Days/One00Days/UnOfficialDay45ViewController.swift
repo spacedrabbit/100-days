@@ -12,7 +12,7 @@ class UnOfficialDay45ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.whiteColor()
+    self.view.backgroundColor = UIColor.white
     
     self.setupViewHierarchy()
     self.configureConstraints()
@@ -20,10 +20,10 @@ class UnOfficialDay45ViewController: UIViewController {
   
   
   internal func configureConstraints() {
-    self.van.snp_makeConstraints { (make) -> Void in
+    self.van.snp.makeConstraints { (make) -> Void in
       make.width.equalTo(132.0)
       make.height.equalTo(57.0)
-      make.center.equalTo(self.view.snp_center)
+      make.center.equalTo(self.view.snp.center)
     }
   }
   

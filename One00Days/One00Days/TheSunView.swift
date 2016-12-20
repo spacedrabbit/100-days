@@ -32,9 +32,9 @@ class TheSunView: UIView {
   }
   
   internal func attachRotationAnimationToRays() {
-    let rotationTransform = CGAffineTransformMakeRotation((CGFloat(180.0 * M_PI) / 180.0))
+    let rotationTransform = CGAffineTransform(rotationAngle: (CGFloat(180.0 * M_PI) / 180.0))
     
-    UIView.animateWithDuration(2.0, delay: 0.0, options: [.CurveLinear, .Repeat], animations: { () -> Void in
+    UIView.animate(withDuration: 2.0, delay: 0.0, options: [.curveLinear, .repeat], animations: { () -> Void in
       self.sunRayImageView.layer.transform = CATransform3DMakeAffineTransform(rotationTransform)
       }) { (complete: Bool) -> Void in
     }
@@ -42,19 +42,19 @@ class TheSunView: UIView {
   }
   
   internal func attachTranslationScaleTransformToRays() {
-    let scaleTransform = CGAffineTransformMakeScale(1.25, 1.1)
+    let scaleTransform = CGAffineTransform(scaleX: 1.25, y: 1.1)
     
-    UIView.animateWithDuration(1.0, delay: 0.0, options: [.CurveLinear, .Repeat, .Autoreverse], animations: { () -> Void in
+    UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse], animations: { () -> Void in
       self.sunRayImageView.layer.transform = CATransform3DMakeAffineTransform(scaleTransform)
       }) { (complete: Bool) -> Void in
         
     }
   }
   
-  internal func attachFullAnimationToRays(view: UIView) {
+  internal func attachFullAnimationToRays(_ view: UIView) {
     let rotationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
     rotationAnimation.duration = 5.0
-    rotationAnimation.additive = true
+    rotationAnimation.isAdditive = true
     rotationAnimation.repeatCount = HUGE
     rotationAnimation.keyTimes = [0.0, 1.0]
     rotationAnimation.values = [0, M_PI]
@@ -73,42 +73,42 @@ class TheSunView: UIView {
     scaleYTransformationAnimation.values = [1.0, 0.8, 1.0, 1.0]
     scaleYTransformationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     
-    view.layer.addAnimation(rotationAnimation, forKey: "rot")
-    view.layer.addAnimation(scaleYTransformationAnimation, forKey: "scaY")
-    view.layer.addAnimation(scaleXTransformAnimation, forKey: "sca")
+    view.layer.add(rotationAnimation, forKey: "rot")
+    view.layer.add(scaleYTransformationAnimation, forKey: "scaY")
+    view.layer.add(scaleXTransformAnimation, forKey: "sca")
   }
   
-  internal func attachRotationAnimation(view: UIView) {
+  internal func attachRotationAnimation(_ view: UIView) {
     let rotationAnimation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
     rotationAnimation.duration = 5.0
-    rotationAnimation.additive = true
+    rotationAnimation.isAdditive = true
     rotationAnimation.repeatCount = HUGE
     rotationAnimation.keyTimes = [0.0, 1.0]
     rotationAnimation.values = [0, M_PI]
     
-    view.layer.addAnimation(rotationAnimation, forKey: "rot")
+    view.layer.add(rotationAnimation, forKey: "rot")
   }
   
   // MARK: - Layout
   internal func configureConstraints() {
-    self.sunRayImageView.snp_makeConstraints { (make) -> Void in
+    self.sunRayImageView.snp.makeConstraints { (make) -> Void in
       make.center.width.equalTo(self)
       make.height.equalTo(30.0)
     }
     
-    self.sunRayImageView2.snp_makeConstraints { (make) -> Void in
+    self.sunRayImageView2.snp.makeConstraints { (make) -> Void in
       make.center.width.height.equalTo(self.sunRayImageView)
     }
     
-    self.sunRayImageView3.snp_makeConstraints { (make) -> Void in
+    self.sunRayImageView3.snp.makeConstraints { (make) -> Void in
       make.center.width.height.equalTo(self.sunRayImageView)
     }
     
-    self.sunRayImageView4.snp_makeConstraints { (make) -> Void in
+    self.sunRayImageView4.snp.makeConstraints { (make) -> Void in
       make.center.width.height.equalTo(self.sunRayImageView)
     }
     
-    self.sunBodyImageView.snp_makeConstraints { (make) -> Void in
+    self.sunBodyImageView.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self.sunRayImageView)
       make.width.height.equalTo(self).multipliedBy(0.6)
     }
@@ -123,16 +123,16 @@ class TheSunView: UIView {
   // MARK: - Lazys
   lazy var sunBodyImageView: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_body"))
-    imageView.contentMode = .ScaleAspectFill
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFill
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
     return imageView
   }()
   
   lazy var sunRayImageView: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
     return imageView
   }()
@@ -140,10 +140,10 @@ class TheSunView: UIView {
   
   lazy var sunRayImageView2: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
-    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+    imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
     return imageView
   }()
   
@@ -151,10 +151,10 @@ class TheSunView: UIView {
   
   lazy var sunRayImageView3: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
-    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+    imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4))
     return imageView
   }()
   
@@ -162,10 +162,10 @@ class TheSunView: UIView {
   
   lazy var sunRayImageView4: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
-    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4 * 3.0))
+    imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_4 * 3.0))
     return imageView
   }()
   
@@ -173,10 +173,10 @@ class TheSunView: UIView {
   
   lazy var sunRayImageView5: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
-    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+    imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
     return imageView
   }()
   
@@ -184,10 +184,10 @@ class TheSunView: UIView {
   
   lazy var sunRayImageView6: UIImageView = {
     let imageView: UIImageView = UIImageView(image: UIImage(named: "sun_triangle_group"))
-    imageView.contentMode = .ScaleAspectFit
-    imageView.backgroundColor = UIColor.clearColor()
+    imageView.contentMode = .scaleAspectFit
+    imageView.backgroundColor = UIColor.clear
     imageView.clipsToBounds = false
-    imageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2))
+    imageView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
     return imageView
   }()
   

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class Day26ViewController: UIViewController {
+class Day26ViewController: UIViewController, CAAnimationDelegate {
   
   lazy var button: UIButton = {
-    let b: UIButton = UIButton(type: UIButtonType.RoundedRect)
-    b.setTitle("Push me", forState: .Normal)
-    b.addTarget(self, action: "didTouchButt:", forControlEvents: .TouchUpInside)
+    let b: UIButton = UIButton(type: UIButtonType.roundedRect)
+    b.setTitle("Push me", for: UIControlState())
+    b.addTarget(self, action: #selector(Day26ViewController.didTouchButt(_:)), for: .touchUpInside)
     b.backgroundColor = ColorSwatch.sr_hipsterBlueBlack
-    b.setTitleColor(ColorSwatch.sr_coolWhite, forState: .Normal)
+    b.setTitleColor(ColorSwatch.sr_coolWhite, for: UIControlState())
     return b
   }()
   
@@ -35,15 +35,15 @@ class Day26ViewController: UIViewController {
   
   
   internal func configureConstraints() {
-    self.button.snp_makeConstraints { (make) -> Void in
+    self.button.snp.makeConstraints { (make) -> Void in
       make.centerX.equalTo(self.view)
       make.size.equalTo(200.0+&50.0)
     }
   }
   
-  internal func didTouchButt(sender: AnyObject?) {
+  internal func didTouchButt(_ sender: AnyObject?) {
     let buttLayer = drawExpandingLayer()
-    buttLayer.position = CGPointMake(CGRectGetMidX(self.view.layer.bounds) - (0.5 * buttLayer.bounds.width) , CGRectGetMidY(self.view.layer.bounds) - (0.5 * buttLayer.bounds.height))
+    buttLayer.position = CGPoint(x: self.view.layer.bounds.midX - (0.5 * buttLayer.bounds.width) , y: self.view.layer.bounds.midY - (0.5 * buttLayer.bounds.height))
     self.view.layer.addSublayer(buttLayer)
     
   }
@@ -53,33 +53,33 @@ class Day26ViewController: UIViewController {
   }
   
   internal func drawExpandingLayer() -> CALayer {
-    let path: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(0.0, 0.0, 20.0, 20.0))
+    let path: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0))
     
     let shapeLayer: CAShapeLayer = CAShapeLayer()
-    shapeLayer.path = path.CGPath
-    shapeLayer.fillColor = ColorSwatch.sr_darkChalkGreen.CGColor
-    shapeLayer.strokeColor = ColorSwatch.sr_darkChalkGreen.CGColor
+    shapeLayer.path = path.cgPath
+    shapeLayer.fillColor = ColorSwatch.sr_darkChalkGreen.cgColor
+    shapeLayer.strokeColor = ColorSwatch.sr_darkChalkGreen.cgColor
     
     attachAnimationToLayer(shapeLayer)
     
     return shapeLayer
   }
   
-  internal func attachAnimationToLayer(layer: CALayer) {
+  internal func attachAnimationToLayer(_ layer: CALayer) {
     let expandingAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
     expandingAnimation.duration = 1.50
     expandingAnimation.toValue = 25.0
-    expandingAnimation.removedOnCompletion = true
-    expandingAnimation.additive = true
+    expandingAnimation.isRemovedOnCompletion = true
+    expandingAnimation.isAdditive = true
     
     expandingAnimation.delegate = self
     
-    layer.addAnimation(expandingAnimation, forKey: "scale")
+    layer.add(expandingAnimation, forKey: "scale")
   }
   
-  override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+  func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     if flag {
-      self.view.layer.removeAnimationForKey("scale")
+      self.view.layer.removeAnimation(forKey: "scale")
     }
   }
 }

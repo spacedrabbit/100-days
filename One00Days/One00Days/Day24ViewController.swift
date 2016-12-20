@@ -19,18 +19,18 @@ infix operator *&{
 }
 
 public func +&(lhs: CGFloat, rhs: CGFloat) -> CGSize {
-  return CGSizeMake(lhs, rhs)
+  return CGSize(width: lhs, height: rhs)
 }
 
 public func *&(lhs: CGFloat, rhs: CGFloat) -> CGPoint {
-  return CGPointMake(lhs, rhs)
+  return CGPoint(x: lhs, y: rhs)
 }
 
 class Day24ViewController: UIViewController {
   
   lazy var gradientView: UIView = {
   let view: UIView = UIView()
-    view.layer.borderColor = UIColor.blackColor().CGColor
+    view.layer.borderColor = UIColor.black.cgColor
     view.layer.borderWidth = 3.0
   return view
   }()
@@ -47,10 +47,10 @@ class Day24ViewController: UIViewController {
     super.didReceiveMemoryWarning()
   }
   
-  internal func drawGradientIn(view: UIView) {
+  internal func drawGradientIn(_ view: UIView) {
     let gradientLayer: CAGradientLayer = CAGradientLayer()
     gradientLayer.frame = view.bounds
-    gradientLayer.colors = [ColorSwatch.sr_hipsterAvocado.CGColor, ColorSwatch.sr_coolWhite.CGColor]
+    gradientLayer.colors = [ColorSwatch.sr_hipsterAvocado.cgColor, ColorSwatch.sr_coolWhite.cgColor]
     gradientLayer.locations = [0.0, 0.8]
     gradientLayer.startPoint = 0.0*&0.0
     gradientLayer.endPoint = 1.0*&1.0
@@ -59,7 +59,7 @@ class Day24ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.gradientView.snp_makeConstraints { (make) -> Void in
+    self.gradientView.snp.makeConstraints { (make) -> Void in
       make.center.equalTo(self.view)
       make.size.equalTo(150.0+&150.0)
     }

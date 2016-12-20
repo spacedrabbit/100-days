@@ -31,12 +31,12 @@ class Day7ViewController: UIViewController {
   }
   
   internal func configureConstraints() {
-    self.doorView.snp_makeConstraints { (make) -> Void in
-      make.edges.equalTo(self.view.snp_edges)
+    self.doorView.snp.makeConstraints { (make) -> Void in
+      make.edges.equalTo(self.view.snp.edges)
     }
     
-    self.clockView.snp_makeConstraints { (make) -> Void in
-      make.size.equalTo(CGSizeMake(120.0, 120.0))
+    self.clockView.snp.makeConstraints { (make) -> Void in
+      make.size.equalTo(CGSize(width: 120.0, height: 120.0))
       make.leading.equalTo(20.0)
       make.top.equalTo(20.0)
     }
